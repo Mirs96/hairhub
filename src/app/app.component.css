@@ -1,0 +1,47 @@
+/* Navbar di base */
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    padding: 1rem;
+    color: white;
+  }
+  
+  /* Pulsante del menu */
+  .menu-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  /* Stile del menu */
+  .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Posizione rispetto alla navbar */
+    left: 10px;
+    background-color: #444;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
+  /* Mostra il menu quando è aperto */
+  .menu.open {
+    display: flex;
+  }
+  
+  /* Link del menu */
+  .menu a {
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem 0;
+  }
+  
+  .menu a:hover {
+    background-color: #555;
+  }
