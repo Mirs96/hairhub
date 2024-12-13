@@ -1,47 +1,100 @@
 /* Navbar di base */
-.navbar {
+#classNavBar {
     display: flex;
     align-items: center;
     background-color: #333;
     padding: 1rem;
-    color: white;
-  }
+    color: black;
+    position: relative;
+}
   
   /* Pulsante del menu */
-  .menu-button {
+.menu-button {
+    margin-left: auto;
     background: none;
     border: none;
-    color: white;
+    color: black;
     font-size: 1.5rem;
     cursor: pointer;
-  }
+}
+
+.menu-button:hover {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: gray;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
   
   /* Stile del menu */
-  .menu {
+/*.menu {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 60px; /* Posizione rispetto alla navbar */
-    left: 10px;
+    top: 100%; /* Posizione rispetto alla navbar */
+   /* right: 10px;
     background-color: #444;
     padding: 1rem;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-  }
+    width: 150px;
+} */
+
+.menu{
+  width: 100px;
+  background-color: #fff;
+  padding: 20px;
+  position: fixed;
+  right: 10px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  height: 100%;
+  top: 65%;
+  transform: translateY(-50%);
+  overflow: hidden;
+  transition: var(--main-transition);
+}
+
+.menu:hover{
+  width: 300px;
+}
+
   
   /* Mostra il menu quando è aperto */
-  .menu.open {
+.menu.open {
     display: flex;
-  }
+    background-color: gold;
+}
   
   /* Link del menu */
-  .menu a {
+.menu a {
+    flex-direction: column;
     text-decoration: none;
-    color: white;
+    color: black;
     padding: 0.5rem 0;
-  }
+}
   
-  .menu a:hover {
+.menu a:hover {
     background-color: #555;
-  }
+}
+
+#classNavBar>img{
+  height: 50px;
+  width: auto;
+  background-color: #333;
+}
+
+#footerBar{
+  position: absolute;
+  bottom: 0;
+  height: 150px;
+  width: 100%;
+  background: lightgray;
+  justify-content: end;
+  align-items: center;
+  background-color: #333;
+  padding: 1rem;
+  color: black;
+}

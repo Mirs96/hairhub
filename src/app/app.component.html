@@ -3,15 +3,25 @@
 <div class="header">
   <header id="logo">
     <div id="classLogo">
-    <img src="img/hairhub.png" alt="logo">
-  </div>
-  <div id="classNavBar">
-    <button (click)="toggleMenu()" class="menu-button">☰ Menu</button>
-  <div class="menu" [class.open]="isMenuOpen">
-    <a routerLink="/home">Home</a>
-    <a routerLink="/about">About</a>
-    <a routerLink="/contact">Contact</a>
-  </div>
+    </div>
+    <div id="classNavBar">
+      <img src="img/hairhub.png" alt="logo">
+      <button (click)="toggleMenu()" class="menu-button">☰ Menu</button>
+      <div class="menu" [class.open]="isMenuOpen">
+        <a routerLink="/home">Home</a>
+        <a routerLink="/about">About</a>
+        <a routerLink="/contact">Contact</a>
+      </div>
+    </div>
+  </header>
 </div>
-   </header>
+
+<div class="footer">
+  <footer>
+    <div id="footerBar">
+
+    </div>
+  </footer>
 </div>
+
+<router-outlet />
