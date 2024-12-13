@@ -1,0 +1,51 @@
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Top 5 Salons</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (salon of topSalons; track $index) {
+            <tr>
+                <td>{{ salon.name }}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Top 5 Salons by cut</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (salon of topSalonsByCut; track $index) {
+            <tr>
+                <td>{{ salon.name }}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Top 5 Salons by beard</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (salon of topSalonsByBeard; track $index) {
+            <tr>
+                <td>{{ salon.name }}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

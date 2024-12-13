@@ -1,17 +1,45 @@
 <!-- HTML della navbar -->
- 
+
 <div class="header">
   <header id="logo">
     <div id="classLogo">
-    <img src="img/hairhub.png" alt="logo">
-  </div>
-  <div id="classNavBar">
-    <button (click)="toggleMenu()" class="menu-button">☰ Menu</button>
-  <div class="menu" [class.open]="isMenuOpen">
-    <a routerLink="/home">Home</a>
-    <a routerLink="/about">About</a>
-    <a routerLink="/contact">Contact</a>
-  </div>
+      <img src="img/hairhub.png" alt="logo">
+    </div>
+    <div id="classNavBar">
+      <button (click)="toggleMenu()" class="menu-button">☰ Menu</button>
+      <div class="menu" [class.open]="isMenuOpen">
+        <a routerLink="/home">Home</a>
+        <a routerLink="/about">About</a>
+        <a routerLink="/contact">Contact</a>
+      </div>
+    </div>
+  </header>
 </div>
-   </header>
-</div>
+<router-outlet />
+<footer>
+  <div id="contatti">
+    <h2>Contatti</h2>
+    <p>Centro Assistenza Clienti</p>
+    <img src="" alt="AppStore">
+    <img src="" alt="GooglePlay">
+  </div>
+  <div id="scopri">
+    <h2>Scopri</h2>
+    <p>Guida</p>
+    <p>Magazine</p>
+    <p>Gift Card</p>
+    <p>Iscriviti alla nostra Newsletter</p>
+  </div>
+  <div id="Partner">
+    <h2>Partner</h2>
+    <p>Diventa partner</p>
+    <p>Centro assistenza</p>
+  </div>
+  <div id="hairhub">
+    <h2>HairHub</h2>
+      <p>Chi siamo</p>
+      <p>Lavora con noi</p>
+      <p>Impostazione cookie</p>
+  </div>
+
+</footer>
