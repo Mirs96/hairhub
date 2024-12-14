@@ -1,22 +1,22 @@
 <!-- HTML della navbar -->
-
+<div id="all">
 <div class="header">
   <header id="logo">
     <div id="classLogo">
     </div>
-    <div id="classNavBar">
-      <img src="img/hairhub.png" alt="logo">
-      <button (click)="toggleMenu()" class="menu-button">☰ Menu</button>
-      <div class="menu" [class.open]="isMenuOpen">
-        <a routerLink="/home">Home</a>
-        <a routerLink="/about">About</a>
-        <a routerLink="/contact">Contact</a>
-      </div>
-    </div>
+    <mat-toolbar class="navBar">
+      <img id="logonav" src="img/hairhub.png" alt="Logo">
+      <span class="example-spacer"></span>
+      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>    
+    </mat-toolbar>
   </header>
 </div>
 <router-outlet />
-<footer>
+<footer id="footer">
   <div id="contatti">
     <h2>Contatti</h2>
     <p>Centro Assistenza Clienti</p>
@@ -43,3 +43,4 @@
   </div>
 
 </footer>
+</div>

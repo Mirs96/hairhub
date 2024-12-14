@@ -1,51 +1,80 @@
+<mat-grid-list cols="3" rowHeight="2:1">
+    <mat-grid-tile>
+        <mat-card class="example-card" appearance="outlined">
+            <mat-card-header>
+              <mat-card-title>Chihuahua</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{longText}}</p>
+            </mat-card-content>
+            <mat-card-footer class="example-card-footer">
+              <mat-chip-set aria-label="Chihuahua traits">
+                <mat-chip>charming</mat-chip>
+                <mat-chip>graceful</mat-chip>
+                <mat-chip>sassy</mat-chip>
+              </mat-chip-set>
+            </mat-card-footer>
+          </mat-card>
+          
+    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Top 5 Salons</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (salon of topSalons; track $index) {
+                    <tr>
+                        <td>{{ salon.name }}</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Top 5 Salons by cut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (salon of topSalonsByCut; track $index) {
+                    <tr>
+                        <td>{{ salon.name }}</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Top 5 Salons by beard</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (salon of topSalonsByBeard; track $index) {
+                    <tr>
+                        <td>{{ salon.name }}</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </mat-grid-tile>
+  </mat-grid-list>
 
-<div class="table-container">
-    <table>
-        <thead>
-            <tr>
-                <th>Top 5 Salons</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (salon of topSalons; track $index) {
-            <tr>
-                <td>{{ salon.name }}</td>
-            </tr>
-            }
-        </tbody>
-    </table>
-</div>
 
-<div class="table-container">
-    <table>
-        <thead>
-            <tr>
-                <th>Top 5 Salons by cut</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (salon of topSalonsByCut; track $index) {
-            <tr>
-                <td>{{ salon.name }}</td>
-            </tr>
-            }
-        </tbody>
-    </table>
-</div>
 
-<div class="table-container">
-    <table>
-        <thead>
-            <tr>
-                <th>Top 5 Salons by beard</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (salon of topSalonsByBeard; track $index) {
-            <tr>
-                <td>{{ salon.name }}</td>
-            </tr>
-            }
-        </tbody>
-    </table>
-</div>
+

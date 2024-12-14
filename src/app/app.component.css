@@ -1,100 +1,25 @@
-/* Navbar di base */
-#classNavBar {
-    display: flex;
-    align-items: center;
-    background-color: #333;
-    padding: 1rem;
-    color: black;
-    position: relative;
-}
-  
-  /* Pulsante del menu */
-.menu-button {
-    margin-left: auto;
-    background: none;
-    border: none;
-    color: black;
-    font-size: 1.5rem;
-    cursor: pointer;
+.navBar {
+  display: flex;            
+  justify-content: space-between; 
+  align-items: center;      
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 52%);
 }
 
-.menu-button:hover {
-  margin-left: auto;
-  background: none;
-  border: none;
-  color: gray;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-  
-  /* Stile del menu */
-/*.menu {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%; /* Posizione rispetto alla navbar */
-   /* right: 10px;
-    background-color: #444;
-    padding: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    width: 150px;
-} */
-
-.menu{
-  width: 100px;
-  background-color: #fff;
-  padding: 20px;
-  position: fixed;
-  right: 10px;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-  height: 100%;
-  top: 65%;
-  transform: translateY(-50%);
-  overflow: hidden;
-  transition: var(--main-transition);
+#logonav {
+  max-height: 200%;         
+  height: auto;             
 }
 
-.menu:hover{
-  width: 300px;
+.example-spacer {
+  flex: 1;                  
 }
 
-  
-  /* Mostra il menu quando è aperto */
-.menu.open {
-    display: flex;
-    background-color: gold;
+.example-icon {
+  padding: 0;               
 }
-  
-  /* Link del menu */
-.menu a {
-    flex-direction: column;
-    text-decoration: none;
-    color: black;
-    padding: 0.5rem 0;
-}
-  
-.menu a:hover {
-    background-color: #555;
+#all{
+  background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 52%);
 }
 
-#classNavBar>img{
-  height: 50px;
-  width: auto;
-  background-color: #333;
-}
 
-#footerBar{
-  position: absolute;
-  bottom: 0;
-  height: 150px;
-  width: 100%;
-  background: lightgray;
-  justify-content: end;
-  align-items: center;
-  background-color: #333;
-  padding: 1rem;
-  color: black;
-}
