@@ -1,8 +1,14 @@
+
+#all{
+  background: rgb(3,3,10);
+  background: linear-gradient(180deg, rgba(3,3,10,1) 0%, rgba(255,255,255,1) 52%);
+}
+
 .navBar {
   display: flex;            
   justify-content: space-between; 
-  align-items: center;      
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 52%);
+  align-items: center;
+  background: transparent;   
 }
 
 #logonav {
@@ -17,9 +23,14 @@
 .example-icon {
   padding: 0;               
 }
-#all{
-  background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 52%);
+
+#btn{
+  color: white;
+  font-size: 18px; /* Aumenta la dimensione del font */
+    font-family: "Times New Roman", serif; /* Cambia il font */
+    font-weight: bold; /* Rende il testo più marcato */
+    text-transform: capitalize; /* Assicura che solo la prima lettera sia maiuscola */
 }
+
 
 
