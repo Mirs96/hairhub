@@ -5,6 +5,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { DomSanitizer } from '@angular/platform-browser';
+import { SwiperCarouselComponent } from "./carousel/carousel.component";
 
 const THUMBUP_ICON =
   `
@@ -26,7 +27,7 @@ c2.9,0.9,5.4,2.9,7.1,5.4C24.6,26.6,20.6,29,16,29z"/>
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,RouterModule,MatToolbarModule, MatButtonModule, MatIconModule,MatMenuModule],
+  imports: [RouterOutlet, RouterModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, SwiperCarouselComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

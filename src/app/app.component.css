@@ -14,6 +14,7 @@
   justify-content: space-between; 
   align-items: center;
   background: transparent;   
+  padding: 20px 0;
 }
 
 #logonav {
@@ -43,6 +44,20 @@
     font-family: "Times New Roman", serif; /* Cambia il font */
     font-weight: bold; /* Rende il testo più marcato */
     text-transform: capitalize; /* Assicura che solo la prima lettera sia maiuscola */
+}
+app-swiper-carousel {
+  display: block;
+  width: 100%;
+  max-height: 500px; /* Puoi regolare questa altezza */
+  margin-bottom: 20px; /* Aggiungi margine sotto il carosello */
+  z-index: 1; /* Può aiutare a gestire la visibilità degli altri elementi */
+}
+
+/* Opzionale: stili per il contenitore swiper */
+.swiper-container {
+  height: 100%; /* Imposta un'altezza al 100% o un valore desiderato */
+  max-height: 400px; /* Impostazione fissa per evitare che il carosello diventi troppo grande */
+  margin-bottom: 30px; /* Aggiungi margine sotto il carosello */
 }
 
 /* Footer generale */
