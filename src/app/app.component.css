@@ -1,5 +1,10 @@
 
+
 #all{
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
   background: rgb(3,3,10);
   background: linear-gradient(180deg, rgba(3,3,10,1) 0%, rgba(255,255,255,1) 52%);
 }
@@ -30,6 +35,86 @@
     font-family: "Times New Roman", serif; /* Cambia il font */
     font-weight: bold; /* Rende il testo più marcato */
     text-transform: capitalize; /* Assicura che solo la prima lettera sia maiuscola */
+}
+
+#btnLogin{
+  color: white;
+  font-size: 18px; /* Aumenta la dimensione del font */
+    font-family: "Times New Roman", serif; /* Cambia il font */
+    font-weight: bold; /* Rende il testo più marcato */
+    text-transform: capitalize; /* Assicura che solo la prima lettera sia maiuscola */
+}
+
+/* Footer generale */
+#footer {
+  background-color: #333; /* colore di sfondo scuro */
+  color: #fff; /* testo bianco per contrasto */
+  display: flex; /* usa Flexbox per allineare le colonne */
+  justify-content: space-between; /* distribuisce le colonne con spazio tra di esse */
+  padding: 40px 20px; /* padding per il margine interno */
+  flex-wrap: wrap; /* permette al footer di adattarsi su schermi più piccoli */
+  margin-top: auto;
+}
+
+/* Stile per le singole sezioni del footer */
+#footer > div {
+  flex: 1; /* Ogni colonna prende lo stesso spazio */
+  padding: 20px;
+  min-width: 200px; /* assicurati che le colonne abbiano una larghezza minima */
+}
+
+/* Intestazioni delle sezioni */
+#footer h2 {
+  font-size: 1.5rem; /* dimensione del testo per i titoli */
+  margin-bottom: 10px; /* spazio sotto il titolo */
+  font-weight: 600;
+  text-transform: uppercase; /* testo in maiuscolo */
+}
+
+/* Paragrafi */
+#footer p {
+  font-size: 1rem; /* dimensione del testo */
+  margin: 8px 0; /* margine tra i paragrafi */
+  line-height: 1.5; /* altezza della linea per una migliore leggibilità */
+}
+
+/* Link (opzionale se usato per "Guida", "Magazine", ecc.) */
+#footer a {
+  color: #fff; /* link bianco */
+  text-decoration: none; /* rimuove la sottolineatura */
+}
+
+#footer a:hover {
+  text-decoration: underline; /* sottolinea il link al passaggio del mouse */
+  color: #ff9900; /* cambia il colore quando il link è hoverato */
+}
+
+/* Immagini (per AppStore e GooglePlay) */
+#contatti img {
+  width: 150px; /* larghezza fissa delle immagini */
+  margin-top: 20px; /* spazio sopra le immagini */
+  margin-right: 10px; /* margine tra le immagini */
+}
+
+/* Aggiungi uno spazio tra le colonne */
+#footer > div:not(:last-child) {
+  margin-right: 20px; /* margine tra le colonne */
+}
+
+/* Responsività: modifica layout su schermi più piccoli */
+@media (max-width: 768px) {
+  #footer {
+    flex-direction: column; /* imposta il footer come colonna su schermi piccoli */
+    align-items: center; /* allinea le colonne al centro */
+  }
+
+  #footer > div {
+    margin-bottom: 20px; /* aggiungi margine tra le colonne */
+  }
+
+  #contatti img {
+    width: 120px; /* riduci la larghezza delle immagini su schermi piccoli */
+  }
 }
 
 

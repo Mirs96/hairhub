@@ -2,16 +2,26 @@
     <mat-grid-tile>
         <mat-card class="example-card" appearance="outlined">
             <mat-card-header>
-              <mat-card-title>Chihuahua</mat-card-title>
+                <button id="searchByName" mat-mini-fab aria-label="Example icon button with a menu icon">
+                    <mat-icon>menu</mat-icon>
+                  </button>
+                  <button id="searchByMaps" mat-mini-fab aria-label="Example icon button with a menu icon">
+                    <mat-icon>menu</mat-icon>
+                  </button>
+              <mat-card-title></mat-card-title>
             </mat-card-header>
             <mat-card-content>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Outline form field</mat-label>
+                        <input matInput placeholder="Placeholder">
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        <mat-hint>Hint</mat-hint>
+                    </mat-form-field>
               <p>{{longText}}</p>
             </mat-card-content>
             <mat-card-footer class="example-card-footer">
               <mat-chip-set aria-label="Chihuahua traits">
-                <mat-chip>charming</mat-chip>
-                <mat-chip>graceful</mat-chip>
-                <mat-chip>sassy</mat-chip>
+               <!--- <mat-chip></mat-chip> -->
               </mat-chip-set>
             </mat-card-footer>
           </mat-card>

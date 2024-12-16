@@ -7,11 +7,18 @@
     <mat-toolbar class="navBar">
       <img id="logonav" src="img/hairhub.png" alt="Logo">
       <span class="example-spacer"></span>
+      <button id="btnLogin" mat-button [matMenuTriggerFor]="login" >
+        <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon></button>
       <button id="btn" mat-button [matMenuTriggerFor]="menu">Menu</button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>    
+  <button mat-menu-item>Home</button>
+  <button mat-menu-item>Servizi</button>
+  <button mat-menu-item>Contatti</button>
+</mat-menu> 
+<mat-menu #login="matMenu">
+  <button mat-menu-item>Accedi</button>
+  <button mat-menu-item>Registrati</button>
+</mat-menu>       
     </mat-toolbar>
   </header>
 </div>
