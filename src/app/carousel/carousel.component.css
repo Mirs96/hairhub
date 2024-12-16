@@ -1,0 +1,19 @@
+swiper-container {
+    display: block;
+    width: 100%; /* Adatta il carosello alla larghezza disponibile */
+    height: 300px; /* Altezza fissa del carosello */
+    margin: auto;
+    position: relative;
+  }
+  
+  /* Stile delle slide */
+  swiper-slide {
+    display: flex;
+    justify-content: center; /* Centra il contenuto orizzontalmente */
+    align-items: center; /* Centra il contenuto verticalmente */
+    background-color: #f4f4f4; /* Sfondo grigio chiaro per contrasto */
+    border-radius: 10px; /* Angoli arrotondati */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombreggiatura per un effetto 3D */
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out; /* Transizione per effetto hover */
+  }

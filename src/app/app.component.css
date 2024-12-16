@@ -6,7 +6,13 @@
   display: flex;
   flex-direction: column;
   background: rgb(3,3,10);
-  background: linear-gradient(180deg, rgba(3,3,10,1) 0%, rgba(255,255,255,1) 52%);
+background: linear-gradient(
+  180deg,
+  rgba(3, 3, 10, 1) 15%,    /* Colore scuro all'inizio */
+  rgba(80, 80, 80, 1) 50%,  /* Punto intermedio per una transizione più graduale */
+  rgba(255, 255, 255, 1) 100% /* Colore chiaro alla fine */
+);
+
 }
 
 .navBar {
@@ -130,6 +136,11 @@ app-swiper-carousel {
   #contatti img {
     width: 120px; /* riduci la larghezza delle immagini su schermi piccoli */
   }
+}
+
+#carousel{
+  padding: 10%;
+  
 }
 
 
