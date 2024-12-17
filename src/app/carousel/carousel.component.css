@@ -1,10 +1,13 @@
-/* Carosello responsivo */
+#divUnico{
+  width: 100%;
+}
 swiper-container {
   display: block;
-  width: 100%; 
-  height: 50vh; 
+  width: 70%; 
+  height: auto; 
   margin: auto;
   position: relative;
+  margin-top: 100px;
 }
 
 /* Stile delle slide */
@@ -12,14 +15,14 @@ swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
+  aspect-ratio: 1/1;
   background-color: #f4f4f4;
   border-radius: 50%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
-  width: 60%; /* La larghezza della slide è il 80% della larghezza del carosello */
-  height: 60%; /* L'altezza della slide è il 80% dell'altezza del carosello */
-  margin: 10px; /* Distanza tra le slide */
+  width: 30%; /* La larghezza della slide è il 80% della larghezza del carosello */
+  height: auto; /* L'altezza della slide è il 80% dell'altezza del carosello */
 }
 
 /* Stili per i bottoni */
@@ -53,38 +56,6 @@ button:focus {
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
 }
 
-/* Media query per dispositivi più piccoli */
-@media (max-width: 768px) {
-  swiper-container {
-      height: 40vh; /* Diminuisci l'altezza del carosello sui dispositivi piccoli */
-  }
-
-  swiper-slide {
-      width: 90%; /* Le slide occupano più spazio orizzontalmente sui dispositivi piccoli */
-      height: 90%; /* Le slide occupano più spazio verticalmente sui dispositivi piccoli */
-  }
-
-  button {
-      padding: 10px 20px; /* Riduci il padding per dispositivi più piccoli */
-  }
-}
-
-/* Media query per schermi molto piccoli (come smartphone in modalità portrait) */
-@media (max-width: 480px) {
-  swiper-container {
-      height: 35vh; /* Ancora più piccola l'altezza del carosello */
-  }
-
-  swiper-slide {
-      width: 100%; /* Le slide occupano tutta la larghezza disponibile */
-      height: 100%; /* Le slide occupano tutta l'altezza disponibile */
-      border-radius: 10px; /* Meno angoli arrotondati sui dispositivi molto piccoli */
-  }
-
-  button {
-      padding: 8px 16px; /* Riduci ulteriormente il padding */
-  }
-}
 
 .header-container{
   display: flex;

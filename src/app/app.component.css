@@ -1,18 +1,15 @@
 
 
 #all{
-  height: 100%;
+  height: auto;
+  max-width: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
-  background: rgb(3,3,10);
-background: linear-gradient(
-  180deg,
-  rgba(3, 3, 10, 1) 15%,    /* Colore scuro all'inizio */
-  rgba(80, 80, 80, 1) 50%,  /* Punto intermedio per una transizione più graduale */
-  rgba(255, 255, 255, 1) 100% /* Colore chiaro alla fine */
-);
-
+  background-image: url('assets/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .navBar {
@@ -21,6 +18,7 @@ background: linear-gradient(
   align-items: center;
   background: transparent;   
   padding: 20px 0;
+  background-color: white;
 }
 
 #logonav {
@@ -38,6 +36,7 @@ background: linear-gradient(
 
 #carousel{
   padding: 10%;
+  flex: 1;
   
 }
 
@@ -59,7 +58,7 @@ background: linear-gradient(
 app-swiper-carousel {
   display: block;
   width: 100%;
-  max-height: 500px; /* Puoi regolare questa altezza */
+  max-height: 700px; /* Puoi regolare questa altezza */
   margin-bottom: 20px; /* Aggiungi margine sotto il carosello */
   z-index: 1; /* Può aiutare a gestire la visibilità degli altri elementi */
 }
@@ -80,67 +79,7 @@ app-swiper-carousel {
    padding: 20px;
    min-width: 200px;
    text-align: center; /* Centra il testo nelle sezioni */
-  }
-  
-  /* Stili per le onde */
-  .waves {
-   position: absolute;
-   bottom: 0; /* Le onde partono dal basso */
-   left: 0;
-   width: 100%;
-   height: 120px; /* Altezza delle onde (regola a seconda dell'immagine) */
-  
-   background-size: 1500px 120px; /* Regola la larghezza per la ripetizione */
-  }
-  
-  .waves .wave { /* Stili comuni per tutte le onde */
-   position: absolute;
-   bottom: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   opacity: 0.5; /* Opacità di base */
-   background: inherit; /* Eredita lo sfondo da .waves */
-  }
-  
-  .waves #wave1 {
-   z-index: 1000;
-   opacity: 1;
-   animation: animateWaves 4s linear infinite;
-  }
-  
-  .waves #wave2 {
-   z-index: 999;
-   animation: animate 4s linear infinite;
-  }
-  
-  .waves #wave3 {
-   z-index: 998;
-   animation: animateWaves 3s linear infinite;
-  }
-  
-  .waves #wave4 {
-   z-index: 997;
-   animation: animate 3s linear infinite;
-  }
-  
-  @keyframes animateWaves {
-   0% {
-    background-position-x: 1000px;
-   }
-   100% {
-    background-position-x: 0px;
-   }
-  }
-  
-  @keyframes animate {
-   0% {
-    background-position-x: 0px;
-   }
-   100% {
-   background-position-x: 1000px;
-   }
-  }
+  } 
   
   /* Stili per icone social */
   .social_icon {

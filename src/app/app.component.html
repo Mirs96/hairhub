@@ -1,33 +1,36 @@
 <!-- HTML della navbar -->
 <div id="all">
-<div class="header">
-  <header id="logo">
-    <div id="classLogo">
+  <div id="imgBackground">
+    <div class="header">
+      <header id="logo">
+        <div id="classLogo">
+        </div>
+        <mat-toolbar class="navBar">
+          <img id="logonav" src="img/hairhub.png" alt="Logo">
+          <span class="example-spacer"></span>
+          <button id="btnLogin" mat-button [matMenuTriggerFor]="login">
+            <mat-icon svgIcon="thumbs-up" aria-hidden="false"
+              aria-label="Example thumbs up SVG icon"></mat-icon></button>
+          <button id="btn" mat-button [matMenuTriggerFor]="menu">Menu</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Home</button>
+            <button mat-menu-item>Servizi</button>
+            <button mat-menu-item>Contatti</button>
+          </mat-menu>
+          <mat-menu #login="matMenu">
+            <button mat-menu-item>Accedi</button>
+            <button mat-menu-item>Registrati</button>
+          </mat-menu>
+        </mat-toolbar>
+      </header>
     </div>
-    <mat-toolbar class="navBar">
-      <img id="logonav" src="img/hairhub.png" alt="Logo">
-      
-      <span class="example-spacer"></span>
-      <button id="btnLogin" mat-button [matMenuTriggerFor]="login" >
-        <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon></button>
-      <button id="btn" mat-button [matMenuTriggerFor]="menu">Menu</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>Home</button>
-  <button mat-menu-item>Servizi</button>
-  <button mat-menu-item>Contatti</button>
-</mat-menu> 
-<mat-menu #login="matMenu">
-  <button mat-menu-item>Accedi</button>
-  <button mat-menu-item>Registrati</button>
-</mat-menu>       
-    </mat-toolbar>
-  </header>
-</div>
+  </div>
 
-<router-outlet />
+  <router-outlet />
+</div>
 <div id="carousel">
-<app-swiper-carousel>
- </app-swiper-carousel>
+  <app-swiper-carousel>
+  </app-swiper-carousel>
 </div>
 
 
@@ -42,13 +45,12 @@
     <li><img id="facebook" src="img/facebook.png" alt="Facebook"></li>
     <li><img src="img/twitter.png" alt="Twitter"></li>
     <li><img src="img/instagram.png" alt="Instagram"></li>
-    </ul>
-    <ul class="menu">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
+  </ul>
+  <ul class="menu">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
   <p>©2024 Mohamed Algendy | All Rights Reserved</p>
 </footer>
-</div>

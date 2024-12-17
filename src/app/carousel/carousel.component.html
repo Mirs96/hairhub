@@ -1,13 +1,13 @@
 <div class="header-container">
   <h2 id="scritta">POPULAR CUTS</h2>
 </div>
-
+<div id="divUnico">
 <button (click)="showWinterCarousel()">Tagli Invernali</button>
 <button (click)="showSummerCarousel()">Tagli Estivi</button>
 
 @if (isWinterCarouselVisible) {
   <div [@fadeAnimation]>
-    <swiper-container space-between="15" slides-per-view="3" speed="300" loop="true" css-mode="true" autoplay="true">
+    <swiper-container space-between="30" slides-per-view="3" speed="300" loop="true" css-mode="true" autoplay="true">
       <swiper-slide class="riquadro">
         <img id="taglio1" class="imgc" src="img/taglio1.jpeg" alt="immagine non caricata" width="185%" height="100%" object-fit="cover">
       </swiper-slide>
@@ -40,3 +40,4 @@
     </swiper-container>
   </div>
 }
+</div>
