@@ -1,18 +1,42 @@
-<swiper-container slides-per-view="3" speed="300" loop="true" css-mode="true" autoplay="true">
-    <swiper-slide>
-    <img id="taglio1" src="img/taglio1.jpeg" alt="immagine non caricata" width="185%" height="100%" object-fit="cover">
-    </swiper-slide>
-    <swiper-slide>
-      <img id="taglio2" src="img/taglio2.jpeg" alt="immagine non caricata" width="185%" height="100%" object-fit="cover">
-    </swiper-slide>
-    <swiper-slide>
-      <img id="taglio3" src="img/taglio3.jpeg" alt="immagine non caricata" width="185%" height="100%" object-fit="cover">
-    </swiper-slide>
-    <swiper-slide>
-      <img id="taglio4" src="img/taglio4.jpeg" alt="immagine non caricata" width="185%" height="100%" object-fit="cover">
-    </swiper-slide>
-    <swiper-slide>
-      <img id="taglio5" src="img/taglio5.jpeg" alt="immagine non caricata" width="185%" height="100%" object-fit="cover">
-    </swiper-slide>
+<div class="header-container">
+  <h2 id="scritta">POPULAR CUTS</h2>
+</div>
 
-  </swiper-container>
+<button (click)="showWinterCarousel()">Tagli Invernali</button>
+<button (click)="showSummerCarousel()">Tagli Estivi</button>
+
+@if (isWinterCarouselVisible) {
+  <div [@fadeAnimation]>
+    <swiper-container space-between="15" slides-per-view="3" speed="300" loop="true" css-mode="true" autoplay="true">
+      <swiper-slide class="riquadro">
+        <img id="taglio1" class="imgc" src="img/taglio1.jpeg" alt="immagine non caricata" width="185%" height="100%" object-fit="cover">
+      </swiper-slide>
+      <swiper-slide class="riquadro">
+        <img id="taglio2" class="imgc" src="img/taglio2.jpeg" alt="immagine non caricata" width="185%" height="100%" object-fit="cover">
+      </swiper-slide>
+      <swiper-slide class="riquadro">
+        <img id="taglio3" class="imgc" src="img/taglio3.jpeg" alt="immagine non caricata" width="185%" height="100%" object-fit="cover">
+      </swiper-slide>
+      <swiper-slide class="riquadro">
+        <img id="taglio4" class="imgc" src="img/taglio4.jpeg" alt="immagine non caricata" width="185%" height="100%" object-fit="cover">
+      </swiper-slide>
+      <swiper-slide class="riquadro">
+        <img id="taglio5" class="imgc" src="img/taglio5.jpeg" alt="immagine non caricata" width="185%" height="100%" object-fit="cover">
+      </swiper-slide>
+    </swiper-container>
+  </div>
+} @else {
+  <div [@fadeAnimation]>
+    <swiper-container space-between="15" slides-per-view="3" speed="300" loop="true" css-mode="true" autoplay="true">
+      <swiper-slide class="riquadro">
+        <img src="img/taglio_estivo1.jpeg" alt="Taglio Estivo 1" width="185%" height="100%" style="object-fit: cover;">
+      </swiper-slide>
+      <swiper-slide class="riquadro">
+        <img src="img/taglio_estivo2.jpeg" alt="Taglio Estivo 2" width="185%" height="100%" style="object-fit: cover;">
+      </swiper-slide>
+      <swiper-slide class="riquadro">
+        <img src="img/taglio_estivo3.jpeg" alt="Taglio Estivo 3" width="185%" height="100%" style="object-fit: cover;">
+      </swiper-slide>
+    </swiper-container>
+  </div>
+}
