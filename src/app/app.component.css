@@ -36,6 +36,11 @@ background: linear-gradient(
   padding: 0;               
 }
 
+#carousel{
+  padding: 10%;
+  
+}
+
 #btn{
   color: white;
   font-size: 18px; /* Aumenta la dimensione del font */
@@ -66,82 +71,151 @@ app-swiper-carousel {
   margin-bottom: 30px; /* Aggiungi margine sotto il carosello */
 }
 
-/* Footer generale */
-#footer {
-  background-color: #333; /* colore di sfondo scuro */
-  color: #fff; /* testo bianco per contrasto */
-  display: flex; /* usa Flexbox per allineare le colonne */
-  justify-content: space-between; /* distribuisce le colonne con spazio tra di esse */
-  padding: 40px 20px; /* padding per il margine interno */
-  flex-wrap: wrap; /* permette al footer di adattarsi su schermi più piccoli */
-  margin-top: auto;
-}
+/* Stili generali del footer */
 
-/* Stile per le singole sezioni del footer */
-#footer > div {
-  flex: 1; /* Ogni colonna prende lo stesso spazio */
-  padding: 20px;
-  min-width: 200px; /* assicurati che le colonne abbiano una larghezza minima */
-}
-
-/* Intestazioni delle sezioni */
-#footer h2 {
-  font-size: 1.5rem; /* dimensione del testo per i titoli */
-  margin-bottom: 10px; /* spazio sotto il titolo */
-  font-weight: 600;
-  text-transform: uppercase; /* testo in maiuscolo */
-}
-
-/* Paragrafi */
-#footer p {
-  font-size: 1rem; /* dimensione del testo */
-  margin: 8px 0; /* margine tra i paragrafi */
-  line-height: 1.5; /* altezza della linea per una migliore leggibilità */
-}
-
-/* Link (opzionale se usato per "Guida", "Magazine", ecc.) */
-#footer a {
-  color: #fff; /* link bianco */
-  text-decoration: none; /* rimuove la sottolineatura */
-}
-
-#footer a:hover {
-  text-decoration: underline; /* sottolinea il link al passaggio del mouse */
-  color: #ff9900; /* cambia il colore quando il link è hoverato */
-}
-
-/* Immagini (per AppStore e GooglePlay) */
-#contatti img {
-  width: 150px; /* larghezza fissa delle immagini */
-  margin-top: 20px; /* spazio sopra le immagini */
-  margin-right: 10px; /* margine tra le immagini */
-}
-
-/* Aggiungi uno spazio tra le colonne */
-#footer > div:not(:last-child) {
-  margin-right: 20px; /* margine tra le colonne */
-}
-
-/* Responsività: modifica layout su schermi più piccoli */
-@media (max-width: 768px) {
-  #footer {
-    flex-direction: column; /* imposta il footer come colonna su schermi piccoli */
-    align-items: center; /* allinea le colonne al centro */
-  }
-
-  #footer > div {
-    margin-bottom: 20px; /* aggiungi margine tra le colonne */
-  }
-
-  #contatti img {
-    width: 120px; /* riduci la larghezza delle immagini su schermi piccoli */
-  }
-}
-
-#carousel{
-  padding: 10%;
   
-}
+  /* Stili per le sezioni interne del footer (menu, social, copyright) */
+  footer > * { /* Seleziona tutti i figli diretti del footer */
+   flex: 1;
+   padding: 20px;
+   min-width: 200px;
+   text-align: center; /* Centra il testo nelle sezioni */
+  }
+  
+  /* Stili per le onde */
+  .waves {
+   position: absolute;
+   bottom: 0; /* Le onde partono dal basso */
+   left: 0;
+   width: 100%;
+   height: 120px; /* Altezza delle onde (regola a seconda dell'immagine) */
+  
+   background-size: 1500px 120px; /* Regola la larghezza per la ripetizione */
+  }
+  
+  .waves .wave { /* Stili comuni per tutte le onde */
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   opacity: 0.5; /* Opacità di base */
+   background: inherit; /* Eredita lo sfondo da .waves */
+  }
+  
+  .waves #wave1 {
+   z-index: 1000;
+   opacity: 1;
+   animation: animateWaves 4s linear infinite;
+  }
+  
+  .waves #wave2 {
+   z-index: 999;
+   animation: animate 4s linear infinite;
+  }
+  
+  .waves #wave3 {
+   z-index: 998;
+   animation: animateWaves 3s linear infinite;
+  }
+  
+  .waves #wave4 {
+   z-index: 997;
+   animation: animate 3s linear infinite;
+  }
+  
+  @keyframes animateWaves {
+   0% {
+    background-position-x: 1000px;
+   }
+   100% {
+    background-position-x: 0px;
+   }
+  }
+  
+  @keyframes animate {
+   0% {
+    background-position-x: 0px;
+   }
+   100% {
+   background-position-x: 1000px;
+   }
+  }
+  
+  /* Stili per icone social */
+  .social_icon {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   list-style: none;
+   padding: 0;
+   margin: 20px 0; /* Aggiunto margine superiore e inferiore */
+  }
+  
+  .social_icon li {
+   margin: 0 10px;
+  }
+  
+  .social_icon img {
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   object-fit: cover;
+   transition: transform 0.2s;
+   cursor: pointer;
+  }
+  
+  .social_icon img:hover {
+   transform: scale(1.2);
+  }
+  
+  .menu {
+    display: flex;
+     justify-content: center;
+     align-items: center;
+     list-style: none;
+     padding: 0;
+     margin: 10px 0;
+    }
+    
+    .menu li {
+     margin: 0 10px;
+    }
+    
+    .menu li a {
+    font-size: 1.2em;
+     color: black;
+     text-decoration: none;
+     opacity: 0.75;
+     transition: transform 0.3s ease-in-out, opacity 0.3s, color 0.3s; /* Transizioni combinate */
+     cursor: pointer;
+    display: inline-block; /* Necessario per transform */
+    padding: 5px 10px; /* Padding per area cliccabile */
+  }
+    
+    .menu li a:hover {
+     opacity: 1;
+    color: black;
+    transform: scale(1.2);
+    
+    }
+  
+  /* Stili per il copyright */
+  footer p {
+ text-align: center;
+  font-size: 1em;
+   margin: 0; /* Rimossi margini superflui */
+  }
+  
+  /* Media query per la responsività */
+  @media (max-width: 768px) {
+ footer {
+  flex-direction: column;
+   align-items: center;
+   padding: 40px 20px 180px; /* Aumentato il padding bottom per le onde su schermi piccoli */
+  }
 
-
-
+  footer > * {
+    margin-bottom: 20px;
+  }
+  }
