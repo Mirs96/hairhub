@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, OnInit, Injectable,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ImageService} from '../model/hometables/imageService'; // Modifica il percorso se necessario
+import { ImageService} from '../model/hometables/imageService'; 
 import { HttpClient } from '@angular/common/http';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 
 
@@ -9,7 +10,18 @@ import { HttpClient } from '@angular/common/http';
   selector: 'app-swiper-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.css'],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  animations: [
+    trigger('fadeAnimation', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms ease-in', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('300ms ease-out', style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 @Injectable({
   providedIn: 'root'
@@ -21,6 +33,16 @@ export class SwiperCarouselComponent   {
   images: string[] = [];
   loading = false;
   error = false;
+
+  isWinterCarouselVisible: boolean = true;
+
+  showWinterCarousel(): void {
+    this.isWinterCarouselVisible = true;
+  }
+
+  showSummerCarousel(): void {
+    this.isWinterCarouselVisible = false;
+  }
 
   constructor(private imageService: ImageService) {}
 
