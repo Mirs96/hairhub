@@ -13,12 +13,23 @@
 }
 
 .navBar {
-  display: flex;            
+  display: flex;
+  height: 80px;            
   justify-content: space-between; 
   align-items: center;
   background: transparent;   
   padding: 20px 0;
-  background-color: white;
+  background: rgb(3,3,10);
+background: linear-gradient(180deg, rgba(3,3,10,0.8) 10%, rgba(3,3,10,0.7) 50%, #555555 100%);
+
+
+  
+
+} 
+
+#sectionBg{
+  background: rgb(3,3,10);
+background: linear-gradient(180deg, rgba(3,3,10,1) 7%, rgba(255,255,255,1) 100%);
 }
 
 #logonav {
@@ -43,9 +54,15 @@
 #btn{
   color: white;
   font-size: 18px; /* Aumenta la dimensione del font */
-    font-family: "Times New Roman", serif; /* Cambia il font */
     font-weight: bold; /* Rende il testo più marcato */
     text-transform: capitalize; /* Assicura che solo la prima lettera sia maiuscola */
+    body {
+      font-family: 'Inconsolata', monospace;
+      font-weight: 800;  /* Imposta il peso del font su ExtraBold (800) */
+      font-size: 16px;  /* Imposta la dimensione del font */
+    }
+    
+
 }
 
 #btnLogin{
@@ -115,6 +132,7 @@ app-swiper-carousel {
      list-style: none;
      padding: 0;
      margin: 10px 0;
+     
     }
     
     .menu li {
@@ -130,6 +148,7 @@ app-swiper-carousel {
      cursor: pointer;
     display: inline-block; /* Necessario per transform */
     padding: 5px 10px; /* Padding per area cliccabile */
+    
   }
     
     .menu li a:hover {
