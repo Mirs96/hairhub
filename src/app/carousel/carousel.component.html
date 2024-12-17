@@ -2,8 +2,8 @@
   <h2 id="scritta">POPULAR CUTS</h2>
 </div>
 <div id="divUnico">
-<button (click)="showWinterCarousel()">Tagli Invernali</button>
-<button (click)="showSummerCarousel()">Tagli Estivi</button>
+<button (click)="showWinterCarousel()">Tagli Estivi</button>
+<button (click)="showSummerCarousel()">Tagli Invernali</button>
 
 @if (isWinterCarouselVisible) {
   <div [@fadeAnimation]>
@@ -29,13 +29,19 @@
   <div [@fadeAnimation]>
     <swiper-container space-between="15" slides-per-view="3" speed="300" loop="true" css-mode="true" autoplay="true">
       <swiper-slide class="riquadro">
-        <img src="img/taglio_estivo1.jpeg" alt="Taglio Estivo 1" width="185%" height="100%" style="object-fit: cover;">
+        <img src="img/taglioInv1.jpeg" alt="Taglio Estivo 1" width="185%" height="100%" style="object-fit: cover;">
       </swiper-slide>
       <swiper-slide class="riquadro">
-        <img src="img/taglio_estivo2.jpeg" alt="Taglio Estivo 2" width="185%" height="100%" style="object-fit: cover;">
+        <img src="img/taglioInv2.jpeg" alt="Taglio Estivo 2" width="185%" height="100%" style="object-fit: cover;">
       </swiper-slide>
       <swiper-slide class="riquadro">
-        <img src="img/taglio_estivo3.jpeg" alt="Taglio Estivo 3" width="185%" height="100%" style="object-fit: cover;">
+        <img src="img/taglioInv3.jpeg" alt="Taglio Estivo 3" width="185%" height="100%" style="object-fit: cover;">
+      </swiper-slide>
+      <swiper-slide class="riquadro">
+        <img src="img/taglioInv4.jpeg" alt="Taglio Estivo 3" width="185%" height="100%" style="object-fit: cover;">
+      </swiper-slide>
+      <swiper-slide class="riquadro">
+        <img src="img/taglioInv5.jpeg" alt="Taglio Estivo 3" width="185%" height="100%" style="object-fit: cover;">
       </swiper-slide>
     </swiper-container>
   </div>
