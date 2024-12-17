@@ -19,7 +19,7 @@ import {MatInputModule} from '@angular/material/input';
   styleUrl: './topsalon.component.css'
 })
 export class TopsalonComponent {
-
+  showForm1: boolean = true;
   longText = ``;
 
   topSalons!: Salon[];
@@ -33,6 +33,14 @@ export class TopsalonComponent {
     this.topSalons = this.salonService.getTopSalons();
     this.topSalonsByCut = this.salonService.getTopSalons();
     this.topSalonsByBeard = this.salonService.getTopSalons();
+  }
+
+  toggleForm1(){
+    this.showForm1 = true;
+  }
+
+  toggleForm2(){
+    this.showForm1 = false;
   }
   
 

@@ -55,3 +55,27 @@
   color: #666;
 }
 
+#searchByName{
+  margin-left: 5px;
+}
+
+#searchByMaps{
+  margin-left: 20px;
+}
+
+#nameForm{
+  margin-top: 20px;
+}
+
+#mapForm{
+  margin-top: 20px;
+}
+
+#addressForm{
+  display: flex;
+  flex-direction: column;
+}
+
+#mapDiv{
+
+}
