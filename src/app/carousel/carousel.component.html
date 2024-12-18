@@ -1,9 +1,37 @@
+<div class = "slot">
+  <mat-grid-list cols="3" rowHeight="1:2" gutterSize="16px"> 
+    <mat-grid-tile>
+      <mat-card class="card" appearance="outlined">
+        <img mat-card-image class="slot1" src="img/schema1.png" alt="Image 1">
+        <mat-card-content>
+          <p>Prezzi smart</p>
+        </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card class="card" appearance="outlined">
+        <img mat-card-image class="slot2" src="img/schema2.png" alt="Image 2">
+        <mat-card-content>
+          <p>Prenota 24/7</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  
+    <mat-grid-tile>
+      <mat-card class="card" appearance="outlined">
+        <img mat-card-image class="slot3" src="img/schema3.png" alt="Image 3">
+        <mat-card-content>
+          <p>Scegli solo il meglio</p>
+        </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 <div class="header-container">
   <h2 id="scritta">POPULAR CUTS</h2>
 </div>
 <div id="divUnico">
-<button (click)="showWinterCarousel()">Tagli Estivi</button>
-<button (click)="showSummerCarousel()">Tagli Invernali</button>
+<button class = "button1"(click)="showWinterCarousel()">Tagli Estivi</button>
+<button class = "button2"(click)="showSummerCarousel()">Tagli Invernali</button>
 
 @if (isWinterCarouselVisible) {
   <div [@fadeAnimation]>
