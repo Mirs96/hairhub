@@ -1,5 +1,6 @@
-<mat-grid-list cols="3" rowHeight="2:1">
-    <mat-grid-tile>
+<div id="sectionDiv">
+<mat-grid-list cols="3" rowHeight="2:1" id="gridList">
+    <mat-grid-tile>1
         <mat-card class="example-card" appearance="outlined">
             <mat-card-header>
                 <button id="searchByName" mat-mini-fab aria-label="Example icon button with a menu icon" (click)="toggleForm1()">
@@ -41,9 +42,9 @@
           </mat-card>
           
     </mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile>2</mat-grid-tile>
+    <mat-grid-tile>3</mat-grid-tile>
+    <mat-grid-tile [rowspan]="2" class="divProblematica">4
         <div class="table-container">
             <!-- <table>
                 <thead>
@@ -62,19 +63,40 @@
             <div class="container">
             <section class="top-sellers">
                 <h2>Top 5 Saloni</h2>
-                <ul class="games-list">
-                  <li class="game-item">
-                    <img src="game1.jpg" alt="Salon">
-                    <div class="game-info">
+                <ul class="salon-list">
+                  <li class="salon-item">
+                    <img src="salon1.jpg" alt="Salon">
+                    <div class="salon-info">
                       <h3>Salone uno</h3>
-                      <span class="price">indirizzo 11, Roma</span>
+                      <span class="address">indirizzo 11, Roma</span>
                     </div>
                   </li>
-                  <li class="game-item">
-                    <img src="game2.jpg" alt="Salon 2">
-                    <div class="game-info">
+                  <li class="salon-item">
+                    <img src="salon2.jpg" alt="Salon 2">
+                    <div class="salon-info">
                       <h3>Salone due</h3>
-                      <span class="price">indirizzo 22, Roma</span>
+                      <span class="address">indirizzo 22, Roma</span>
+                    </div>
+                  </li>
+                  <li class="salon-item">
+                    <img src="salon3.jpg" alt="Salon 3">
+                    <div class="salon-info">
+                      <h3>Salone tre</h3>
+                      <span class="address">indirizzo 33, Roma</span>
+                    </div>
+                  </li>
+                  <li class="salon-item">
+                    <img src="salon4.jpg" alt="Salon 4">
+                    <div class="salon-info">
+                      <h3>Salone quattro</h3>
+                      <span class="address">indirizzo 44, Roma</span>
+                    </div>
+                  </li>
+                  <li class="salon-item">
+                    <img src="salon5.jpg" alt="Salon 5">
+                    <div class="salon-info">
+                      <h3>Salone cinque</h3>
+                      <span class="address">indirizzo 55, Roma</span>
                     </div>
                   </li>
                 </ul>
@@ -83,7 +105,7 @@
               <!-- --->
         </div>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile [rowspan]="2" class="divProblematica">5
         <div class="table-container">
            <!--  <table>
                 <thead>
@@ -102,19 +124,40 @@
             <div class="container">
                 <section class="top-sellers">
                     <h2>Top 5 per Taglio</h2>
-                    <ul class="games-list">
-                      <li class="game-item">
-                        <img src="game1.jpg" alt="Salon">
-                        <div class="game-info">
+                    <ul class="salon-list">
+                      <li class="salon-item">
+                        <img src="salon1.jpg" alt="Salon">
+                        <div class="salon-info">
                           <h3>Salone uno</h3>
-                          <span class="price">indirizzo 11, Roma</span>
+                          <span class="address">indirizzo 11, Roma</span>
                         </div>
                       </li>
-                      <li class="game-item">
-                        <img src="game2.jpg" alt="Salon 2">
-                        <div class="game-info">
+                      <li class="salon-item">
+                        <img src="salon2.jpg" alt="Salon 2">
+                        <div class="salon-info">
                           <h3>Salone due</h3>
-                          <span class="price">indirizzo 22, Roma</span>
+                          <span class="address">indirizzo 22, Roma</span>
+                        </div>
+                      </li>
+                      <li class="salon-item">
+                        <img src="salon3.jpg" alt="Salon 3">
+                        <div class="salon-info">
+                          <h3>Salone tre</h3>
+                          <span class="address">indirizzo 33, Roma</span>
+                        </div>
+                      </li>
+                      <li class="salon-item">
+                        <img src="salon4.jpg" alt="Salon 4">
+                        <div class="salon-info">
+                          <h3>Salone quattro</h3>
+                          <span class="address">indirizzo 44, Roma</span>
+                        </div>
+                      </li>
+                      <li class="salon-item">
+                        <img src="salon5.jpg" alt="Salon 5">
+                        <div class="salon-info">
+                          <h3>Salone cinque</h3>
+                          <span class="address">indirizzo 55, Roma</span>
                         </div>
                       </li>
                     </ul>
@@ -123,7 +166,7 @@
                 <!-- -->
         </div>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile [rowspan]="2" class="divProblematica">6
         <div class="table-container">
             <!-- <table>
                 <thead>
@@ -142,19 +185,40 @@
             <div class="container">
                 <section class="top-sellers">
                     <h2>Top 5 per Barba</h2>
-                    <ul class="games-list">
-                      <li class="game-item">
-                        <img src="game1.jpg" alt="Salon">
-                        <div class="game-info">
+                    <ul class="salon-list">
+                      <li class="salon-item">
+                        <img src="salon1.jpg" alt="Salon">
+                        <div class="salon-info">
                           <h3>Salone uno</h3>
-                          <span class="price">indirizzo 11, Roma</span>
+                          <span class="address">indirizzo 11, Roma</span>
                         </div>
                       </li>
-                      <li class="game-item">
-                        <img src="game2.jpg" alt="Salon 2">
-                        <div class="game-info">
+                      <li class="salon-item">
+                        <img src="salon2.jpg" alt="Salon 2">
+                        <div class="salon-info">
                           <h3>Salone due</h3>
-                          <span class="price">indirizzo 22, Roma</span>
+                          <span class="address">indirizzo 22, Roma</span>
+                        </div>
+                      </li>
+                      <li class="salon-item">
+                        <img src="salon3.jpg" alt="Salon 3">
+                        <div class="salon-info">
+                          <h3>Salone tre</h3>
+                          <span class="address">indirizzo 33, Roma</span>
+                        </div>
+                      </li>
+                      <li class="salon-item">
+                        <img src="salon4.jpg" alt="Salon 4">
+                        <div class="salon-info">
+                          <h3>Salone quattro</h3>
+                          <span class="address">indirizzo 44, Roma</span>
+                        </div>
+                      </li>
+                      <li class="salon-item">
+                        <img src="salon5.jpg" alt="Salon 5">
+                        <div class="salon-info">
+                          <h3>Salone cinque</h3>
+                          <span class="address">indirizzo 55, Roma</span>
                         </div>
                       </li>
                     </ul>
@@ -164,6 +228,7 @@
         </div>
     </mat-grid-tile>
   </mat-grid-list>
+</div>
 
 
 

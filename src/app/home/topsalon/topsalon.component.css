@@ -39,6 +39,26 @@
   border-top: 1px solid #ddd; /* Linea sopra il footer */
 }
 
+#gridList{
+  display: flex;
+  background-color: #00d68f;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+mat-grid-tile{
+  border: 2px solid red;
+}
+
+
+
+.top-sellers{
+  display: flex;
+  flex-direction: column;
+  margin-top: -30vh;
+}
+
 .mat-card-title {
   font-size: 1.5rem; /* Aumenta la dimensione del titolo */
   font-weight: bold; /* Titolo in grassetto */
@@ -83,6 +103,7 @@
 /* Contenitore principale */
 .container {
   width: 80%;
+  height: 80px;
   margin: 20px auto;
   background-color: transparent;
   padding: 20px;
@@ -99,12 +120,12 @@
 }
 
 /* Lista dei giochi */
-.games-list {
+.salon-list {
   list-style: none;
   padding: 0;
 }
 
-.game-item {
+.salon-item {
   display: flex;
   align-items: center;
   margin: 10px 0;
@@ -114,13 +135,13 @@
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.game-item:hover {
+.salon-item:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Immagini dei giochi */
-.game-item img {
+.salon-item img {
   width: 80px;
   height: 80px;
   object-fit: cover;
@@ -129,13 +150,22 @@
 }
 
 /* Informazioni dei giochi */
-.game-info h3 {
+.salon-info h3 {
   margin: 0;
   font-size: 1.2rem;
 }
 
-.game-info .price {
+.salon-info .address {
   color: #00d68f;
   font-weight: bold;
   margin-top: 5px;
+}
+
+#sectionDiv{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 1200px;
+  margin: 0 auto;
+  background-color: red;
 }
