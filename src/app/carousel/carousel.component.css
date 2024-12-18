@@ -141,7 +141,7 @@ button:focus {
 }
 
 mat-grid-list {
-  width: 1400px;
+  width: px;
   display: flex;
   justify-content: space-between; /* Per aggiungere spazio tra le card */
   border-radius: 10px; /* Bordo arrotondato per l'immagine (opzionale) */
@@ -167,7 +167,7 @@ mat-grid-tile {
   display: block;  /* Rimuove eventuali margini indesiderati */
   margin-left: auto;  /* Centra orizzontalmente */
   margin-right: auto;
-  background-color: white; /* Aggiungi lo sfondo bianco solo per l'immagine */
+ /* Aggiungi lo sfondo bianco solo per l'immagine */
   padding: 10px; /* Se vuoi aggiungere uno spazio tra l'immagine e il bordo */
   border-radius: 10px; /* Bordo arrotondato per l'immagine (opzionale) */
   
