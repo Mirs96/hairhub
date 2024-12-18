@@ -52,13 +52,6 @@ mat-grid-tile{
 }
 
 
-
-.top-sellers{
-  display: flex;
-  flex-direction: column;
-  margin-top: -30vh;
-}
-
 .mat-card-title {
   font-size: 1.5rem; /* Aumenta la dimensione del titolo */
   font-weight: bold; /* Titolo in grassetto */
@@ -96,14 +89,11 @@ mat-grid-tile{
   flex-direction: column;
 }
 
-#mapDiv{
-
-}
 
 /* Contenitore principale */
 .container {
   width: 80%;
-  height: 80px;
+  height: auto;
   margin: 20px auto;
   background-color: transparent;
   padding: 20px;
@@ -161,11 +151,21 @@ mat-grid-tile{
   margin-top: 5px;
 }
 
-#sectionDiv{
+.divTile{
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  max-height: 1200px;
-  margin: 0 auto;
-  background-color: red;
+  flex-direction: column; /* Dispone gli elementi in colonna */
+  height: auto; /* Occupa tutto lo spazio disponibile */
+  overflow: hidden;
 }
+
+.top-sellers{
+  flex: 1; /* Permette alla sezione di occupare tutto lo spazio del contenitore */
+  display: flex; /* Abilita flexbox per il contenuto interno */
+  flex-direction: column; /* Dispone il contenuto della sezione in colonna */
+  justify-content: flex-start; /* Centra verticalmente il contenuto */
+  align-items: center; /* Centra orizzontalmente il contenuto */
+  padding: 10px; /* Aggiunge un po' di spazio interno */
+  box-sizing: border-box; /* Include padding nei calcoli della dimensione */
+  width: 100%;
+}
+

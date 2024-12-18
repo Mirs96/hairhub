@@ -1,235 +1,193 @@
-<div id="sectionDiv">
-<mat-grid-list cols="3" rowHeight="2:1" id="gridList">
+
+  <mat-grid-list cols="3" rowHeight="2:1" id="gridList">
     <mat-grid-tile>1
-        <mat-card class="example-card" appearance="outlined">
-            <mat-card-header>
-                <button id="searchByName" mat-mini-fab aria-label="Example icon button with a menu icon" (click)="toggleForm1()">
-                    <mat-icon>search</mat-icon>
-                  </button>
-                  <button id="searchByMaps" mat-mini-fab aria-label="Example icon button with a menu icon" (click)="toggleForm2()">
-                    <mat-icon>pin_drop</mat-icon>
-                  </button>
-              <mat-card-title></mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                @if(showForm1){
-                    <mat-form-field id="nameForm" appearance="outline">
-                        <mat-label>Cerca per nome</mat-label>
-                        <input matInput placeholder="Placeholder">
-                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                        <mat-hint>Hint</mat-hint>
-                    </mat-form-field>
-                }@else{
-                    <div id="addressForm">
-                        <mat-form-field id="mapForm" appearance="outline">
-                            <mat-label>Cerca per indirizzo</mat-label>
-                            <input matInput placeholder="Placeholder">
-                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                            <mat-hint>Hint</mat-hint>
-                        </mat-form-field>
-                    </div>
-                    <div id="mapDiv">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d47518.894312500386!2d12.49178215009239!3d41.89434325851415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sit!2sit!4v1734432547558!5m2!1sit!2sit" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                }
-              <p>{{longText}}</p>
-            </mat-card-content>
-            <mat-card-footer class="example-card-footer">
-              <mat-chip-set aria-label="Chihuahua traits">
-               <!--- <mat-chip></mat-chip> -->
-              </mat-chip-set>
-            </mat-card-footer>
-          </mat-card>
-          
+      <mat-card class="example-card" appearance="outlined">
+        <mat-card-header>
+          <button id="searchByName" mat-mini-fab aria-label="Example icon button with a menu icon"
+            (click)="toggleForm1()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <button id="searchByMaps" mat-mini-fab aria-label="Example icon button with a menu icon"
+            (click)="toggleForm2()">
+            <mat-icon>pin_drop</mat-icon>
+          </button>
+          <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          @if(showForm1){
+          <mat-form-field id="nameForm" appearance="outline">
+            <mat-label>Cerca per nome</mat-label>
+            <input matInput placeholder="Placeholder">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+          </mat-form-field>
+          }@else{
+          <div id="addressForm">
+            <mat-form-field id="mapForm" appearance="outline">
+              <mat-label>Cerca per indirizzo</mat-label>
+              <input matInput placeholder="Placeholder">
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-hint>Hint</mat-hint>
+            </mat-form-field>
+          </div>
+          <div id="mapDiv">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d47518.894312500386!2d12.49178215009239!3d41.89434325851415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sit!2sit!4v1734432547558!5m2!1sit!2sit"
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          }
+          <p>{{longText}}</p>
+        </mat-card-content>
+        <mat-card-footer class="example-card-footer">
+          <mat-chip-set aria-label="Chihuahua traits">
+            <!--- <mat-chip></mat-chip> -->
+          </mat-chip-set>
+        </mat-card-footer>
+      </mat-card>
+
     </mat-grid-tile>
     <mat-grid-tile>2</mat-grid-tile>
     <mat-grid-tile>3</mat-grid-tile>
-    <mat-grid-tile [rowspan]="2" class="divProblematica">4
+    
+      <mat-grid-tile class="divTile" [rowspan]="3">4
         <div class="table-container">
-            <!-- <table>
-                <thead>
-                    <tr>
-                        <th>Top 5 Salons</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (salon of topSalons; track $index) {
-                    <tr>
-                        <td>{{ salon.name }}</td>
-                    </tr>
-                    }
-                </tbody>
-            </table> -->
-            <div class="container">
+          <div class="container">
             <section class="top-sellers">
-                <h2>Top 5 Saloni</h2>
-                <ul class="salon-list">
-                  <li class="salon-item">
-                    <img src="salon1.jpg" alt="Salon">
-                    <div class="salon-info">
-                      <h3>Salone uno</h3>
-                      <span class="address">indirizzo 11, Roma</span>
-                    </div>
-                  </li>
-                  <li class="salon-item">
-                    <img src="salon2.jpg" alt="Salon 2">
-                    <div class="salon-info">
-                      <h3>Salone due</h3>
-                      <span class="address">indirizzo 22, Roma</span>
-                    </div>
-                  </li>
-                  <li class="salon-item">
-                    <img src="salon3.jpg" alt="Salon 3">
-                    <div class="salon-info">
-                      <h3>Salone tre</h3>
-                      <span class="address">indirizzo 33, Roma</span>
-                    </div>
-                  </li>
-                  <li class="salon-item">
-                    <img src="salon4.jpg" alt="Salon 4">
-                    <div class="salon-info">
-                      <h3>Salone quattro</h3>
-                      <span class="address">indirizzo 44, Roma</span>
-                    </div>
-                  </li>
-                  <li class="salon-item">
-                    <img src="salon5.jpg" alt="Salon 5">
-                    <div class="salon-info">
-                      <h3>Salone cinque</h3>
-                      <span class="address">indirizzo 55, Roma</span>
-                    </div>
-                  </li>
-                </ul>
-              </section>
-            </div>
-              <!-- --->
+              <h2>Top 5 Saloni</h2>
+              <ul class="salon-list">
+                <li class="salon-item">
+                  <img src="salon1.jpg" alt="Salon">
+                  <div class="salon-info">
+                    <h3>Salone uno</h3>
+                    <span class="address">indirizzo 11, Roma</span>
+                  </div>
+                </li>
+                <li class="salon-item">
+                  <img src="salon2.jpg" alt="Salon 2">
+                  <div class="salon-info">
+                    <h3>Salone due</h3>
+                    <span class="address">indirizzo 22, Roma</span>
+                  </div>
+                </li>
+                <li class="salon-item">
+                  <img src="salon3.jpg" alt="Salon 3">
+                  <div class="salon-info">
+                    <h3>Salone tre</h3>
+                    <span class="address">indirizzo 33, Roma</span>
+                  </div>
+                </li>
+                <li class="salon-item">
+                  <img src="salon4.jpg" alt="Salon 4">
+                  <div class="salon-info">
+                    <h3>Salone quattro</h3>
+                    <span class="address">indirizzo 44, Roma</span>
+                  </div>
+                </li>
+                <li class="salon-item">
+                  <img src="salon5.jpg" alt="Salon 5">
+                  <div class="salon-info">
+                    <h3>Salone cinque</h3>
+                    <span class="address">indirizzo 55, Roma</span>
+                  </div>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <!-- --->
         </div>
-    </mat-grid-tile>
-    <mat-grid-tile [rowspan]="2" class="divProblematica">5
+      </mat-grid-tile>
+      <mat-grid-tile class="divTile" [rowspan]="3">5
         <div class="table-container">
-           <!--  <table>
-                <thead>
-                    <tr>
-                        <th>Top 5 Salons by cut</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (salon of topSalonsByCut; track $index) {
-                    <tr>
-                        <td>{{ salon.name }}</td>
-                    </tr>
-                    }
-                </tbody>
-            </table> -->
-            <div class="container">
-                <section class="top-sellers">
-                    <h2>Top 5 per Taglio</h2>
-                    <ul class="salon-list">
-                      <li class="salon-item">
-                        <img src="salon1.jpg" alt="Salon">
-                        <div class="salon-info">
-                          <h3>Salone uno</h3>
-                          <span class="address">indirizzo 11, Roma</span>
-                        </div>
-                      </li>
-                      <li class="salon-item">
-                        <img src="salon2.jpg" alt="Salon 2">
-                        <div class="salon-info">
-                          <h3>Salone due</h3>
-                          <span class="address">indirizzo 22, Roma</span>
-                        </div>
-                      </li>
-                      <li class="salon-item">
-                        <img src="salon3.jpg" alt="Salon 3">
-                        <div class="salon-info">
-                          <h3>Salone tre</h3>
-                          <span class="address">indirizzo 33, Roma</span>
-                        </div>
-                      </li>
-                      <li class="salon-item">
-                        <img src="salon4.jpg" alt="Salon 4">
-                        <div class="salon-info">
-                          <h3>Salone quattro</h3>
-                          <span class="address">indirizzo 44, Roma</span>
-                        </div>
-                      </li>
-                      <li class="salon-item">
-                        <img src="salon5.jpg" alt="Salon 5">
-                        <div class="salon-info">
-                          <h3>Salone cinque</h3>
-                          <span class="address">indirizzo 55, Roma</span>
-                        </div>
-                      </li>
-                    </ul>
-                  </section>
-                </div>
-                <!-- -->
+          <div class="container">
+            <section class="top-sellers">
+              <h2>Top 5 per Taglio</h2>
+              <ul class="salon-list">
+                <li class="salon-item">
+                  <img src="salon1.jpg" alt="Salon">
+                  <div class="salon-info">
+                    <h3>Salone uno</h3>
+                    <span class="address">indirizzo 11, Roma</span>
+                  </div>
+                </li>
+                <li class="salon-item">
+                  <img src="salon2.jpg" alt="Salon 2">
+                  <div class="salon-info">
+                    <h3>Salone due</h3>
+                    <span class="address">indirizzo 22, Roma</span>
+                  </div>
+                </li>
+                <li class="salon-item">
+                  <img src="salon3.jpg" alt="Salon 3">
+                  <div class="salon-info">
+                    <h3>Salone tre</h3>
+                    <span class="address">indirizzo 33, Roma</span>
+                  </div>
+                </li>
+                <li class="salon-item">
+                  <img src="salon4.jpg" alt="Salon 4">
+                  <div class="salon-info">
+                    <h3>Salone quattro</h3>
+                    <span class="address">indirizzo 44, Roma</span>
+                  </div>
+                </li>
+                <li class="salon-item">
+                  <img src="salon5.jpg" alt="Salon 5">
+                  <div class="salon-info">
+                    <h3>Salone cinque</h3>
+                    <span class="address">indirizzo 55, Roma</span>
+                  </div>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <!-- -->
         </div>
-    </mat-grid-tile>
-    <mat-grid-tile [rowspan]="2" class="divProblematica">6
+      </mat-grid-tile>
+      <mat-grid-tile class="divTile" [rowspan]="3">6
         <div class="table-container">
-            <!-- <table>
-                <thead>
-                    <tr>
-                        <th>Top 5 Salons by beard</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (salon of topSalonsByBeard; track $index) {
-                    <tr>
-                        <td>{{ salon.name }}</td>
-                    </tr>
-                    }
-                </tbody>
-            </table> -->
-            <div class="container">
-                <section class="top-sellers">
-                    <h2>Top 5 per Barba</h2>
-                    <ul class="salon-list">
-                      <li class="salon-item">
-                        <img src="salon1.jpg" alt="Salon">
-                        <div class="salon-info">
-                          <h3>Salone uno</h3>
-                          <span class="address">indirizzo 11, Roma</span>
-                        </div>
-                      </li>
-                      <li class="salon-item">
-                        <img src="salon2.jpg" alt="Salon 2">
-                        <div class="salon-info">
-                          <h3>Salone due</h3>
-                          <span class="address">indirizzo 22, Roma</span>
-                        </div>
-                      </li>
-                      <li class="salon-item">
-                        <img src="salon3.jpg" alt="Salon 3">
-                        <div class="salon-info">
-                          <h3>Salone tre</h3>
-                          <span class="address">indirizzo 33, Roma</span>
-                        </div>
-                      </li>
-                      <li class="salon-item">
-                        <img src="salon4.jpg" alt="Salon 4">
-                        <div class="salon-info">
-                          <h3>Salone quattro</h3>
-                          <span class="address">indirizzo 44, Roma</span>
-                        </div>
-                      </li>
-                      <li class="salon-item">
-                        <img src="salon5.jpg" alt="Salon 5">
-                        <div class="salon-info">
-                          <h3>Salone cinque</h3>
-                          <span class="address">indirizzo 55, Roma</span>
-                        </div>
-                      </li>
-                    </ul>
-                  </section>
-                </div>
-                <!-- -->
+          <div class="container">
+            <section class="top-sellers">
+              <h2>Top 5 per Barba</h2>
+              <ul class="salon-list">
+                <li class="salon-item">
+                  <img src="salon1.jpg" alt="Salon">
+                  <div class="salon-info">
+                    <h3>Salone uno</h3>
+                    <span class="address">indirizzo 11, Roma</span>
+                  </div>
+                </li>
+                <li class="salon-item">
+                  <img src="salon2.jpg" alt="Salon 2">
+                  <div class="salon-info">
+                    <h3>Salone due</h3>
+                    <span class="address">indirizzo 22, Roma</span>
+                  </div>
+                </li>
+                <li class="salon-item">
+                  <img src="salon3.jpg" alt="Salon 3">
+                  <div class="salon-info">
+                    <h3>Salone tre</h3>
+                    <span class="address">indirizzo 33, Roma</span>
+                  </div>
+                </li>
+                <li class="salon-item">
+                  <img src="salon4.jpg" alt="Salon 4">
+                  <div class="salon-info">
+                    <h3>Salone quattro</h3>
+                    <span class="address">indirizzo 44, Roma</span>
+                  </div>
+                </li>
+                <li class="salon-item">
+                  <img src="salon5.jpg" alt="Salon 5">
+                  <div class="salon-info">
+                    <h3>Salone cinque</h3>
+                    <span class="address">indirizzo 55, Roma</span>
+                  </div>
+                </li>
+              </ul>
+            </section>
+          </div>
         </div>
-    </mat-grid-tile>
+      </mat-grid-tile>
   </mat-grid-list>
-</div>
-
-
-
-
