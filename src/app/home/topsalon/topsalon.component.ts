@@ -12,6 +12,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 
+export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
+}
+
 @Component({
   selector: 'app-topsaloon',
   imports: [MatGridListModule,MatChipsModule,MatCardModule,MatProgressBarModule, MatButtonModule, MatDividerModule, MatIconModule, MatFormFieldModule, MatInputModule],
@@ -19,29 +26,10 @@ import {MatInputModule} from '@angular/material/input';
   styleUrl: './topsalon.component.css'
 })
 export class TopsalonComponent {
-  showForm1: boolean = true;
-  longText = ``;
-
-  topSalons!: Salon[];
-  topSalonsByCut!:Salon[];
-  topSalonsByBeard!:Salon[];
-  //injection💉
-  constructor(private salonService: SalonService) {
-  }
-  
-  ngOnInit(): void {
-    this.topSalons = this.salonService.getTopSalons();
-    this.topSalonsByCut = this.salonService.getTopSalons();
-    this.topSalonsByBeard = this.salonService.getTopSalons();
-  }
-
-  toggleForm1(){
-    this.showForm1 = true;
-  }
-
-  toggleForm2(){
-    this.showForm1 = false;
-  }
-  
-
+  tiles: Tile[] = [
+    {text: 'One', cols: 3, rows: 4, color: 'lightblue'},
+    {text: 'Two', cols: 1, rows: 5, color: 'lightgreen'},
+    {text: 'Three', cols: 1, rows: 5, color: 'lightpink'},
+    {text: 'Four', cols: 1, rows: 5, color: 'red' },
+  ];
 }
