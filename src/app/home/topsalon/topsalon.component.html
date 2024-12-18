@@ -1,8 +1,55 @@
 <mat-grid-list cols="3" rowHeight="100px">
-  @for (tile of tiles; track tile) {
     <mat-grid-tile
-      [colspan]="tile.cols"
-      [rowspan]="tile.rows"
-      [style.background]="tile.color">{{tile.text}}</mat-grid-tile>
-  }
+    colspan=3
+    rowspan=4>
+    1 
+    </mat-grid-tile>
+    <mat-grid-tile
+    colspan=1
+    rowspan=5>
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <h2>Top 5 Salons</h2>
+        <ul>
+          <li>1) Salon barber</li>
+          <li>2) Salon barber</li>
+          <li>3) Salon barber</li>
+          <li>4) Salon barber</li>
+          <li>5) Salon barber</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile
+    colspan=1
+    rowspan=5>
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <h2>Top 5 Salons by beard</h2>
+        <ul>
+          <li>1) Salon barber</li>
+          <li>2) Salon barber</li>
+          <li>3) Salon barber</li>
+          <li>4) Salon barber</li>
+          <li>5) Salon barber</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile
+    colspan=1
+    rowspan=5>
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <h2>Top 5 Salons</h2>
+        <ul>
+          <li>1) Salon barber</li>
+          <li>2) Salon barber</li>
+          <li>3) Salon barber</li>
+          <li>4) Salon barber</li>
+          <li>5) Salon barber</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+    </mat-grid-tile>
 </mat-grid-list>

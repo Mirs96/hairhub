@@ -1,0 +1,52 @@
+/* Stile generale per la card */
+mat-card {
+  background-color: #1c1c1c; /* Nero intenso */
+  color: #e0e0e0; /* Grigio chiaro per il testo */
+  border: 1px solid #333; /* Bordo sottile per definire la card */
+  border-radius: 8px; /* Arrotondamento degli angoli */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra per profondità */
+  transition: transform 0.3s, box-shadow 0.3s; /* Animazione su hover */
+  overflow: hidden; /* Per evitare overflow */
+}
+
+/* Titolo */
+mat-card-content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f5f5f5; /* Testo più luminoso per il titolo */
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+/* Lista non ordinata */
+mat-card-content ul {
+  list-style-type: none; /* Rimuove i punti elenco */
+  padding: 0;
+  margin: 0;
+}
+
+mat-card-content li {
+  padding: 8px;
+  font-size: 1rem;
+  border-bottom: 1px solid #333; /* Divisori sottili */
+  transition: color 0.3s, background-color 0.3s; /* Animazione su hover */
+}
+
+/* Hover sugli elementi della lista */
+mat-card-content li:hover {
+  color: #1c1c1c; /* Colore scuro per il testo */
+  background-color: #f5f5f5; /* Sfondo chiaro su hover */
+}
+
+/* Effetto hover sulla card */
+mat-card:hover {
+  transform: scale(1.05); /* Leggero ingrandimento */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Ombra più accentuata */
+}
+
+mat-grid-list{
+  
+}
+
+
