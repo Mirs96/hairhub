@@ -55,3 +55,41 @@ ul{
   margin: 0;
   align-items: center;
 }
+.example-form {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: transparent;
+    width: 50vw;
+    height: 40px;
+    max-height: 400px;
+    max-width: 600px;
+
+  }
+
+  #campo::placeholder{
+    font-size: 14px;
+    padding-left: 15px;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  .example-input {
+    max-width: 100%;
+    width: 100%;
+  }
+
+#searchBar{
+  display: flex;                  /* Imposta Flexbox */
+  justify-content: center;        /* Centra la form orizzontalmente */
+  align-items: center;
+  background-image: url('/img/background.jpeg');
+  background-position: center; 
+  background-size: cover;      
+  height: 100%;
+  width: 100%;
+}
