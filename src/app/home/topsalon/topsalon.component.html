@@ -17,11 +17,27 @@
       <mat-card-content>
         <h2>Top 5 Salons</h2>
         <ul>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
+          @if(topSalon){
+            @for(salon of topSalon; track $index){
+              <li>{{salon.name}}</li>
+            }
+          }
+        </ul>
+      </mat-card-content>
+    </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile
+    colspan=1
+    rowspan=5>
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <h2>Top 5 Salons by cut</h2>
+        <ul>
+          @if(topSalonByCut){
+            @for(salon of topSalonByCut; track $index){
+              <li>{{salon.name}}</li>
+            }
+          }
         </ul>
       </mat-card-content>
     </mat-card>
@@ -33,27 +49,11 @@
       <mat-card-content>
         <h2>Top 5 Salons by beard</h2>
         <ul>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-        </ul>
-      </mat-card-content>
-    </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile
-    colspan=1
-    rowspan=5>
-    <mat-card appearance="outlined">
-      <mat-card-content>
-        <h2>Top 5 Salons by cuts</h2>
-        <ul>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
+          @if(topSalonByBeard){
+            @for(salon of topSalonByBeard; track $index){
+              <li>{{salon.name}}</li>
+            }
+          }
         </ul>
       </mat-card-content>
     </mat-card>
