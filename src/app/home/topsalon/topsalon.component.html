@@ -3,10 +3,18 @@
     colspan=3
     rowspan=4>
     <div id="searchBar">
-      <form class="example-form">
-        <input id="campo" type="text"
-               placeholder="Cerca un salone o un indirizzo"
+      <form class="example-form" (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <input type="text"
+              placeholder="Cerca un salone o un indirizzo"
+              [formControl]="control"
+              [matAutocomplete]="auto"
                class="example-input">
+               <mat-autocomplete #auto="matAutocomplete" [displayWith]="displaySalonName" >
+                @for (salon of filteredSalons | async ; track salon.id) {
+                  <mat-option [value]="salon">{{salon.name}} - {{salon.address}}</mat-option>
+                }
+              </mat-autocomplete>
+              <button type="submit">Find</button>
       </form>
     </div>
     </mat-grid-tile>

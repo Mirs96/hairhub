@@ -11,12 +11,21 @@ export class SalonService {
     urlExtension = '/salon';
     constructor(private http: HttpClient){}
     getTopSalons():Observable<SalonDetails[]>{
-        return this.http.get<SalonDetails[]>(`${HttpConfig.apiUrl}${this.urlExtension}`)
+        return this.http.get<SalonDetails[]>(`${HttpConfig.apiUrl}${this.urlExtension}/bestSalons`)
     }
     getTopSalonsByCut():Observable<SalonDetails[]>{
-        return this.http.get<SalonDetails[]>(`${HttpConfig.apiUrl}${this.urlExtension}?type=1`)
+        return this.http.get<SalonDetails[]>(`${HttpConfig.apiUrl}${this.urlExtension}/bestSalons?type=1`)
     }
     getTopSalonsByBeard():Observable<SalonDetails[]>{
-        return this.http.get<SalonDetails[]>(`${HttpConfig.apiUrl}${this.urlExtension}?type=2`)
+        return this.http.get<SalonDetails[]>(`${HttpConfig.apiUrl}${this.urlExtension}/bestSalons?type=2`)
     }
+    getSalons():Observable<SalonDetails[]>{
+        return this.http.get<SalonDetails[]>(`${HttpConfig.apiUrl}${this.urlExtension}`)
+    }
+    getSalonsByName(name: string): Observable<SalonDetails[]> {
+        return this.http.get<SalonDetails[]>(`${HttpConfig.apiUrl}${this.urlExtension}?name=${name}`);
+      }
+    getSalonById(id: number):Observable<SalonDetails>{
+        return this.http.get<SalonDetails>(`${HttpConfig.apiUrl}${this.urlExtension}/${id}`);
+    }  
 }
