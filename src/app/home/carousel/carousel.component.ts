@@ -49,7 +49,7 @@ export class SwiperCarouselComponent   {
   ngOnInit(): void {
     this.loading = true;
 
-    this.imageService.getImages().subscribe({
+    /* this.imageService.getImages().subscribe({
       next: (data: string[]) => {
         this.images = data;
         this.loading = false;
@@ -58,7 +58,7 @@ export class SwiperCarouselComponent   {
         this.error = true;
         this.loading = false;
       }
-    });
+    }); */
   }
 
 }

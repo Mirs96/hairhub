@@ -32,11 +32,12 @@ export class TopsalonComponent implements OnInit {
   topSalon!: SalonDetails[];
   topSalonByCut!: SalonDetails[];
   topSalonByBeard!: SalonDetails[];
-  control: FormControl<string | null | SalonDetails[]> = new FormControl('');
+  control: FormControl<string | null | SalonDetails> = new FormControl('');
   salons!: SalonDetails[];
   filteredSalons!: Observable<SalonDetails[]>;
+  id!: number;
 
-  constructor(private salonService : SalonService){}
+  constructor(private salonService : SalonService, private router: Router){}
 
 
   ngOnInit() {
@@ -45,12 +46,18 @@ export class TopsalonComponent implements OnInit {
       startWith(''), // Inizializza con una stringa vuota
       switchMap(value => {
         // Se non c'è valore (valore vuoto), ottieni tutti i saloni
+        console.log('start switchMap');
         if (!value) {
           return this.salonService.getSalons();
-        }
+        }else if (typeof value === 'string') {
         // Se c'è un valore, ottieni i saloni filtrati
-        return this.salonService.getSalonsByName((<string>value));
-      }),
+          return this.salonService.getSalonsByName(value);
+        }else {
+          console.log(value);
+          return this.salonService.getSalonsByName(value.name);
+        }
+    
+    }),
       map(salons => salons) // Passa direttamente i saloni ottenuti
     );
 
@@ -87,13 +94,18 @@ export class TopsalonComponent implements OnInit {
   onSubmit(form: any) {
     if (this.control.valid) {
       const formValue = this.control.value;
-      this.salonService.getSalonById((<SalonDetails[]>formValue)[0].id)
-      console.log('Valore inserito:', formValue);
+      console.log(formValue);
+      this.id = (<SalonDetails>formValue).id;
+      //this.salonService.getSalonById((<SalonDetails[]>formValue)[0].id)
+      console.log('Valore inserito:', this.id);
+      this.router.navigate(['/salons', this.id]);
 
     } else {
       alert('Per favore inserisci un valore valido!');
     }
   }
+
+
   
 
 }

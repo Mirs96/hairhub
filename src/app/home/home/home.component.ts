@@ -18,4 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 })
 export class HomeComponent {
 
+  goHome(): void {
+    console.log('Go home');
+  }
 }
