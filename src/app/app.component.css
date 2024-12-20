@@ -17,11 +17,11 @@ background: linear-gradient(180deg, rgba(3,3,10,1) 7%, rgba(255,255,255,1) 100%)
 
 .navBar {
   display: flex;
-  height: 120px;            
+  height: 50px;            
   justify-content: flex-start; 
   align-items: center;
-  padding: 0 150px;
-  background: rgba(0, 0, 0, 1); /* Colore di sfondo semi-trasparente */
+  padding: 0 170px;
+  background:transparent/*Colore di sfondo semi-trasparente */
 } 
 
 #sectionBg{
@@ -29,7 +29,7 @@ background: linear-gradient(180deg, rgba(3,3,10,1) 7%, rgba(255,255,255,1) 100%)
 }
 
 #logonav {
-  max-height: 115px;         
+  max-height: 50px;         
   height: auto;             
 }
 
@@ -174,4 +174,5 @@ app-swiper-carousel {
     margin-bottom: 20px;
   }
   }
+
 

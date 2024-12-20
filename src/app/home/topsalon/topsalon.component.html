@@ -2,11 +2,23 @@
     <mat-grid-tile
     colspan=3
     rowspan=4>
-    <div id="searchBar">
-      <form class="example-form">
-        <input id="campo" type="text"
-               placeholder="Cerca un salone o un indirizzo"
+    <div id="mainDiv">
+      <form class="example-form searchBar"  (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <input type="text"
+              placeholder="Cerca un salone o un indirizzo"
+              [formControl]="control"
+              [matAutocomplete]="auto"
                class="example-input">
+               <mat-autocomplete class="custom-autocomplete" #auto="matAutocomplete" [displayWith]="displaySalonName" >
+                <div cdkOverlayPane class="my-custom-panel">
+                @for (salon of filteredSalons | async ; track salon.id) {
+                  <mat-option  class="mioMat" [value]="salon">{{salon.name}} - {{salon.address}}</mat-option>
+                }
+                </div>
+              </mat-autocomplete>
+              <button id="findButton" type="submit" mat-icon-button>
+                <img src="img/lente.png" alt="search icon" style="width: 28px; height: 28px;">
+              </button>
       </form>
     </div>
     </mat-grid-tile>
@@ -17,11 +29,27 @@
       <mat-card-content>
         <h2>Top 5 Salons</h2>
         <ul>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
+          @if(topSalon){
+            @for(salon of topSalon; track $index){
+              <li>{{salon.name}}</li>
+            }
+          }
+        </ul>
+      </mat-card-content>
+    </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile
+    colspan=1
+    rowspan=5>
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <h2>Top 5 Salons by cut</h2>
+        <ul>
+          @if(topSalonByCut){
+            @for(salon of topSalonByCut; track $index){
+              <li>{{salon.name}}</li>
+            }
+          }
         </ul>
       </mat-card-content>
     </mat-card>
@@ -33,27 +61,11 @@
       <mat-card-content>
         <h2>Top 5 Salons by beard</h2>
         <ul>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-        </ul>
-      </mat-card-content>
-    </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile
-    colspan=1
-    rowspan=5>
-    <mat-card appearance="outlined">
-      <mat-card-content>
-        <h2>Top 5 Salons by cuts</h2>
-        <ul>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
-          <li> Salon barber</li>
+          @if(topSalonByBeard){
+            @for(salon of topSalonByBeard; track $index){
+              <li>{{salon.name}}</li>
+            }
+          }
         </ul>
       </mat-card-content>
     </mat-card>

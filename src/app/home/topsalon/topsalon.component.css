@@ -1,5 +1,11 @@
 /* Stile generale per la card */
+mat-grid-list{
+  padding: -60px;
+}
+
 mat-card {
+  height: 60%;
+  width: 80%;
   background-color: transparent; /* Nero intenso */
   color: #000000; /* Grigio chiaro per il testo */
   border: 1px solid #333; /* Bordo sottile per definire la card */
@@ -11,7 +17,9 @@ mat-card {
 
 /* Titolo */
 mat-card-content h2 {
-  font-size: 1.5rem;
+  position: relative;
+  text-align: center;
+  font-size: 1.2rem;
   font-weight: bold;
   color: black; 
   margin-bottom: 12px;
@@ -27,6 +35,7 @@ mat-card-content ul {
 }
 
 mat-card-content li {
+  letter-spacing: 1px;
   padding: 8px;
   font-size: 1rem;
   transition: color 0.3s, background-color 0.3s; /* Animazione su hover */
@@ -44,7 +53,7 @@ mat-card:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Ombra più accentuata */
 }
 
-mat-grid-list{
+mat-grid-tile{
   
 }
 
@@ -56,7 +65,7 @@ ul{
   align-items: center;
 }
 .example-form {
-    margin-top: 200px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     border-radius: 20px;
@@ -66,7 +75,7 @@ ul{
     height: 40px;
     max-height: 400px;
     max-width: 600px;
-
+    
   }
 
   #campo::placeholder{
@@ -78,12 +87,44 @@ ul{
     width: 100%;
   }
 
-  .example-input {
-    max-width: 100%;
-    width: 100%;
+  ::ng-deep .cdk-overlay-pane:not(.mat-mdc-autocomplete-panel-above) div.mat-mdc-autocomplete-panel {
+    /* Your desired styles here */
+    background-color: rgba(255, 255, 255, 1);
+    
+    width: 100%px;
+    color: white;
+    border-radius: 5%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
   }
 
-#searchBar{
+  .mat-mdc-option.mdc-list-item {
+    color: black;
+    padding-left: 150px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .example-input {
+    width: 50vw;
+  outline: none;
+  font-size: 18px;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 1px;
+  background: none;
+  border: none;
+  }
+
+
+  .searchBar {   
+  border: 3px solid #fff;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px 20px;
+  border-radius: 50px;
+  outline: none;
+  }
+
+#mainDiv{
   display: flex;                  /* Imposta Flexbox */
   justify-content: center;        /* Centra la form orizzontalmente */
   align-items: center;
@@ -92,4 +133,8 @@ ul{
   background-size: cover;      
   height: 100%;
   width: 100%;
+}
+
+#findButton{
+  
 }
