@@ -28,7 +28,7 @@ c2.9,0.9,5.4,2.9,7.1,5.4C24.6,26.6,20.6,29,16,29z"/>
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, SwiperCarouselComponent,MatIconModule],
+  imports: [RouterOutlet, RouterModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, SwiperCarouselComponent, MatIconModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

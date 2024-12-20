@@ -7,5 +7,5 @@ import { MainSalonComponent } from './salonPage/mainComponent/main-salon/main-sa
 export const routes: Routes = [
     {path: "", component:HomeComponent},
     {path: "home", component:HomeComponent},
-    {path: "salons/:id", component:MainSalonComponent}
+    {path: "salons/1", component:MainSalonComponent}
 ];

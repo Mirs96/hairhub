@@ -1,1 +1,50 @@
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+<div id="fullBg">
+  <!-- Navbar -->
+    <div id="imgBackground">
+    <div class="header">
+      <header id="logo">
+        <div id="classLogo">
+        </div>
+        <mat-toolbar class="navBar">
+          <img id="logonav" src="img/hairhub.png" alt="Logo">
+          <span class="example-spacer"></span>
+          <button id="btnLogin" mat-button [matMenuTriggerFor]="login">
+            <img id= "nav2" src="img/login.png" alt="thumbs up icon" style="width: 24px; height: 24px; background-color: black;">
+            </button>
+          <button id="btn" mat-button [matMenuTriggerFor]="menu">Menu</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Home</button>
+            <button mat-menu-item>Servizi</button>
+            <button mat-menu-item>Contatti</button>
+          </mat-menu>
+          <mat-menu #login="matMenu">
+            <button mat-menu-item>Accedi</button>
+            <button mat-menu-item>Registrati</button>
+          </mat-menu>
+        </mat-toolbar>
+      </header>
+    </div>
+  </div>
+<!-- Componenti -->
 <app-topsaloon></app-topsaloon>
+<div id="carousel">
+     <app-swiper-carousel>
+    </app-swiper-carousel>
+</div>
+<!-- Footer -->
+<footer>
+    <ul class="social_icon">
+      <li><img id="facebook" src="img/facebook.png" alt="Facebook"></li>
+      <li><img src="img/twitter.png" alt="Twitter"></li>
+      <li><img src="img/instagram.png" alt="Instagram"></li>
+    </ul>
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <p>©2024 Chris Tobojia | All Rights Reserved</p>
+</footer>
+</div>

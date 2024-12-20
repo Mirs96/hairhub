@@ -16,10 +16,14 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { map, Observable, startWith, switchMap } from 'rxjs';
 import {MatAutocompleteModule, MatOption} from '@angular/material/autocomplete';
 import { AsyncPipe } from '@angular/common';
+import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-topsaloon',
-  imports: [MatGridListModule,MatChipsModule,MatCardModule,MatProgressBarModule, MatButtonModule, MatDividerModule, MatIconModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule,ReactiveFormsModule,AsyncPipe,FormsModule,MatOption],
+  imports: [MatGridListModule,MatChipsModule,MatCardModule,MatProgressBarModule,
+           MatButtonModule, MatDividerModule, MatIconModule, MatFormFieldModule,
+            MatInputModule, MatAutocompleteModule,ReactiveFormsModule,AsyncPipe,
+            FormsModule,MatOption,  RouterModule, RouterOutlet, RouterLink],
   templateUrl: './topsalon.component.html',
   styleUrl: './topsalon.component.css'
 })
