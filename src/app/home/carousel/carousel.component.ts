@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, OnInit, Injectable,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ImageService} from '../model/hometables/imageService'; 
+import { ImageService} from '../../model/hometables/imageService'; 
 import { HttpClient } from '@angular/common/http';
 import { trigger, transition, style, animate } from '@angular/animations';
 

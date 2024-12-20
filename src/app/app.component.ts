@@ -5,7 +5,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { DomSanitizer } from '@angular/platform-browser';
-import { SwiperCarouselComponent } from "./carousel/carousel.component";
+import { SwiperCarouselComponent } from "./home/carousel/carousel.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Importa BrowserAnimationsModule
 
 const THUMBUP_ICON =

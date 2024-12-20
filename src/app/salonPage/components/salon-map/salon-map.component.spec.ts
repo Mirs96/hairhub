@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchButtonComponent } from './search-button.component';
+import { SalonMapComponent } from './salon-map.component';
 
-describe('SearchButtonComponent', () => {
-  let component: SearchButtonComponent;
-  let fixture: ComponentFixture<SearchButtonComponent>;
+describe('SalonMapComponent', () => {
+  let component: SalonMapComponent;
+  let fixture: ComponentFixture<SalonMapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SearchButtonComponent]
+      imports: [SalonMapComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SearchButtonComponent);
+    fixture = TestBed.createComponent(SalonMapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
