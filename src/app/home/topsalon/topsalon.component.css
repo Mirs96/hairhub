@@ -1,6 +1,6 @@
 /* Stile generale per la card */
 mat-grid-list{
-  
+  padding: -60px;
 }
 
 mat-card {

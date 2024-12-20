@@ -141,7 +141,7 @@ button:focus {
 }
 
 mat-grid-list {
-  padding-bottom: 120px;
+  padding-bottom: 0px;
   width: px;
   display: flex;
   justify-content: space-between; /* Per aggiungere spazio tra le card */
