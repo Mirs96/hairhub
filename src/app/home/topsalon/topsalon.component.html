@@ -2,19 +2,23 @@
     <mat-grid-tile
     colspan=3
     rowspan=4>
-    <div id="searchBar">
-      <form class="example-form" (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <div id="mainDiv">
+      <form class="example-form searchBar"  (ngSubmit)="onSubmit(form)" #form="ngForm">
         <input type="text"
               placeholder="Cerca un salone o un indirizzo"
               [formControl]="control"
               [matAutocomplete]="auto"
                class="example-input">
-               <mat-autocomplete #auto="matAutocomplete" [displayWith]="displaySalonName" >
+               <mat-autocomplete class="custom-autocomplete" #auto="matAutocomplete" [displayWith]="displaySalonName" >
+                <div cdkOverlayPane class="my-custom-panel">
                 @for (salon of filteredSalons | async ; track salon.id) {
-                  <mat-option [value]="salon">{{salon.name}} - {{salon.address}}</mat-option>
+                  <mat-option  class="mioMat" [value]="salon">{{salon.name}} - {{salon.address}}</mat-option>
                 }
+                </div>
               </mat-autocomplete>
-              <button type="submit">Find</button>
+              <button id="findButton" type="submit" mat-icon-button>
+                <img src="img/lente.png" alt="search icon" style="width: 28px; height: 28px;">
+              </button>
       </form>
     </div>
     </mat-grid-tile>
