@@ -1,1 +1,21 @@
-<p>select-service works!</p>
+<div id="tabella">
+    <h2>Seleziona il Servizio</h2>
+    <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td colspan="2">
+                <!-- Classe custom per divider -->
+                <mat-list class="custom-divider">
+                    @for (treatment of salonsPricesAndTreatments; track treatment.id) {
+                    <mat-list-item >
+                        <div class="list-item">
+                            <span class="treatment">{{treatment.name}}</span>
+                            <span class="price">€{{treatment.price}}</span>
+                        </div>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    }
+                </mat-list>
+            </td>
+        </tr>
+    </table>
+</div>

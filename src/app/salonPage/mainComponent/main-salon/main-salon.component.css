@@ -63,8 +63,19 @@
   }
   
 /* ------------------ PRESENTAZIONE SALONE ------------------- */
+app-checkout-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
 
-
+#serviceAndCheckout{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 170px;
+  margin-top: 50px;
+}
 
 /* ------------------ FOOTER ------------------------ */
   /* Stili per le sezioni interne del footer (menu, social, copyright) */

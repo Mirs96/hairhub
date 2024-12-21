@@ -1,0 +1,26 @@
+.list-item{
+  display: flex;                    /* Usa il flexbox per allineare gli elementi sulla stessa riga */
+  justify-content: space-between;    /* Spazio tra il nome e il prezzo */
+  width: 100%;                       /* La larghezza occupa tutto lo spazio disponibile */
+  align-items: center;              /* Centra verticalmente gli elementi */
+}
+
+
+.custom-divider .price {
+  color: #333;                      /* Colore del prezzo */
+}
+
+#tabella {
+  width: 700px;
+  padding-top: 5%;
+  padding-left: 2%;
+}
+
+mat-list-item {
+  cursor: pointer;
+}
+
+mat-list-item:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
