@@ -6,11 +6,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { Swiper} from 'swiper';
 import { SwiperOptions } from 'swiper/types';
+import { SalonCarouselComponent } from "../../components/salon-carousel/salon-carousel.component";
 
 
 @Component({
   selector: 'app-main-salon',
-  imports: [RouterLink, RouterOutlet, RouterModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatIconModule],
+  imports: [RouterLink, RouterOutlet, RouterModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatIconModule, SalonCarouselComponent],
   templateUrl: './main-salon.component.html',
   styleUrl: './main-salon.component.css'
 })
