@@ -6,7 +6,7 @@
                 <!-- Classe custom per divider -->
                 <mat-list class="custom-divider">
                     @for (treatment of salonsPricesAndTreatments; track treatment.id) {
-                    <mat-list-item >
+                    <mat-list-item (click)="addToCheckout(treatment)" >
                         <div class="list-item">
                             <span class="treatment">{{treatment.name}}</span>
                             <span class="price">€{{treatment.price}}</span>

@@ -1,5 +1,5 @@
 
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,6 +16,8 @@ import { TreatmentsPriceDetails } from '../../../model/hometables/TreatmentsPric
 })
 export class SelectServiceComponent implements OnInit { 
     salonsPricesAndTreatments!: TreatmentsPriceDetails[];
+    selectedTreatments: TreatmentsPriceDetails[] = [];
+    @Output() addTreatment = new EventEmitter<TreatmentsPriceDetails>();
 
     constructor(private treatmentsPricesService : TreatmentsPriceService, private route: ActivatedRoute,private cdr: ChangeDetectorRef){};
 
@@ -29,6 +31,9 @@ export class SelectServiceComponent implements OnInit {
     
   }
 
-  
+  addToCheckout(treatment: TreatmentsPriceDetails) {
+    this.selectedTreatments.push(treatment);
+    this.addTreatment.emit(treatment);  // Emette il trattamento selezionato
+  }
 
 }

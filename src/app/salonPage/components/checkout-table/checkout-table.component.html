@@ -1,3 +1,31 @@
+@if(selectedTreatments.length >= 0){
 <div class="example-box" cdkDrag>
-    
+  <div id="checkout-table" >
+    <h2>Checkout</h2>
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr>
+        <td colspan="2">
+            <!-- Classe custom per divider -->
+            <mat-list class="custom-divider">
+              @for (treatment of selectedTreatments; track treatment.id) {
+                <mat-list-item >
+                    <div class="list-item">
+                        <span class="treatment">{{treatment.name}}</span>
+                        <span class="price">€{{treatment.price}}</span>
+                        <button mat-icon-button (click)="removeTreatment(treatment.id)">
+                          <mat-icon>delete</mat-icon> <!-- Icona per il tasto di rimozione -->
+                        </button>
+                    </div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                }
+                <td><strong>Total:</strong></td>
+        <td><strong>€{{ total }}</strong></td>
+            </mat-list>
+        </td>
+    </tr>
+    </table>
   </div>
+  
+  </div>
+}

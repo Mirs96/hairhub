@@ -1,6 +1,6 @@
 .example-box {
     width: 300px;
-    height: 300px;
+    height: auto;
     border: solid 1px #000000;
     color: rgba(0, 0, 0, 0.87);
     cursor: move;
@@ -22,4 +22,38 @@
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
                 0 8px 10px 1px rgba(0, 0, 0, 0.14),
                 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.list-item{
+  display: flex;                    /* Usa il flexbox per allineare gli elementi sulla stessa riga */
+  justify-content: space-between;    /* Spazio tra il nome e il prezzo */
+  width: 100%;                       /* La larghezza occupa tutto lo spazio disponibile */
+  align-items: center;              /* Centra verticalmente gli elementi */
+  padding: 0;
+}
+
+
+.custom-divider .price {
+  color: #333;                      /* Colore del prezzo */
+}
+
+#tabella {
+  width: 700px;
+  padding-top: 5%;
+  padding-left: 2%;
+}
+
+mat-list-item {
+  cursor: pointer;
+  padding: 0 !important;
+}
+
+mat-list-item:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+#checkout-table {
+  width: 100%;
+  padding: 10px 20px;
 }

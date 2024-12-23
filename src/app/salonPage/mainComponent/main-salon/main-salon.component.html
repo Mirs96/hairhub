@@ -27,8 +27,8 @@
 
 <!-- Inizio pagina -->
 <div id="serviceAndCheckout">
-  <app-select-service></app-select-service>
-  <app-checkout-table></app-checkout-table>
+  <app-select-service (addTreatment)="addToCheckout($event)"></app-select-service>
+  <app-checkout-table [selectedTreatments]="selectedTreatments"></app-checkout-table>
 </div>
 <!-- Footer -->
 <footer>
