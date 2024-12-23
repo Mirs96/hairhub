@@ -1,28 +1,17 @@
-import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, Input } from '@angular/core';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-import { SelectServiceComponent } from '../../components/select-service/select-service.component';
-import { CheckoutTableComponent } from '../../components/checkout-table/checkout-table.component';
-import { TreatmentsPriceDetails } from '../../../model/hometables/TreatmentsPricesDetails';
 
 
 @Component({
   selector: 'app-main-salon',
-  imports: [RouterLink, RouterOutlet, RouterModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatIconModule, SelectServiceComponent,CheckoutTableComponent],
+  imports: [RouterLink, RouterOutlet, RouterModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatIconModule],
   templateUrl: './main-salon.component.html',
   styleUrl: './main-salon.component.css'
   
 })
 export class MainSalonComponent {
-  @Input() selectedTreatments: TreatmentsPriceDetails[] = [];
-
-  constructor(private cdRef: ChangeDetectorRef) {}
-
-  addToCheckout(treatment: TreatmentsPriceDetails) {
-    this.selectedTreatments.push(treatment);  // Aggiunge il trattamento alla lista
-    this.cdRef.detectChanges(); // Forza la rilevazione dei cambiamenti
-  }
 }
