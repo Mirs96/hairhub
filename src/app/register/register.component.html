@@ -1,3 +1,4 @@
+<div class="register-container">
 <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
     <div>
       <label for="firstname">Nome:</label>
@@ -56,4 +57,8 @@
     <div>
       <button [disabled]="registerForm.invalid">Registrati</button>
     </div>
+    <div>
+      <button mat-button (click)="closeDialog()">Chiudi</button>
+  </div>
   </form>
+</div>

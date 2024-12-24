@@ -1,4 +1,4 @@
-@if (showOverlay) {
+
     <div class="login-container">
     <form (ngSubmit) = "onSubmit()" [formGroup]="loginForm">
         <div>
@@ -12,8 +12,11 @@
         <div>
             <button>Login</button>
         </div>
+        <div>
+            <button mat-button (click)="closeDialog()">Chiudi</button>
+        </div>
     </form>
 </div>
-}
+
 
 

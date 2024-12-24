@@ -4,6 +4,7 @@ import { AuthService } from '../model/authService';
 import { Router } from '@angular/router';
 
 import { RegisterDto } from '../model/hometables/register-dto';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ import { RegisterDto } from '../model/hometables/register-dto';
 export class RegisterComponent implements OnInit{
   registerForm!: FormGroup;
 
- constructor(private fb:FormBuilder, private authService:AuthService, private router:Router){}
+ constructor(private fb:FormBuilder, private authService:AuthService, private router:Router,private dialogRef: MatDialogRef<RegisterComponent>){}
   ngOnInit(): void {
    this.registerForm = this.fb.group({
     firstname: ['', [Validators.required, Validators.minLength(3)]],
@@ -49,4 +50,9 @@ export class RegisterComponent implements OnInit{
         console.log('Form non valido');
       }
   }
+
+  closeDialog(): void {
+    this.dialogRef.close();
+  }
+  
 }
