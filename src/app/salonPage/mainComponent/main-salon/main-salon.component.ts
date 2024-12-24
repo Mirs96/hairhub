@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output,OnInit } from '@angular/core';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -18,13 +18,35 @@ import { SalonCarouselComponent } from "../../components/salon-carousel/salon-ca
   styleUrl: './main-salon.component.css'
 })
 export class MainSalonComponent implements OnInit{
-  @Input() selectedTreatments: TreatmentsPriceDetails[] = [];
+   selectedTreatments: TreatmentsPriceDetails[] = [];
+
+   @Output()
+   addTreatment = new EventEmitter<TreatmentsPriceDetails>();
 
   constructor(private cdRef: ChangeDetectorRef) {}
 
-  addToCheckout(treatment: TreatmentsPriceDetails) {
-    this.selectedTreatments.push(treatment);  // Aggiunge il trattamento alla lista
-    this.cdRef.detectChanges(); // Forza la rilevazione dei cambiamenti
+  addToCheckout(treatment: TreatmentsPriceDetails): void {
+    // Verifica se il trattamento è già stato selezionato
+    const alreadySelected = this.selectedTreatments.find(
+      (selected) => selected.id === treatment.id
+    );
+
+    if (!alreadySelected) {
+      this.selectedTreatments.push(treatment);  // Aggiungi solo se non è già selezionato
+      this.addTreatment.emit(treatment);        // Emette l'evento solo per i nuovi trattamenti
+    } else {
+      console.log('Trattamento già selezionato:', treatment.name);
+    }
+  }
+
+  removeTreatmentFromMain(treatment: TreatmentsPriceDetails): void {
+    // Rimuove il trattamento anche dall'array selectedTreatments in MainSalonComponent
+    const index = this.selectedTreatments.findIndex(
+      (t) => t.id === treatment.id
+    );
+    if (index > -1) {
+      this.selectedTreatments.splice(index, 1);
+    }
   }
   
   

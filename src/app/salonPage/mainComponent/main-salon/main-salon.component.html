@@ -64,7 +64,7 @@
 </body>
 <div id="serviceAndCheckout">
   <app-select-service (addTreatment)="addToCheckout($event)"></app-select-service>
-  <app-checkout-table [selectedTreatments]="selectedTreatments"></app-checkout-table>
+  <app-checkout-table [selectedTreatments]="selectedTreatments" (treatmentRemoved)="removeTreatmentFromMain($event)"></app-checkout-table>
 </div>
 <!-- Footer -->
 <footer>
