@@ -35,8 +35,7 @@ export class SelectServiceComponent implements OnInit {
    addTreatment = new EventEmitter<TreatmentsPriceDetails>();
 
   addToCheckout(treatment: TreatmentsPriceDetails) {
-    this.selectedTreatments.push(treatment);
-    this.addTreatment.emit(treatment);  // Emette il trattamento selezionato
+      this.addTreatment.emit(treatment); // Emette l'evento solo per i nuovi trattamenti
   }
 
 }

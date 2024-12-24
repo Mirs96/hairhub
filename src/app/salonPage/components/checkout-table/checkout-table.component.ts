@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import {CdkDrag} from '@angular/cdk/drag-drop';
 import { TreatmentsPriceDetails } from '../../../model/hometables/TreatmentsPricesDetails';
 import { trigger, transition, style, animate } from '@angular/animations';
@@ -16,9 +16,13 @@ import { CommonModule } from '@angular/common';
 })
 export class CheckoutTableComponent implements OnChanges{
 
+
   constructor(private cdRef: ChangeDetectorRef) {}
 
-  @Input() selectedTreatments: TreatmentsPriceDetails[] = [];
+  @Input() 
+  selectedTreatments!: TreatmentsPriceDetails[];
+  @Output()
+   treatmentRemoved = new EventEmitter<TreatmentsPriceDetails>();
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedTreatments']) {
@@ -30,14 +34,12 @@ export class CheckoutTableComponent implements OnChanges{
     return this.selectedTreatments.reduce((sum, treatment) => sum + treatment.price, 0);
     
   }
-
   removeTreatment(id: number): void {
     const index = this.selectedTreatments.findIndex(treatment => treatment.id === id);
     if (index > -1) {
-      this.selectedTreatments.splice(index, 1); // Rimuove direttamente l'elemento
+      const removedTreatment = this.selectedTreatments.splice(index, 1)[0];
+      this.treatmentRemoved.emit(removedTreatment); // Emette l'evento con il trattamento rimosso
       this.cdRef.detectChanges(); // Forza l'aggiornamento del componente
     }
   }
-  
-
 }
