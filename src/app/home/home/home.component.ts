@@ -10,13 +10,20 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from '../login/login.component';
 @Component({
   selector: 'app-home',
-  imports: [TopsalonComponent,RouterModule, SwiperCarouselComponent, RouterOutlet, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatIconModule],
+  imports: [TopsalonComponent,RouterModule, SwiperCarouselComponent, RouterOutlet, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatIconModule,LoginComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
+  showLogin = false; //variabile per controllare la visibilità del loginComponent
+
+  toogleLogin(){
+    this.showLogin = !this.showLogin; // Cambia lo stato della visibilità
+  }
 
   goHome(): void {
     console.log('Go home');
