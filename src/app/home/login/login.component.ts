@@ -10,6 +10,7 @@ import { AuthService } from '../../model/authService';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
+  showOverlay:boolean = false;
   loginForm!:FormGroup;
   constructor(private fb:FormBuilder, private authService:AuthService, private router:Router){}
 
@@ -27,9 +28,19 @@ export class LoginComponent implements OnInit {
         //var globale che esiste perchè lavoriamo con un browser come document o window
         //funziona come una mappa, chiavi e valori sono stringhe
         localStorage.setItem('jwtToken', r.token); //setta il token (r = ogg response)
-        this.router.navigate(['/score']); //andiamo nella pagina delle case
+        this.router.navigate(['/home']); //andiamo nella pagina
       },
       error: err => alert('login failed.')
     }); 
   }
+// Aggiungi una funzione per mostrare l'overlay se necessario
+openOverlay(): void {
+  this.showOverlay = true; // Mostra l'overlay
+}
+
+// Aggiungi una funzione per nascondere l'overlay manualmente, se necessario
+closeOverlay(): void {
+  this.showOverlay = false; // Nascondi l'overlay
+}
+
 }

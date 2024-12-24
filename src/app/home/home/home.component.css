@@ -182,6 +182,73 @@ app-swiper-carousel {
      margin-bottom: 20px;
    }
    }
- 
- 
+
+   /* Overlay che copre l'intera pagina e sfoca il contenuto */
+.login-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Sfondo semi-trasparente scuro */
+  display: flex;
+  justify-content: center; /* Centrato orizzontalmente */
+  align-items: center; /* Centrato verticalmente */
+  z-index: 9999; /* Sovrascrive tutto il resto */
+  overflow-y: auto;
+}
+
+/* Rende il resto del contenuto sotto l'overlay sfocato */
+#fullBg {
+  filter: blur(5px); /* Aggiungi un filtro per sfocare il resto della pagina */
+}
+
+/* La modale di login */
+.overlay form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  z-index: 10000; /* La modale di login deve essere sopra l'overlay */
+}
+
+/* Modifica del layout e degli input della modale */
+.overlay form div {
+  margin-bottom: 15px;
+}
+
+.overlay form label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.overlay form input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.overlay form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.overlay form button:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
+}
+
+
+  
  

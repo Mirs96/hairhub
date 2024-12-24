@@ -1,0 +1,50 @@
+/* register.component.css */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4; /* Puoi modificare il colore di sfondo */
+  }
+  
+  .register-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 400px; /* Imposta la larghezza della form */
+    max-width: 100%; /* La form non deve essere più larga della finestra */
+    box-sizing: border-box;
+  }
+  
+  .register-form div {
+    margin-bottom: 10px;
+  }
+  
+  .register-form label {
+    font-weight: bold;
+  }
+  
+  .register-form input,
+  .register-form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .register-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .register-form button:disabled {
+    background-color: #ccc;
+  }

@@ -18,22 +18,41 @@
             <button mat-menu-item>Home</button>
             <button mat-menu-item>Servizi</button>
             <button mat-menu-item>Contatti</button>
+            @if (isAuthenticated){
+           <button mat-button routerLink="/appointments">Miei appuntamenti</button>
+           
+            }
+            
           </mat-menu>
           <mat-menu #login="matMenu">
-            <button mat-menu-item (click)="toogleLogin()">Accedi</button>
-            <button mat-menu-item>Registrati</button>
+            <button mat-menu-item (click)="toggleLogin()">Accedi</button>
+            <button mat-menu-item (click)="toggleRegister()">Registrati</button>
+            @if(isAuthenticated){
+              <button mat-button (click)="logout()">Logout</button>
+            }
           </mat-menu>
 
         </mat-toolbar>
       
       </header>
-      @if (showLogin) {
-        <app-login> </app-login>
-      }
+     
       
     </div>
+   
   </div>
-<!-- Componenti -->
+
+
+  @if (showRegister) {
+    <div class = "overlay">
+    <app-register> </app-register>
+  </div>
+  }
+<!-- Componenti --> 
+  @if (showLogin) {
+    <div class = "overlay">
+    <app-login> </app-login>
+  </div>
+  }
 <app-topsaloon></app-topsaloon>
 <div id="carousel">
      <app-swiper-carousel>
