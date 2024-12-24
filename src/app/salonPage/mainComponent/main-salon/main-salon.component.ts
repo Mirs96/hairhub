@@ -17,7 +17,7 @@ import { TreatmentsPriceDetails } from '../../../model/hometables/TreatmentsPric
   
 })
 export class MainSalonComponent {
-  @Input() selectedTreatments: TreatmentsPriceDetails[] = [];
+   selectedTreatments: TreatmentsPriceDetails[] = [];
 
   constructor(private cdRef: ChangeDetectorRef) {}
 

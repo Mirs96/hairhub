@@ -15,10 +15,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './checkout-table.component.css',
 })
 export class CheckoutTableComponent implements OnChanges{
-  
-  @Input() selectedTreatments: TreatmentsPriceDetails[] = [];
 
   constructor(private cdRef: ChangeDetectorRef) {}
+
+  @Input() selectedTreatments: TreatmentsPriceDetails[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedTreatments']) {
@@ -32,9 +32,12 @@ export class CheckoutTableComponent implements OnChanges{
   }
 
   removeTreatment(id: number): void {
-    const updatedTreatments = this.selectedTreatments.filter(treatment => treatment.id !== id);
-    this.selectedTreatments = [...updatedTreatments]; // Nuova istanza dell'array
-    this.cdRef.detectChanges(); // Forza la rilevazione dei cambiamenti
+    const index = this.selectedTreatments.findIndex(treatment => treatment.id === id);
+    if (index > -1) {
+      this.selectedTreatments.splice(index, 1); // Rimuove direttamente l'elemento
+      this.cdRef.detectChanges(); // Forza l'aggiornamento del componente
+    }
   }
+  
 
 }
