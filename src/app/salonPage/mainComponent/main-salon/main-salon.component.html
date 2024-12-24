@@ -33,7 +33,7 @@
 </div>
 
 <!-- Inizio pagina -->
-
+<div id="fullBg">
 <body>
 <main>
   <div class="container">
@@ -60,12 +60,12 @@
   <div class="circle"></div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
-</body>
 <div id="serviceAndCheckout">
-  <app-select-service (addTreatment)="addToCheckout($event)"></app-select-service>
-  <app-checkout-table [selectedTreatments]="selectedTreatments" (treatmentRemoved)="removeTreatmentFromMain($event)"></app-checkout-table>
+<app-select-service (addTreatment)="addToCheckout($event)"></app-select-service>
+<app-checkout-table [selectedTreatments]="selectedTreatments" (treatmentRemoved)="removeTreatmentFromMain($event)"></app-checkout-table>
 </div>
+
+
 <!-- Footer -->
 <footer>
     <ul class="social_icon">
@@ -81,3 +81,5 @@
     </ul>
     <p>©2024 Chris Tobojia | All Rights Reserved</p>
 </footer>
+</body>
+</div>

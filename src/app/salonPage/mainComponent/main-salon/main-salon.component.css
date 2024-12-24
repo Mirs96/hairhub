@@ -88,7 +88,6 @@ main {
   padding-inline: 2.3em;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, rgba(3,3,10,1) 7%, rgba(255,255,255,1) 100%);
   overflow: hidden;
 }
 @media screen and (min-width: 960px) {
