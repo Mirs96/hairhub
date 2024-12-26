@@ -36,10 +36,11 @@
 <div id="fullBg">
 <body>
 <main>
+  @if (salonDetails) {
   <div class="container">
   <div class="content">
-    <h2>Salon Milan</h2>
-    <p> via Cazzi 44, Roma (ROM)</p>
+    <h2>{{salonDetails.name}}</h2>
+    <p> {{salonDetails.address}}</p>
     <ul class="counter">
       <li>
         <h3><i class="fa-solid fa-book"></i>68+</h3>
@@ -52,12 +53,15 @@
     </ul>
     <button class="btn">Prenota ora<i class="fa-solid fa-arrow-right"></i></button>
   </div>
+
 </div>
+  }
   <div id="carousel">
   <app-salon-carousel></app-salon-carousel>
   </div>
   
   <div class="circle"></div>
+
 </main>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <div id="serviceAndCheckout">
