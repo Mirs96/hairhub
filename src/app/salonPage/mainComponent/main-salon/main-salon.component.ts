@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output,OnInit } from '@angular/core';
-import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -10,6 +10,9 @@ import { TreatmentsPriceDetails } from '../../../model/hometables/TreatmentsPric
 import { Swiper} from 'swiper';
 import { SwiperOptions } from 'swiper/types';
 import { SalonCarouselComponent } from "../../components/salon-carousel/salon-carousel.component";
+import { SalonDetails } from '../../../model/hometables/SalonDetails';
+import { SalonService } from '../../../model/hometables/SalonService';
+import { Observable, ObservedValueOf } from 'rxjs';
 
 @Component({
   selector: 'app-main-salon',
@@ -18,12 +21,13 @@ import { SalonCarouselComponent } from "../../components/salon-carousel/salon-ca
   styleUrl: './main-salon.component.css'
 })
 export class MainSalonComponent implements OnInit{
+   salonDetails!: SalonDetails;
    selectedTreatments: TreatmentsPriceDetails[] = [];
 
    @Output()
    addTreatment = new EventEmitter<TreatmentsPriceDetails>();
 
-  constructor(private cdRef: ChangeDetectorRef) {}
+  constructor(private cdRef: ChangeDetectorRef, private route: ActivatedRoute, private salonService: SalonService) {}
 
   addToCheckout(treatment: TreatmentsPriceDetails): void {
     // Verifica se il trattamento è già stato selezionato
@@ -51,6 +55,7 @@ export class MainSalonComponent implements OnInit{
   
   
   ngOnInit(): void {
+    //BLOCCO SWIPER
     const swiperOptions: SwiperOptions = {
       loop: true,
       pagination: {
@@ -64,6 +69,16 @@ export class MainSalonComponent implements OnInit{
     };
 
     const swiper = new Swiper('.swiper', swiperOptions);
-    }
+
+    // FINE BLOCCO SWIPER
+
+    var id = this.route.snapshot.params['id'];
+    this.salonService.getSalonById(id).subscribe({
+      next: ss => this.salonDetails = ss,
+      error: err => console.log(err)     
+    });
+
+
+  }
 
 }
