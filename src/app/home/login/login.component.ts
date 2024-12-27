@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../model/authService';
-import { MatDialogRef } from '@angular/material/dialog'; // Aggiungi questo import per chiudere il dialog
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'; // Aggiungi questo import per chiudere il dialog
 
 @Component({
   selector: 'app-login',
@@ -32,9 +32,11 @@ export class LoginComponent implements OnInit {
       next: (r) => {
         localStorage.setItem('jwtToken', r.token); // Imposta il token
         this.router.navigate(['/home']); // Vai alla home
-        this.dialogRef.close(); // Chiude il dialog
+        this.dialogRef.close({ success: true, token: r.token }); // Chiude il dialog
       },
-      error: (err) => alert('Login fallito.')
+      error: (err) => { alert('Login fallito.');
+        this.dialogRef.close({ success: false });
+      }
     }); 
   }
 

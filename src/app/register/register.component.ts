@@ -39,7 +39,8 @@ export class RegisterComponent implements OnInit{
         next: response => {
           console.log('Registrazione riuscita',response);
           localStorage.setItem('jwtToken', response.token);
-          this.router.navigate(['/login']);
+          this.router.navigate(['/home']);
+          this.dialogRef.close({ success: true, token: response.token });
         },
         error: err => {
           console.log(err);
