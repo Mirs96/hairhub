@@ -1,4 +1,11 @@
-/* Overlay che copre l'intera pagina e sfoca il contenuto */
+/* Caricare un font personalizzato (esempio: Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif; /* Imposta il font di default per il corpo */
+}
+
+/* Impostazioni base */
 .login-container {
     position: fixed;
     top: 0;
@@ -11,6 +18,8 @@
     align-items: center; /* Centrato verticalmente */
     z-index: 9999; /* Sovrascrive tutto il resto */
     overflow-y: auto;
+    opacity: 0; /* Inizialmente invisibile per l'animazione */
+    animation: fadeIn 0.5s forwards; /* Animazione di fade-in */
 }
 
 #fullBg {
@@ -19,44 +28,102 @@
 
 /* La modale di login */
 .login-container form {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.8); /* Sfondo semi-trasparente scuro */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     width: 100%;
     max-width: 400px;
     box-sizing: border-box;
-    z-index: 10000; /* La modale di login deve essere sopra l'overlay */
-}
-/* Modifica del layout e degli input della modale */
-.login-container form div {
-    margin-bottom: 15px;
+    z-index: 10000;
+    color: white; /* Colore del testo bianco per visibilità */
+    opacity: 0; /* Inizialmente invisibile */
+    transform: translateY(-30px); /* Inizialmente la modale è spostata in alto */
+    animation: slideUp 0.5s ease-out forwards; /* Animazione per lo scivolamento */
 }
 
+/* Animazione di fade-in per il container */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Animazione di scivolamento verso l'alto per la modale */
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px); /* Modale parte dall'alto */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* La modale arriva alla posizione finale */
+    }
+}
+
+/* Stili per l'etichetta */
 .login-container form label {
     display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 600; /* Peso maggiore per le etichette */
+    margin-bottom: 8px;
+    color: #fff; /* Colore del testo del label bianco */
 }
+
+/* Stili per gli input */
 .login-container form input {
-    width: 90%;
-    padding: 10px;
+    width: 100%; /* Usa tutto lo spazio disponibile */
+    padding: 12px;
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1); /* Sfondo semi-trasparente per gli input */
+    color: white; /* Colore del testo bianco per gli input */
+    box-sizing: border-box;
+    margin-bottom: 20px; /* Aggiungi più spazio tra gli input */
 }
 
+/* Modifica del pulsante */
 .login-container form button {
     width: 100%;
-    padding: 12px;
-    background-color: #4CAF50;
+    padding: 14px;
+    background-color: #3498db; /* Blu più elegante */
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     font-size: 16px;
+    font-weight: 600; /* Peso maggiore per il pulsante */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transizione dolce per il colore */
+    margin-bottom: 20px; /* Aggiungi spazio tra il pulsante di login e il bordo */
+}
+
+/* Effetto hover sul pulsante */
+.login-container form button:hover {
+    background-color: #2980b9; /* Blu più scuro al passaggio del mouse */
+}
+
+/* Aggiungi una stilizzazione per il pulsante di chiusura */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
     cursor: pointer;
 }
 
-.login-container form button:hover {
-    background-color: #45a049; /* Slightly darker green on hover */
+.close-btn:hover {
+    color: #f1c40f; /* Colore giallo per l'hover sul pulsante di chiusura */
+}
+
+/* Distanza tra login e chiudi */
+.login-container form .close-btn {
+    margin-top: -10px; /* Distanza verso l'alto */
+    margin-bottom: 20px; /* Maggiore spazio tra il pulsante di login e chiudi */
 }
