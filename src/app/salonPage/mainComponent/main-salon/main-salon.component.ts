@@ -13,10 +13,11 @@ import { SalonCarouselComponent } from "../../components/salon-carousel/salon-ca
 import { SalonDetails } from '../../../model/hometables/SalonDetails';
 import { SalonService } from '../../../model/hometables/SalonService';
 import { Observable, ObservedValueOf } from 'rxjs';
+import { SalonReviewsComponent } from "../../components/salon-reviews/salon-reviews.component";
 
 @Component({
   selector: 'app-main-salon',
-  imports: [RouterLink, RouterOutlet, RouterModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatIconModule, SalonCarouselComponent, SelectServiceComponent, CheckoutTableComponent],
+  imports: [RouterLink, RouterOutlet, RouterModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatIconModule, SalonCarouselComponent, SelectServiceComponent, CheckoutTableComponent, SalonReviewsComponent],
   templateUrl: './main-salon.component.html',
   styleUrl: './main-salon.component.css'
 })
