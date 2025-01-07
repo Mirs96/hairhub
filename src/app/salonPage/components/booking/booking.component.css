@@ -1,0 +1,20 @@
+#barberChoice{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#barberChoice label{
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 10px;
+    margin-bottom: 8px;
+    color: black;
+}
+
+#barberChoice select{
+    margin-left: 20px;
+}
+#barberChoice input{
+    margin-left: 20px;
+}

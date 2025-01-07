@@ -20,8 +20,13 @@
                 <mat-divider></mat-divider>
                 }
                 <td><strong>Total:</strong></td>
+                
         <td><strong>€{{ total }}</strong></td>
-            </mat-list>
+        </mat-list>
+        <button id="checkChoice" mat-icon-button (click)="OnClickBarber()">Scegli il barbiere</button>
+        @if(barberFlag){
+          
+        }
         </td>
     </tr>
     </table>

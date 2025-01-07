@@ -9,7 +9,7 @@ import { TreatmentsPriceDetails } from "./TreatmentsPricesDetails";
     providedIn: 'root'
 })
 export class TreatmentsPriceService {
-    urlExtension = '/treatment';
+    urlExtension = '/salon';
     constructor(private http: HttpClient){}
     getSalonsTreatmentsPrices(id:Number):Observable<TreatmentsPriceDetails[]>{
         return this.http.get<TreatmentsPriceDetails[]>(`${HttpConfig.apiUrl}${this.urlExtension}/${id}/treatments`);

@@ -31,7 +31,7 @@
         <ul>
           @if(topSalon){
             @for(salon of topSalon; track $index){
-              <li>{{salon.name}}</li>
+              <li [routerLink]="['/salons', salon.id]">{{salon.name}}</li>
             }
           }
         </ul>
@@ -47,7 +47,7 @@
         <ul>
           @if(topSalonByCut){
             @for(salon of topSalonByCut; track $index){
-              <li>{{salon.name}}</li>
+              <li [routerLink]="['/salons', salon.id]">{{salon.name}}</li>
             }
           }
         </ul>
@@ -63,7 +63,7 @@
         <ul>
           @if(topSalonByBeard){
             @for(salon of topSalonByBeard; track $index){
-              <li>{{salon.name}}</li>
+              <li [routerLink]="['/salons', salon.id]">{{salon.name}}</li>
             }
           }
         </ul>

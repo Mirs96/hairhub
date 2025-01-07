@@ -1,0 +1,252 @@
+/* Caricare un font personalizzato (esempio: Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif; /* Imposta il font di default per il corpo */
+}
+
+/* Overlay che copre l'intera pagina e sfoca il contenuto */
+.register-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Sfondo semi-trasparente scuro */
+    display: flex;
+    justify-content: center; /* Centrato orizzontalmente */
+    align-items: flex-start; /* Centrato verticalmente, ma leggermente spostato verso l'alto */
+    z-index: 9999; /* Sovrascrive tutto il resto */
+    overflow-y: auto;
+    padding-top: 50px; /* Distanza dal top per assicurare che la form non venga tagliata */
+    opacity: 0; /* Inizialmente invisibile per l'animazione */
+    animation: fadeIn 0.5s forwards; /* Animazione di fade-in */
+}
+
+#fullBg {
+    filter: blur(5px); /* Aggiungi un filtro per sfocare il resto della pagina */
+}
+
+/* La modale di registro */
+.register-container form {
+    background-color: rgba(0, 0, 0, 0.8); /* Sfondo semi-trasparente scuro */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    z-index: 10000;
+    color: rgb(17, 17, 17); /* Colore del testo bianco per visibilità */
+    opacity: 0; /* Inizialmente invisibile */
+    transform: translateY(0); /* La modale parte dal centro senza essere nascosta */
+    animation: slideUp 0.5s ease-out forwards; /* Animazione per lo scivolamento */
+}
+
+/* Animazione di fade-in per il container */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Animazione di scivolamento verso l'alto per la modale */
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* La modale parte leggermente più in basso */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* La modale arriva alla posizione finale */
+    }
+}
+
+/* Stile per ciascun gruppo di input */
+.register-container form div {
+    margin-bottom: 20px; /* Aggiungi spazio tra i gruppi di input */
+}
+
+/* Stile per le etichette */
+.register-container form label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600; /* Peso maggiore per le etichette */
+    margin-bottom: 8px;
+    color: #fff; /* Colore del testo del label bianco */
+}
+
+/* Stile per gli input */
+.register-container form input[type="text"],
+.register-container form input[type="date"],
+.register-container form input[type="email"],
+.register-container form input[type="password"],
+.register-container form select {
+    width: 100%; /* Usa tutto lo spazio disponibile */
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1); /* Sfondo semi-trasparente per gli input */
+    color: rgb(110, 114, 106); /* Colore del testo bianco per gli input */
+    box-sizing: border-box;
+}
+
+/* Aggiungi un po' di stile sugli input al focus */
+.register-container form input[type="text"]:focus,
+.register-container form input[type="date"]:focus,
+.register-container form input[type="email"]:focus,
+.register-container form input[type="password"]:focus,
+.register-container form select:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Modifica del pulsante */
+.register-container form button {
+    width: 100%;
+    padding: 14px;
+    background-color: #3498db; /* Blu più elegante */
+    color: white;
+    font-size: 16px;
+    font-weight: 600; /* Peso maggiore per il pulsante */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transizione dolce per il colore */
+    margin-top: 20px; /* Aggiungi spazio sopra al pulsante */
+}
+
+/* Effetto hover sul pulsante */
+.register-container form button:hover {
+    background-color: #2980b9; /* Blu più scuro al passaggio del mouse */
+}
+
+/* Disabilita il pulsante quando il form non è valido */
+.register-container form button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+/* Aggiungi spaziatura tra gli input e il pulsante */
+.register-container form div:last-child {
+    margin-top: 0px;
+}
+
+/* Aggiungi una stilizzazione per il pulsante di chiusura */
+.register-container form .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.register-container form .close-btn:hover {
+    color: #f1c40f; /* Colore giallo per l'hover sul pulsante di chiusura */
+}
+
+/* Stile per il layout del form su schermi piccoli */
+@media (max-width: 600px) {
+    .register-container form {
+        padding: 15px;
+    }
+
+    .register-container form input[type="text"],
+    .register-container form input[type="date"],
+    .register-container form input[type="email"],
+    .register-container form input[type="password"],
+    .register-container form select {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .register-container form button {
+        font-size: 14px;
+    }
+     
+  
+/* Stile per gli input */
+.register-container form input {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Stile per i bottoni */
+.register-container form button {
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Effetto hover per il pulsante */
+.register-container form button:hover {
+    background-color: #45a049;
+}
+
+/* Disabilita il pulsante quando il form non è valido */
+.register-container form button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+/* Aggiungi spaziatura tra gli input e il pulsante */
+.register-container form div:last-child {
+    margin-top: 0px;
+}
+/* Stili specifici per il select e le sue option */
+.register-container form select {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.9); /* Sfondo quasi bianco */
+  color: #333; /* Colore del testo grigio scuro per le opzioni */
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+ 
+}
+
+/* Colore delle opzioni (non solo il select) */
+.register-container form select option {
+  background-color: #fff; /* Sfondo bianco per le opzioni */
+  color: #333; /* Colore del testo grigio scuro */
+}
+
+/* Colore per l'opzione selezionata */
+.register-container form select option:checked {
+  background-color: #e0e0e0; /* Sfondo più chiaro per l'opzione selezionata */
+  color: #000; /* Colore del testo scuro per l'opzione selezionata */
+}
+
+/* Colore al passaggio del mouse sopra un'opzione */
+.register-container form select option:hover {
+  background-color: #f0f0f0; /* Sfondo grigio chiaro */
+  color: #000; /* Colore del testo nero */
+}
+
+/* Assicurati che il testo dentro il select non venga sovrascritto */
+.register-container form select, 
+.register-container form select option {
+  color: #111010 !important; /* Aggiungi !important per forzare il colore */
+}
+
+}

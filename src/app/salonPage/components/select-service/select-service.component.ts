@@ -17,7 +17,8 @@ import { TreatmentsPriceDetails } from '../../../model/hometables/TreatmentsPric
 export class SelectServiceComponent implements OnInit { 
     salonsPricesAndTreatments!: TreatmentsPriceDetails[];
     selectedTreatments: TreatmentsPriceDetails[] = [];
-    @Output() addTreatment = new EventEmitter<TreatmentsPriceDetails>();
+    
+    
 
     constructor(private treatmentsPricesService : TreatmentsPriceService, private route: ActivatedRoute,private cdr: ChangeDetectorRef){};
 
@@ -31,9 +32,11 @@ export class SelectServiceComponent implements OnInit {
     
   }
 
+  @Output()
+   addTreatment = new EventEmitter<TreatmentsPriceDetails>();
+
   addToCheckout(treatment: TreatmentsPriceDetails) {
-    this.selectedTreatments.push(treatment);
-    this.addTreatment.emit(treatment);  // Emette il trattamento selezionato
+      this.addTreatment.emit(treatment); // Emette l'evento solo per i nuovi trattamenti
   }
 
 }
