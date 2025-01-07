@@ -11,6 +11,6 @@ export class ReviewsService{
     urlExtension = '/review';
     constructor(private http: HttpClient){}
         getReviewsByAppointment(id:Number):Observable<ReviewsDetail[]>{
-            return this.http.get<ReviewsDetail[]>(`${HttpConfig.apiUrl}${this.urlExtension}/${id}/review`);
+            return this.http.get<ReviewsDetail[]>(`${HttpConfig.apiUrl}${this.urlExtension}/${id}/reviews`);
         }
 }
