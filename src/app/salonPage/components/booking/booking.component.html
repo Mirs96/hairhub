@@ -1,7 +1,7 @@
 <div id="barberChoice">
     <form (ngSubmit)="onBarberSelected()">>
         <label for="barbers">Barbiere</label>
-        <select name="barbers" id="barbers" (change)="onBarberSelected($event.target.value)">
+        <select name="barbers" id="barbers" (change)="onBarberSelected(barberId)">
         @if (barbers) {
             @for(barber of barbers; track barber.id) {
                 <option value="{{barber.id}}">{{barber.name}}</option>
