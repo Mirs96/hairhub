@@ -34,24 +34,26 @@
             }
         }
     </mat-select>
+    <div id="calendar">
+        <mat-form-field>
+            <mat-label>Meeting date</mat-label>
+            <input matInput [matDatepicker]="datepicker" [(ngModel)]="value">
+            <mat-datepicker-toggle matSuffix [for]="datepicker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker [dateClass]="isDateAvailable" #datepicker></mat-datepicker>
+            
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>Meeting time</mat-label>
+            <input matInput
+              [matTimepicker]="timepicker"
+              [(ngModel)]="value"
+              [ngModelOptions]="{updateOn: 'blur'}">
+            <mat-timepicker #timepicker/>
+            <mat-timepicker-toggle [for]="timepicker" matSuffix/>
+          </mat-form-field>
+    </div>
 </mat-form-field>
 
-<div id="calendar">
-    <mat-form-field>
-        <mat-label>Meeting date</mat-label>
-        <input matInput [matDatepicker]="datepicker" [(ngModel)]="value">
-        <mat-datepicker #datepicker/>
-        <mat-datepicker-toggle [for]="datepicker" matSuffix/>
-      </mat-form-field>
-      
-      <mat-form-field>
-        <mat-label>Meeting time</mat-label>
-        <input matInput
-          [matTimepicker]="timepicker"
-          [(ngModel)]="value"
-          [ngModelOptions]="{updateOn: 'blur'}">
-        <mat-timepicker #timepicker/>
-        <mat-timepicker-toggle [for]="timepicker" matSuffix/>
-      </mat-form-field>
-</div>
+
 

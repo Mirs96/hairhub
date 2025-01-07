@@ -18,3 +18,7 @@
 #barberChoice input{
     margin-left: 20px;
 }
+.mat-calendar-body-cell-disabled {
+    pointer-events: none; /* Disabilita l'interazione con la cella */
+    color: gray; /* Cambia il colore per le date disabilitate */
+}
