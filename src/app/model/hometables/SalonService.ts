@@ -3,7 +3,7 @@ import { SalonDetails } from "./SalonDetails";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { HttpConfig } from "../../config/http-config";
-import { BarberDetails } from "./BarberDetails";
+import { BarberDetails } from "./barberDetails";
 
 @Injectable({
     providedIn: 'root'
