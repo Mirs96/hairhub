@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpConfig } from '../../config/http-config';
-import { AppointmentDto } from '../hometables/appointmentDto';
+import { AppointmentDto } from '../hometables/AppointmentDto';
 
 @Injectable({
   providedIn: 'root'
