@@ -18,6 +18,7 @@ export class SelectServiceComponent implements OnInit {
     salonsPricesAndTreatments!: TreatmentsPriceDetails[];
     selectedTreatments: TreatmentsPriceDetails[] = [];
     
+    
 
     constructor(private treatmentsPricesService : TreatmentsPriceService, private route: ActivatedRoute,private cdr: ChangeDetectorRef){};
 

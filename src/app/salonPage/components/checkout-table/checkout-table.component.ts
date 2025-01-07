@@ -25,7 +25,7 @@ export class CheckoutTableComponent implements OnChanges{
   constructor(private cdRef: ChangeDetectorRef, private dialog: MatDialog, private route: ActivatedRoute) {}
 
   @Input() 
-  selectedTreatments!: TreatmentsPriceDetails[];
+  selectedTreatments!: TreatmentsPriceDetails[] ;
   @Output()
    treatmentRemoved = new EventEmitter<TreatmentsPriceDetails>();
 
@@ -52,7 +52,7 @@ export class CheckoutTableComponent implements OnChanges{
     const dialogRef = this.dialog.open(BookingComponent, {
             width: '800px',
             height: '600px',
-            data: { id: this.route.snapshot.paramMap.get("id") }
+            data: { id: this.route.snapshot.paramMap.get("id"),selectedTreatments: this.selectedTreatments }
         });
 
         dialogRef.afterClosed().subscribe(result => {

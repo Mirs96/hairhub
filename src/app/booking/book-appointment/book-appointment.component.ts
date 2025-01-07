@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from '../../model/bookingAppointment/appointment.service';
 import { SalonService } from '../../model/hometables/SalonService';
-import { BarberDetails } from '../../model/hometables/barberDetails';
+import { BarberDetails } from '../../model/hometables/BarberDetails';
 import { AvailableDates } from '../../model/bookingAppointment/availableDates';
 import { ActivatedRoute } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-book-appointment',
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './book-appointment.component.html',
   styleUrl: './book-appointment.component.css'
 })
@@ -18,6 +19,7 @@ export class BookAppointmentComponent implements OnInit {
   barberId!: number;
   bookingMonths!: number;
   numberOfTreatments!: number;
+  
 
 
   constructor(private appointmentService: AppointmentService, private salonService: SalonService, private route: ActivatedRoute){}
