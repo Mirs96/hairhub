@@ -1,4 +1,4 @@
 export interface BarberDetails{
-    id:number;
+    id: number;
     name: string;
 }
