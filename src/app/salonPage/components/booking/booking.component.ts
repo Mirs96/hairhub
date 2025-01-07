@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
-import { BarberDetails } from '../../../model/hometables/BarberDetails';
+import { BarberDetails } from '../../../model/hometables/barberDetails';
 import { SalonService } from '../../../model/hometables/SalonService';
 import { ActivatedRoute } from '@angular/router';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
