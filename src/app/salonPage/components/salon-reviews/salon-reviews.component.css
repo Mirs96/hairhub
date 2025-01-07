@@ -1,0 +1,30 @@
+.card {
+    border: 1px solid #ccc; /* Bordi sottili e grigi */
+    border-radius: 8px; /* Angoli arrotondati */
+    padding: 16px; /* Spaziatura interna */
+    margin-left: 10%;
+    width: 300px; /* Larghezza della card */
+    height: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    background-color: rgba(255, 255, 255, 0); /* Colore di sfondo bianco */
+  }
+  
+  .card-content h2 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  
+  .card-content p {
+    font-size: 1rem;
+    color: #555;
+  }
+
+  #container {
+    display: flex;
+    gap: 20px; /* Distanza tra i due div */
+  }
+
+  h1{
+    margin-left: 10%;
+    font-size: 25px;
+  }

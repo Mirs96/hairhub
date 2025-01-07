@@ -1,14 +1,30 @@
-<div id="reviews">   
-    <h1>Recensioni salone</h1>
-</div>
-<div id="filterReviews">
-    <mat-grid-list cols="4" rowHeight="100px">
-        @for (tile of tiles; track tile) {
-          <mat-grid-tile
-            [colspan]="tile.cols"
-            [rowspan]="tile.rows"
-            [style.background]="tile.color"
-            >{{tile.text}}</mat-grid-tile>
-        }
-      </mat-grid-list>
+<h1>Recensioni salone</h1>
+<div id="container">
+    <div class="card">
+        <div class="card-content">
+            <h2>Filtra per valutazione</h2>
+            <p></p>
+        </div>
+    </div>
+    <div class="reviews">
+        <div id="tabella">
+            <h2></h2>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <td colspan="2">
+                        <!-- Classe custom per divider -->
+                        <mat-list class="custom-divider">
+                            <mat-list-item>
+                                <div class="list-item">
+                                    <span class="treatment"></span>
+                                    <span class="price"></span>
+                                </div>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                        </mat-list>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
