@@ -16,6 +16,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SalonReviewsComponent implements OnInit {
     salonsReviews!: ReviewsDetail[];
+    filteredReviews!: ReviewsDetail[];
+    stars: number[] = [1, 2, 3, 4, 5];
+    selectedRating: number = 0;
 
     constructor(private reviewsService : ReviewsService,private route: ActivatedRoute){}
 
@@ -26,4 +29,23 @@ export class SalonReviewsComponent implements OnInit {
             error: err => console.log(err),
         });
     }
+
+    calculateDaysDifference(dateString: string): number {
+      const inputDate = new Date(dateString);
+      const currentDate = new Date();
+      const differenceInMilliseconds = currentDate.getTime() - inputDate.getTime();
+      const millisecondsPerDay = 1000 * 60 * 60 * 24;
+      return Math.floor(differenceInMilliseconds / millisecondsPerDay);
+    }
+
+    filterByRating(rating: number) {
+      this.selectedRating = rating;
+      if (rating === 0) {
+          this.filteredReviews = this.salonsReviews; // Mostra tutte le recensioni se la valutazione è 0
+      } else {
+          this.filteredReviews = this.salonsReviews.filter(review => review.rating === rating);
+      }
+  }
+
 }
+

@@ -28,3 +28,17 @@
     margin-left: 10%;
     font-size: 25px;
   }
+
+  .rating {
+    display: inline-block;
+  }
+  
+  .star {
+    font-size: 24px;
+    color: #d3d3d3; /* Grigio chiaro per le stelle non riempite */
+  }
+  
+  .star.filled {
+    color: #08162a; /* Giallo per le stelle riempite */
+  }
+  

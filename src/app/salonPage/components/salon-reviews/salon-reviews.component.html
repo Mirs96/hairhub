@@ -1,9 +1,20 @@
-<h1>Recensioni salone</h1>
 <div id="container">
     <div class="card">
         <div class="card-content">
             <h2>Filtra per valutazione</h2>
-            <p></p>
+            <p>Seleziona una valutazione da 1 a 5</p>
+            <div class="rating-filter">
+                <!-- Filtrare per valutazione -->
+                @for (star of stars; track $index) {
+                    <span class="star" [class.filled]="star <= selectedRating" (click)="filterByRating(star)">
+                        &#9733;
+                    </span>
+                }
+                <!-- Opzione per rimuovere il filtro -->
+                <span class="star" [class.filled]="selectedRating === 0" (click)="filterByRating(0)">
+                    TUTTE
+                </span>
+            </div>
         </div>
     </div>
     <div class="reviews">
@@ -17,8 +28,14 @@
                             @for(reviews of salonsReviews; track reviews.id) {   
                             <mat-list-item>
                                 <div class="list-item">
-                                    <span class="treatment"></span>
-                                    <span class="price"></span>
+                                    <div class="rating">
+                                        @for (star of stars; track $index) {
+                                            <span class="star" [class.filled]="star <= reviews.rating">&#9733;</span>
+                                          }
+                                      </div>  
+                                    <span class="treatment">{{reviews.comment}}</span>
+                                    <br>
+                                    <span class="price">{{ calculateDaysDifference(reviews.date) }} giorni fa</span>
                                 </div>
                             </mat-list-item>
                             <mat-divider></mat-divider>
