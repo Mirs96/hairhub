@@ -22,8 +22,11 @@
                 <td><strong>Total:</strong></td>
                 
         <td><strong>€{{ total }}</strong></td>
-        <button id="checkChoice" mat-icon-button>Scegli il barbiere</button>
-            </mat-list>
+        </mat-list>
+        <button id="checkChoice" mat-icon-button (click)="OnClickBarber()">Scegli il barbiere</button>
+        @if(barberFlag){
+          
+        }
         </td>
     </tr>
     </table>

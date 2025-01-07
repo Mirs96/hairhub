@@ -3,6 +3,7 @@ import { SalonDetails } from "./SalonDetails";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { HttpConfig } from "../../config/http-config";
+import { BarberDetails } from "./BarberDetails";
 
 @Injectable({
     providedIn: 'root'
@@ -28,4 +29,7 @@ export class SalonService {
     getSalonById(id: number):Observable<SalonDetails>{
         return this.http.get<SalonDetails>(`${HttpConfig.apiUrl}${this.urlExtension}/${id}`);
     }  
+    getBarbersBySalonId(id: number):Observable<BarberDetails[]>{
+        return this.http.get<BarberDetails[]>(`${HttpConfig.apiUrl}${this.urlExtension}/${id}/barbers`);
+    }
 }

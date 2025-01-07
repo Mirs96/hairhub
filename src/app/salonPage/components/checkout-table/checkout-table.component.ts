@@ -7,17 +7,22 @@ import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { LoginComponent } from '../../../home/login/login.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { BookingComponent } from '../booking/booking.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-checkout-table',
-  imports: [CdkDrag,MatListModule, MatDividerModule,MatIcon,CommonModule],
+  imports: [CdkDrag,MatListModule, MatDividerModule,MatIcon,CommonModule, MatDialogModule],
   templateUrl: './checkout-table.component.html',
   styleUrl: './checkout-table.component.css',
 })
 export class CheckoutTableComponent implements OnChanges{
+  barberFlag: boolean = false;
 
 
-  constructor(private cdRef: ChangeDetectorRef) {}
+  constructor(private cdRef: ChangeDetectorRef, private dialog: MatDialog, private route: ActivatedRoute) {}
 
   @Input() 
   selectedTreatments!: TreatmentsPriceDetails[];
@@ -41,5 +46,21 @@ export class CheckoutTableComponent implements OnChanges{
       this.treatmentRemoved.emit(removedTreatment); // Emette l'evento con il trattamento rimosso
       this.cdRef.detectChanges(); // Forza l'aggiornamento del componente
     }
+  }
+
+  OnClickBarber(){
+    const dialogRef = this.dialog.open(BookingComponent, {
+            width: '800px',
+            height: '600px',
+            data: { id: this.route.snapshot.paramMap.get("id") }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('Dialogo chiuso', result);
+
+            if (result && result.success) {
+              console.log('Prenotazione effettuata');
+            }
+        });
   }
 }
