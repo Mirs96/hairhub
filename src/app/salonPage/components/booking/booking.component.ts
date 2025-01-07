@@ -11,12 +11,19 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { AvailableDates } from '../../../model/bookingAppointment/availableDates';
 import { AppointmentService } from '../../../model/bookingAppointment/appointment.service';
 import { TreatmentsPriceDetails } from '../../../model/hometables/TreatmentsPricesDetails';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import {MatTimepickerModule} from '@angular/material/timepicker';
+import {FormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+
+
 
 
 @Component({
   selector: 'app-booking',
   providers: [provideNativeDateAdapter()],
-  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, MatDatepickerModule],
+  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, MatDatepickerModule,  ReactiveFormsModule, MatTimepickerModule, FormsModule, MatSelectModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css'
@@ -31,8 +38,15 @@ barberId: number | null = null;
 bookingMonths = 1;
 selectedTreatments!: TreatmentsPriceDetails[];
 selectedDate!: Date;
+bookingForm: FormGroup;
+barberChoice!: number;
+value!: Date;
 
-constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number, selectedTreatments: TreatmentsPriceDetails[]}, private salonService: SalonService, private route: ActivatedRoute, private appointmentService: AppointmentService){}
+constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number, selectedTreatments: TreatmentsPriceDetails[]}, private salonService: SalonService, private route: ActivatedRoute, private appointmentService: AppointmentService, private fb: FormBuilder){
+  this.bookingForm = this.fb.group({
+    barberId: ['']
+  });
+}
 
   ngOnInit(): void {
     if(this.data && this.data.selectedTreatments){
@@ -97,6 +111,11 @@ constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number, selectedTreatmen
   onSubmitBarberSelection(): void {
     console.log('Barbiere selezionato:', this.barberId);
     console.log('Data selezionata:', this.selectedDate);
+  }
+
+  onSubmit(){
+    this.barberChoice = this.bookingForm.value.barberId;
+    console.log(this.barberChoice);
   }
  
 }
