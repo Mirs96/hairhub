@@ -25,34 +25,41 @@
         <button type="submit"> Invia </button>
     </form>
 </div> -->
-<mat-form-field [formGroup]="bookingForm" (ngSubmit)="onSubmit()" >
+<mat-form-field [formGroup]="bookingForm" >
     <mat-label>Barbiere</mat-label>
     <mat-select name="barbers" id="barbers" formControlName="barberId">
-        @if (barbers) {
             @for(barber of barbers; track barber.id) {
                 <mat-option value="{{barber.id}}">{{barber.name}}</mat-option>
             }
-        }
+    
     </mat-select>
     <div id="calendar">
         <mat-form-field>
-            <mat-label>Meeting date</mat-label>
-            <input matInput [matDatepicker]="datepicker" [(ngModel)]="value">
-            <mat-datepicker-toggle matSuffix [for]="datepicker" matSuffix></mat-datepicker-toggle>
-            <mat-datepicker [dateClass]="isDateAvailable" #datepicker></mat-datepicker>
-            
-          </mat-form-field>
-          
+          <mat-label>Meeting date</mat-label>
+          <input matInput [matDatepicker]="datepicker" [(ngModel)]="value" [matDatepickerFilter]="isDateAvailable"  (dateChange)="onDateSelected($event)">
+          <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+          <mat-datepicker #datepicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <form [formGroup]="bookingForm">
           <mat-form-field>
-            <mat-label>Meeting time</mat-label>
-            <input matInput
-              [matTimepicker]="timepicker"
-              [(ngModel)]="value"
-              [ngModelOptions]="{updateOn: 'blur'}">
-            <mat-timepicker #timepicker/>
-            <mat-timepicker-toggle [for]="timepicker" matSuffix/>
+            <mat-label>Orario</mat-label>
+            <mat-select formControlName="time" required>
+                @if (timeOptions.length > 0) {
+                @for (timeOption of timeOptions; track timeOption.value) {
+                  <mat-option [value]="timeOption.value">
+                    {{ timeOption.viewValue }}
+                  </mat-option>
+                }
+            }@else {
+                <mat-option disabled>Nessun orario disponibile</mat-option>
+            }
+            </mat-select>
           </mat-form-field>
-    </div>
+        
+        </form>
+     </div>
 </mat-form-field>
 
 
