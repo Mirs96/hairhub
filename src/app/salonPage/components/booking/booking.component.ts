@@ -20,13 +20,13 @@ import moment from 'moment-timezone';
 import { MatMenu } from '@angular/material/menu';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { FormControl} from '@angular/forms';
 
 
 @Component({
   selector: 'app-booking',
   providers: [provideNativeDateAdapter()],
-  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, ReactiveFormsModule, MatTimepickerModule, FormsModule, MatSelectModule,MatMenu,MatMenuModule,MatInputModule,MatButtonModule],
+  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, ReactiveFormsModule, MatTimepickerModule, FormsModule, MatSelectModule,MatMenuModule,MatInputModule,MatButtonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css'
@@ -107,30 +107,37 @@ export class BookingComponent implements OnInit {
   }
 
   fetchAvailableTimes(barberId: number, date: Date): void {
-    
-
     console.log("Data", date);
-    if(barberId && date) {
-      
-      const localDate = moment(date).tz("Europe/Rome",true).startOf('day'); // Imposta l'ora a mezzanotte
+    if (barberId && date) {
+      const localDate = moment(date).tz("Europe/Rome", true).startOf('day');
       const dateString = localDate.format("YYYY-MM-DD");
-      console.log("Data locale (formattata)", dateString); 
-      this.appointmentService.getAvailableTimes(barberId,dateString,this.bookingMonths).subscribe({
+      console.log("Data locale (formattata)", dateString);
+  
+      this.appointmentService.getAvailableTimes(barberId, dateString, this.bookingMonths).subscribe({
         next: (times) => {
           console.log("Orari Disponibili", times);
+  
+          // Ensure `times` is an array before mapping
+          if (!Array.isArray(times)) {
+            console.error("Unexpected data format from getAvailableTimes. Expected an array of times.");
+            return; // Exit early if the data format is unexpected
+          }
+  
           this.availableTimes = times;
-           // Mappa gli orari per il mat-select
-        this.timeOptions = this.availableTimes.map(time => ({ value: time, viewValue: time }));
-        this.bookingForm.get('time')?.enable(); // Abilita il campo orario
+  
+          // Map times to timeOptions object with value and viewValue
+          this.timeOptions = times.map(time => ({ value: time, viewValue: time }));
+          console.log("timeOptions", this.timeOptions);
+  
+          this.bookingForm.get('time')?.enable(); // Enable the time field only after successful mapping
         },
         error: (err) => {
-          console.log("Errore durante il recupero degli orari disponibili",err);
+          console.log("Errore durante il recupero degli orari disponibili", err);
         }
       });
-    } else{
+    } else {
       console.log("Data o Barbiere non validi");
-    }
-
+    } // Missing closing curly brace added here
   }
 
   isDateAvailable = (date: Date | null): boolean => {

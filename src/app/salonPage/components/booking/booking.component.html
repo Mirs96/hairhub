@@ -36,13 +36,12 @@
     <div id="calendar">
         <mat-form-field>
           <mat-label>Meeting date</mat-label>
-          <input matInput [matDatepicker]="datepicker" [(ngModel)]="value" [matDatepickerFilter]="isDateAvailable"  (dateChange)="onDateSelected($event)">
+          <input matInput [matDatepicker]="datepicker" [formControlName]="selectedDate" [matDatepickerFilter]="isDateAvailable" (dateChange)="onDateSelected($event)">
           <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
           <mat-datepicker #datepicker></mat-datepicker>
         </mat-form-field>
       </div>
       <div>
-        <form [formGroup]="bookingForm">
           <mat-form-field>
             <mat-label>Orario</mat-label>
             <mat-select formControlName="time" required>
@@ -57,8 +56,6 @@
             }
             </mat-select>
           </mat-form-field>
-        
-        </form>
      </div>
 </mat-form-field>
 
