@@ -16,11 +16,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTimepickerModule } from '@angular/material/timepicker';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-import moment from 'moment-timezone';
 import { MatMenu } from '@angular/material/menu';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-
+import  moment  from 'moment-timezone';
 
 
 @Component({
@@ -117,11 +116,13 @@ export class BookingComponent implements OnInit {
       console.log("Data locale (formattata)", dateString); 
       this.appointmentService.getAvailableTimes(barberId,dateString,this.bookingMonths).subscribe({
         next: (times) => {
-          console.log("Orari Disponibili", times);
-          this.availableTimes = times;
+          console.log("Orari Disponibili", times, typeof times);
+          const timesArray = times.times || []; // Sostituisci 'times' con la chiave corretta
+          this.availableTimes = Array.isArray(timesArray) ? timesArray : [];
+          //this.availableTimes = times;
            // Mappa gli orari per il mat-select
-        this.timeOptions = this.availableTimes.map(time => ({ value: time, viewValue: time }));
-        this.bookingForm.get('time')?.enable(); // Abilita il campo orario
+          this.timeOptions = this.availableTimes.map(time => ({ value: time, viewValue: time }) );
+          this.bookingForm.get('time')?.enable(); // Abilita il campo orario
         },
         error: (err) => {
           console.log("Errore durante il recupero degli orari disponibili",err);
