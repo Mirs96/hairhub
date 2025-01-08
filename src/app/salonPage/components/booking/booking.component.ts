@@ -6,24 +6,27 @@ import { ActivatedRoute } from '@angular/router';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { AvailableDates } from '../../../model/bookingAppointment/availableDates';
 import { AppointmentService } from '../../../model/bookingAppointment/appointment.service';
 import { TreatmentsPriceDetails } from '../../../model/hometables/TreatmentsPricesDetails';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTimepickerModule } from '@angular/material/timepicker';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-
+import moment from 'moment-timezone';
+import { MatMenu } from '@angular/material/menu';
+import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
 @Component({
   selector: 'app-booking',
   providers: [provideNativeDateAdapter()],
-  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, ReactiveFormsModule, MatTimepickerModule, FormsModule, MatSelectModule],
+  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, ReactiveFormsModule, MatTimepickerModule, FormsModule, MatSelectModule,MatMenu,MatMenuModule,MatInputModule,MatButtonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css'
@@ -32,7 +35,6 @@ export class BookingComponent implements OnInit {
   barbers!: BarberDetails[];
   barber!: BarberDetails;
   id!: number;
-  dates!: Date[];
   salonId!: number;
   barberId!: number;
   bookingMonths = 1;
@@ -40,14 +42,16 @@ export class BookingComponent implements OnInit {
   selectedDate!: Date;
   bookingForm: FormGroup;
   barberChoice!: number;
-  value!: Date;
+  value!: string;
   availableDates!: Date[];
+  availableTimes: string[] = [];
+  timeOptions: { value: string, viewValue: string }[] = []; // Array per le opzioni del select
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number, selectedTreatments: TreatmentsPriceDetails[] }, private salonService: SalonService, private route: ActivatedRoute, private appointmentService: AppointmentService, private fb: FormBuilder) {
     this.bookingForm = this.fb.group({
       barberId: [''],
       date: [''],
-      time: ['']
+      time: ['',Validators.required]
     });
   }
 
@@ -83,13 +87,13 @@ export class BookingComponent implements OnInit {
         next: (response) => {
           console.log('Risposta API:', response);
           if (response && response.dates) {
-            this.dates = response.dates.map((dateString: string) => {
+            this.availableDates = response.dates.map((dateString: string) => {
               // Converti ogni stringa di data in un oggetto Date
               console.log(dateString);
               return new Date(dateString);
 
             });
-            console.log('Date disponibili:', this.dates);
+            console.log('Date disponibili:', this.availableDates);
           } else {
             console.log('Nessuna data disponibile');
           }
@@ -103,17 +107,52 @@ export class BookingComponent implements OnInit {
   }
 
   fetchAvailableTimes(barberId: number, date: Date): void {
+    
+
     console.log("Data", date);
+    if(barberId && date) {
+      
+      const localDate = moment(date).tz("Europe/Rome",true).startOf('day'); // Imposta l'ora a mezzanotte
+      const dateString = localDate.format("YYYY-MM-DD");
+      console.log("Data locale (formattata)", dateString); 
+      this.appointmentService.getAvailableTimes(barberId,dateString,this.bookingMonths).subscribe({
+        next: (times) => {
+          console.log("Orari Disponibili", times);
+          this.availableTimes = times;
+           // Mappa gli orari per il mat-select
+        this.timeOptions = this.availableTimes.map(time => ({ value: time, viewValue: time }));
+        this.bookingForm.get('time')?.enable(); // Abilita il campo orario
+        },
+        error: (err) => {
+          console.log("Errore durante il recupero degli orari disponibili",err);
+        }
+      });
+    } else{
+      console.log("Data o Barbiere non validi");
+    }
 
   }
 
-  isDateAvailable = (date: Date): string => {
+  isDateAvailable = (date: Date | null): boolean => {
+    if (!date || !this.availableDates || this.availableDates.length === 0) {
+      return false;
+    }
+  
     const isAvailable = this.availableDates.some(availableDate => {
+      if(typeof availableDate === 'string'){
+        availableDate = new Date(availableDate);
+      }
+
+      if(!(availableDate instanceof Date) || isNaN(availableDate.getTime())) {
+        console.error('availableDate non è un oggetto Date valido:', availableDate);
+        return false;
+      }
+      
       return availableDate.getFullYear() === date.getFullYear() &&
-             availableDate.getMonth() === date.getMonth() &&
+              availableDate.getMonth() === date.getMonth() &&
              availableDate.getDate() === date.getDate();
     });
-    return isAvailable ? '' : 'mat-calendar-body-cell-disabled';
+    return isAvailable;
   }
 
   onSubmitBarberSelection(): void {
@@ -121,10 +160,15 @@ export class BookingComponent implements OnInit {
     console.log('Data selezionata:', this.selectedDate);
   }
 
-  onDateSelected(date: Date): void {
+  onDateSelected(event: MatDatepickerInputEvent<Date>): void {
+    const date = event.value;
+    if(date){
     this.selectedDate = date;
     this.fetchAvailableTimes(this.barberId, date);
     console.log('Data selezionata:', date);
+    } else{
+      console.log("Data non valida");
+    }
   }
 
   onSubmit() {
