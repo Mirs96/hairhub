@@ -16,10 +16,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTimepickerModule } from '@angular/material/timepicker';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-import moment from 'moment-timezone';
 import { MatMenu } from '@angular/material/menu';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import  moment  from 'moment-timezone';
 import { FormControl} from '@angular/forms';
 
 
@@ -115,21 +115,13 @@ export class BookingComponent implements OnInit {
   
       this.appointmentService.getAvailableTimes(barberId, dateString, this.bookingMonths).subscribe({
         next: (times) => {
-          console.log("Orari Disponibili", times);
-  
-          // Ensure `times` is an array before mapping
-          if (!Array.isArray(times)) {
-            console.error("Unexpected data format from getAvailableTimes. Expected an array of times.");
-            return; // Exit early if the data format is unexpected
-          }
-  
-          this.availableTimes = times;
-  
-          // Map times to timeOptions object with value and viewValue
-          this.timeOptions = times.map(time => ({ value: time, viewValue: time }));
-          console.log("timeOptions", this.timeOptions);
-  
-          this.bookingForm.get('time')?.enable(); // Enable the time field only after successful mapping
+          console.log("Orari Disponibili", times, typeof times);
+          const timesArray = times.times || []; // Sostituisci 'times' con la chiave corretta
+          this.availableTimes = Array.isArray(timesArray) ? timesArray : [];
+          //this.availableTimes = times;
+           // Mappa gli orari per il mat-select
+          this.timeOptions = this.availableTimes.map(time => ({ value: time, viewValue: time }) );
+          this.bookingForm.get('time')?.enable(); // Abilita il campo orario
         },
         error: (err) => {
           console.log("Errore durante il recupero degli orari disponibili", err);
