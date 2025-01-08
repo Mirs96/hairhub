@@ -18,7 +18,7 @@ export class AppointmentService {
     .set('bookingMonths', bookingMonths)
     .set('numberOfTreatments', numberOfTreatments);
   
-  return this.http.get(`${HttpConfig.apiUrl}/${this.urlExtension}/${barberId}/available-dates`, { params });
+  return this.http.get(`${HttpConfig.apiUrl}${this.urlExtension}/${barberId}/available-dates`, { params });
 }
 
 getAvailableTimes(barberId: number, date: string, numberOfTreatments: number): Observable<any> {
