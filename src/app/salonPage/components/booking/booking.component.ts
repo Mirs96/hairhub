@@ -40,7 +40,7 @@ export class BookingComponent implements OnInit {
   bookingMonths = 1;
   selectedTreatments!: TreatmentsPriceDetails[];
   selectedDate!: Date;
-  bookingForm: FormGroup;
+  bookingForm!: FormGroup;
   barberChoice!: number;
   value!: string;
   availableDates!: Date[];
@@ -51,7 +51,8 @@ export class BookingComponent implements OnInit {
     this.bookingForm = this.fb.group({
       barberId: [''],
       date: [''],
-      time: ['',Validators.required]
+      time: ['',Validators.required],
+      treatmentSummary:['']
     });
   }
 
@@ -116,8 +117,7 @@ export class BookingComponent implements OnInit {
       this.appointmentService.getAvailableTimes(barberId, dateString, this.bookingMonths).subscribe({
         next: (times) => {
           console.log("Orari Disponibili", times, typeof times);
-          const timesArray = times.times || []; // Sostituisci 'times' con la chiave corretta
-          this.availableTimes = Array.isArray(timesArray) ? timesArray : [];
+          this.availableTimes = times.times;
           //this.availableTimes = times;
            // Mappa gli orari per il mat-select
           this.timeOptions = this.availableTimes.map(time => ({ value: time, viewValue: time }) );
@@ -173,7 +173,16 @@ export class BookingComponent implements OnInit {
   onSubmit() {
     this.barberChoice = this.bookingForm.value.barberId;
     console.log(this.barberChoice);
+    const treatmentDtos = this.selectedTreatments.map(treatment => ({
+      id: treatment.id,
+      name: treatment.name,
+      price: treatment.price
+    }));
   }
 
+  get total(): number {
+    return this.selectedTreatments.reduce((sum, treatment) => sum + treatment.price, 0);
+    
+  }
 }
 
