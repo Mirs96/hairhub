@@ -41,6 +41,7 @@ export class BookingComponent implements OnInit {
   bookingForm: FormGroup;
   barberChoice!: number;
   value!: Date;
+  availableDates!: Date[];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number, selectedTreatments: TreatmentsPriceDetails[] }, private salonService: SalonService, private route: ActivatedRoute, private appointmentService: AppointmentService, private fb: FormBuilder) {
     this.bookingForm = this.fb.group({
@@ -104,6 +105,15 @@ export class BookingComponent implements OnInit {
   fetchAvailableTimes(barberId: number, date: Date): void {
     console.log("Data", date);
 
+  }
+
+  isDateAvailable = (date: Date): string => {
+    const isAvailable = this.availableDates.some(availableDate => {
+      return availableDate.getFullYear() === date.getFullYear() &&
+             availableDate.getMonth() === date.getMonth() &&
+             availableDate.getDate() === date.getDate();
+    });
+    return isAvailable ? '' : 'mat-calendar-body-cell-disabled';
   }
 
   onSubmitBarberSelection(): void {

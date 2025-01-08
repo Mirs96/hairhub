@@ -26,7 +26,7 @@ getAvailableTimes(barberId: number, date: string, numberOfTreatments: number): O
     .set('date', date)
     .set('numberOfTreatments', numberOfTreatments);
 
-    return this.http.get(`${HttpConfig.apiUrl}/${this.urlExtension}/${barberId}/available-times`, { params });
+    return this.http.get(`${HttpConfig.apiUrl}${this.urlExtension}/${barberId}/available-times`, { params });
 }
 
 createAppointment(appointmentDto: AppointmentDto): Observable<any>{
