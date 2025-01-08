@@ -25,7 +25,10 @@ export class SalonReviewsComponent implements OnInit {
     ngOnInit(): void {
         var id = Number(this.route.snapshot.paramMap.get("id"));
         this.reviewsService.getReviewsByAppointment(id).subscribe({
-            next: rs => this.salonsReviews = rs,
+            next: rs =>{
+                this.salonsReviews = rs;
+                this.filteredReviews = rs;
+            },
             error: err => console.log(err),
         });
     }
@@ -45,6 +48,10 @@ export class SalonReviewsComponent implements OnInit {
       } else {
           this.filteredReviews = this.salonsReviews.filter(review => review.rating === rating);
       }
+  }
+
+  changeCursor(cursorType: string) {
+    document.body.style.cursor = cursorType;
   }
 
 }
