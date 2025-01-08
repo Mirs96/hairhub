@@ -1,190 +1,225 @@
-p{
-    color: black;
+p {
+  color: black;
 }
 
 app-swiper-carousel {
-    display: block;
-    width: 100%;
-    max-height: 700px; /* Puoi regolare questa altezza */
-    margin-bottom: 20px; /* Aggiungi margine sotto il carosello */
-    z-index: 1; /* Può aiutare a gestire la visibilità degli altri elementi */
+  display: block;
+  width: 100%;
+  max-height: 700px; /* Puoi regolare questa altezza */
+  margin-bottom: 20px; /* Aggiungi margine sotto il carosello */
+  z-index: 1; /* Può aiutare a gestire la visibilità degli altri elementi */
 }
 
 /* Opzionale: stili per il contenitore swiper */
 .swiper-container {
-    height: 100%; /* Imposta un'altezza al 100% o un valore desiderato */
-    max-height: 400px; /* Impostazione fissa per evitare che il carosello diventi troppo grande */
-    margin-bottom: 30px; /* Aggiungi margine sotto il carosello */
+  height: 100%; /* Imposta un'altezza al 100% o un valore desiderato */
+  max-height: 400px; /* Impostazione fissa per evitare che il carosello diventi troppo grande */
+  margin-bottom: 30px; /* Aggiungi margine sotto il carosello */
 }
 
-#carousel{
-    padding: 10%;
-    flex: 1;
-    
+#carousel {
+  padding: 10%;
+  flex: 1;
 }
-
 
 /* ------------------ NAVBAR ------------------------ */
-  
-  #imgBackground{
-    max-height: 100%;
-    max-width: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    background: rgb(22,19,19);
-  }
 
-  #fullBg{
-    background: rgb(3,3,10);
+#imgBackground {
+  max-height: 100%;
+  max-width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: rgb(22,19,19);
+}
+
+#fullBg {
+  background: rgb(3,3,10);
   background: linear-gradient(180deg, rgba(3,3,10,1) 7%, rgba(255,255,255,1) 100%);
-  }
-  
-  .navBar {
-    display: flex;
-    height: 50px;            
-    justify-content: flex-start; 
-    align-items: center;
-    padding: 0 170px;
-    background:transparent/*Colore di sfondo semi-trasparente */
-  } 
-  
-  
-  #logonav {
-    max-height: 50px;         
-    height: auto;             
-  }
-  
-  .example-spacer {
-    flex: 1;                  
-  }
-  
-  .example-icon {
-    padding: 0;               
-  }
-  
-  
-  
-  #btn{
-    color: white;
-    font-size: 18px; /* Aumenta la dimensione del font */
-      font-weight: bold; /* Rende il testo più marcato */
-      text-transform: capitalize; /* Assicura che solo la prima lettera sia maiuscola */
-      
-      body {
-        font-family: 'Inconsolata', monospace;
-        font-weight: 800;  /* Imposta il peso del font su ExtraBold (800) */
-        font-size: 16px;  /* Imposta la dimensione del font */
-      }
-      
-  
-  }
-  
-  #btnLogin{
-    color: white;
-    font-size: 18px; /* Aumenta la dimensione del font */
-      font-family: "Times New Roman", serif; /* Cambia il font */
-      font-weight: bold; /* Rende il testo più marcato */
-      text-transform: capitalize; /* Assicura che solo la prima lettera sia maiuscola */
-  }
-  
-  
+}
 
+.navBar {
+  display: flex;
+  height: 50px;            
+  justify-content: flex-start; 
+  align-items: center;
+  padding: 0 170px;
+  background: transparent; /* Colore di sfondo semi-trasparente */
+}
 
+#logonav {
+  max-height: 50px;
+  height: auto;
+}
 
+.example-spacer {
+  flex: 1;
+}
+
+.example-icon {
+  padding: 0;
+}
+
+#btn {
+  color: white;
+  font-size: 18px; /* Aumenta la dimensione del font */
+  font-weight: bold; /* Rende il testo più marcato */
+  text-transform: capitalize; /* Assicura che solo la prima lettera sia maiuscola */
+}
+
+#btnLogin {
+  color: white;
+  font-size: 18px; /* Aumenta la dimensione del font */
+  font-family: "Times New Roman", serif; /* Cambia il font */
+  font-weight: bold; /* Rende il testo più marcato */
+  text-transform: capitalize; /* Assicura che solo la prima lettera sia maiuscola */
+}
 
 /* ------------------ FOOTER ------------------------ */
 
-  /* Stili per le sezioni interne del footer (menu, social, copyright) */
-  footer > * { /* Seleziona tutti i figli diretti del footer */
-    flex: 1;
-    padding: 20px;
-    min-width: 200px;
-    text-align: center; /* Centra il testo nelle sezioni */
-   } 
-   
-   /* Stili per icone social */
-   .social_icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-    margin: 20px 0; /* Aggiunto margine superiore e inferiore */
-   }
-   
-   .social_icon li {
-    margin: 0 10px;
-   }
-   
-   .social_icon img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    transition: transform 0.2s;
-    cursor: pointer;
-   }
-   
-   .social_icon img:hover {
-    transform: scale(1.2);
-   }
-   
-   .menu {
-     display: flex;
-      justify-content: center;
-      align-items: center;
-      list-style: none;
-      padding: 0;
-      margin: 10px 0;
-      
-     }
-     
-     .menu li {
-      margin: 0 10px;
-     }
-     
-     .menu li a {
-     font-size: 1.2em;
-      color: black;
-      text-decoration: none;
-      opacity: 0.75;
-      transition: transform 0.3s ease-in-out, opacity 0.3s, color 0.3s; /* Transizioni combinate */
-      cursor: pointer;
-     display: inline-block; /* Necessario per transform */
-     padding: 5px 10px; /* Padding per area cliccabile */
-     
-   }
-     
-     .menu li a:hover {
-      opacity: 1;
-     color: black;
-     transform: scale(1.2);
-     
-     }
-   
-   /* Stili per il copyright */
-   footer p {
+/* Stili per le sezioni interne del footer (menu, social, copyright) */
+footer > * { /* Seleziona tutti i figli diretti del footer */
+  flex: 1;
+  padding: 20px;
+  min-width: 200px;
+  text-align: center; /* Centra il testo nelle sezioni */
+}
+
+/* Stili per icone social */
+.social_icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0; /* Aggiunto margine superiore e inferiore */
+}
+
+.social_icon li {
+  margin: 0 10px;
+}
+
+.social_icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.social_icon img:hover {
+  transform: scale(1.2);
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.menu li {
+  margin: 0 10px;
+}
+
+.menu li a {
+  font-size: 1.2em;
+  color: black;
+  text-decoration: none;
+  opacity: 0.75;
+  transition: transform 0.3s ease-in-out, opacity 0.3s, color 0.3s; /* Transizioni combinate */
+  cursor: pointer;
+  display: inline-block; /* Necessario per transform */
+  padding: 5px 10px; /* Padding per area cliccabile */
+}
+
+.menu li a:hover {
+  opacity: 1;
+  color: black;
+  transform: scale(1.2);
+}
+
+/* Stili per il copyright */
+footer p {
   text-align: center;
-   font-size: 1em;
-    margin: 0; /* Rimossi margini superflui */
-   }
-   
-   /* Media query per la responsività */
-   @media (max-width: 768px) {
+  font-size: 1em;
+  margin: 0; /* Rimossi margini superflui */
+}
+
+/* Media query per la responsività */
+@media (max-width: 768px) {
   footer {
-   flex-direction: column;
+    flex-direction: column;
     align-items: center;
     padding: 40px 20px 180px; /* Aumentato il padding bottom per le onde su schermi piccoli */
-   }
- 
-   footer > * {
-     margin-bottom: 20px;
-   }
-   }
+  }
 
-  
-  
- 
-  
- 
+  footer > * {
+    margin-bottom: 20px;
+  }
+}
+
+/* ------------------ SIDENAV E CONTENUTO ------------------ */
+
+/* Impostazioni per evitare le doppie barre di scorrimento */
+body {
+  margin: 0; /* Rimuove margini extra */
+  padding: 0; /* Rimuove padding extra */
+  overflow-x: hidden; /* Rimuove lo scroll orizzontale */
+  overflow-y: scroll; /* Assicura una sola barra di scorrimento verticale */
+  min-height: 100vh; /* Rende l'altezza del body sempre uguale a quella della finestra */
+}
+
+/* La navbar rimane invariata */
+
+/* Contenitore della sidenav */
+.sidenav-container {
+  height: 100%; /* Imposta altezza completa */
+  position: relative;
+}
+
+.custom-sidenav {
+  width: 300px; /* Larghezza della sidenav */
+  background-color: #f5f5f5; /* Colore di sfondo */
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2); /* Ombra per l'effetto */
+  position: fixed; /* Fissa la sidenav */
+  height: 100vh; /* Altezza piena */
+  overflow-y: auto; /* Permette lo scroll solo dentro la sidenav */
+}
+
+.custom-sidenav h2 {
+  font-family: 'Inconsolata', monospace;
+  margin-top: 0;
+}
+
+.custom-sidenav p {
+  font-family: 'Inconsolata', monospace;
+}
+
+.content {
+  padding: 20px;
+  flex: 1; /* Espandi il contenuto per occupare il resto della larghezza */
+  margin-left: 0; /* Rimuove il margine a sinistra */
+  overflow-y: auto; /* Scorrimento verticale del contenuto principale */
+  height: 100%; /* Rende il contenuto principale a piena altezza */
+}
+
+/* Media query per dispositivi mobili */
+@media (max-width: 768px) {
+  .custom-sidenav {
+    width: 100%; /* Rendi la sidenav a larghezza piena */
+    position: absolute;
+  }
+
+  .content {
+    margin-left: 0; /* Rimuovi il margine per dispositivi mobili */
+  }
+
+  .navBar {
+    padding: 0 20px; /* Riduci il padding su dispositivi mobili */
+  }
+}
