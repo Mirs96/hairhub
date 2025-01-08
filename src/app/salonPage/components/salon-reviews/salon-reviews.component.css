@@ -1,0 +1,104 @@
+/* Contenitore principale */
+#container {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 6%;
+  margin-top: 5%;
+}
+
+/* Stile per la card */
+.card {
+  border: 1px solid #ccc; /* Bordi sottili e grigi */
+  border-radius: 8px; /* Angoli arrotondati */
+  padding: 16px; /* Spaziatura interna */
+  width: 300px; /* Larghezza della card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+  background-color: rgba(212, 57, 57, 0); /* Colore di sfondo bianco */
+  table-layout: fixed;
+}
+
+/* Contenuto della card */
+.card-content {
+  width: auto;
+  justify-content: center;
+}
+
+/* Titolo della card */
+.card-content h2 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+/* Paragrafo nella card */
+.card-content p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Stile per la sezione delle recensioni */
+.reviews {
+  margin-left: 6%; /* Distacco dalla card */
+  margin-right: 5%; /* Distanza a destra */
+  flex: 1; /* Per adattarsi allo spazio rimanente */
+}
+
+/* Stile per la tabella delle recensioni */
+#tabella table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Stile per la lista di recensioni */
+.mat-list-item {
+  display: flex;
+  flex-direction: column; /* Dispone gli elementi in verticale */
+  padding: 10px 0;
+  box-sizing: border-box;
+  margin-bottom: 15px; /* Spazio tra le recensioni */
+}
+
+/* Stile per il commento */
+.treatment {
+  font-size: 1rem;
+  margin-top: 8px;
+  margin-bottom: 8px; /* Distanza tra commento e data */
+}
+
+/* Posizione della data in basso */
+.price {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 10px; /* Maggiore distanza dalla sezione commento */
+}
+
+/* Stelle per la valutazione */
+.rating {
+  display: flex;
+  flex-direction: row; /* Dispone le stelle in orizzontale */
+  gap: 5px; /* Aggiunge spazio tra le stelle */
+  margin-bottom: 8px; /* Distanza tra stelle e commento */
+}
+
+/* Le stelle non riempite e riempite */
+.star {
+  font-size: 24px;
+  color: #fcfcfc;
+  transition: color 0.3s ease; /* Transizione per il cambiamento di colore */
+}
+
+.star.filled {
+  color: #08162a;
+}
+
+/* Separatore tra gli elementi della lista */
+mat-divider {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.custom-divider {
+  width: 95%;
+  margin: 0 auto;  /* Centra il divisore */
+  margin-top: 2%;
+  margin-left: 2%;
+}
