@@ -11,6 +11,7 @@ import { LoginComponent } from '../../../home/login/login.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { BookingComponent } from '../booking/booking.component';
 import { ActivatedRoute } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout-table',

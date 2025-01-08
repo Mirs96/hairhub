@@ -1,4 +1,4 @@
-<div id="barberChoice">
+<!--<div id="barberChoice">
     <form (ngSubmit)="onBarberSelected()">>
         <label for="barbers">Barbiere</label>
         <select name="barbers" id="barbers" (change)="onBarberSelected(barberId)">
@@ -10,14 +10,50 @@
         </select>
         <input type="submit" value="Submit" />
     </form>
-</div>
-<div id="calendar">
-    <mat-form-field>
-        <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-</div>
+</div> -->
+<!--
+<div id="barberChoice">
+    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" >
+        <label for="barbers">Barbiere</label>
+        <select name="barbers" id="barbers" formControlName="barberId">
+        @if (barbers) {
+            @for(barber of barbers; track barber.id) {
+                <option value="{{barber.id}}">{{barber.name}}</option>
+            }
+        }
+        </select>
+        <button type="submit"> Invia </button>
+    </form>
+</div> -->
+<mat-form-field [formGroup]="bookingForm" (ngSubmit)="onSubmit()" >
+    <mat-label>Barbiere</mat-label>
+    <mat-select name="barbers" id="barbers" formControlName="barberId">
+        @if (barbers) {
+            @for(barber of barbers; track barber.id) {
+                <mat-option value="{{barber.id}}">{{barber.name}}</mat-option>
+            }
+        }
+    </mat-select>
+    <div id="calendar">
+        <mat-form-field>
+            <mat-label>Meeting date</mat-label>
+            <input matInput [matDatepicker]="datepicker" [(ngModel)]="value">
+            <mat-datepicker-toggle matSuffix [for]="datepicker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker [dateClass]="isDateAvailable" #datepicker></mat-datepicker>
+            
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>Meeting time</mat-label>
+            <input matInput
+              [matTimepicker]="timepicker"
+              [(ngModel)]="value"
+              [ngModelOptions]="{updateOn: 'blur'}">
+            <mat-timepicker #timepicker/>
+            <mat-timepicker-toggle [for]="timepicker" matSuffix/>
+          </mat-form-field>
+    </div>
+</mat-form-field>
+
+
 
