@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { HttpConfig } from '../../config/http-config';
 import { AppointmentDetail } from '../hometables/AppointmentDetail';
 
-
 @Injectable({
   providedIn: 'root'
 })
