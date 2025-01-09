@@ -1,7 +1,7 @@
-import { TreatmentDto } from "./treatmentDto";
+import { TreatmentDto } from "./TreatmentDto";
 
 
-export interface AppointmentDto{
+export interface AppointmentDetail{
     id: number;
     userName:string;
     userId: number;
