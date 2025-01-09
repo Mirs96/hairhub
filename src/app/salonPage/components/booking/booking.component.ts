@@ -21,6 +21,8 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import  moment  from 'moment-timezone';
 import { FormControl} from '@angular/forms';
+import { UserService } from '../../../model/hometables/userService';
+import { AppointmentDetail } from '../../../model/hometables/AppointmentDetail';
 
 
 @Component({
@@ -46,8 +48,10 @@ export class BookingComponent implements OnInit {
   availableDates!: Date[];
   availableTimes: string[] = [];
   timeOptions: { value: string, viewValue: string }[] = []; // Array per le opzioni del select
+  isLoggedIn = false;
+  userId!:string | null;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number, selectedTreatments: TreatmentsPriceDetails[] }, private salonService: SalonService, private route: ActivatedRoute, private appointmentService: AppointmentService, private fb: FormBuilder) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number, selectedTreatments: TreatmentsPriceDetails[] }, private salonService: SalonService, private route: ActivatedRoute, private appointmentService: AppointmentService, private fb: FormBuilder,private userService: UserService) {
     this.bookingForm = this.fb.group({
       barberId: [''],
       date: [''],
@@ -78,6 +82,12 @@ export class BookingComponent implements OnInit {
       error: err => console.log(err)
     });
 
+    this.userService.loggedIn$.subscribe({
+      next: s => this.isLoggedIn = s,
+      error: err => console.log(err)
+    });
+
+    this.userId = this.userService.getUserIdFromToken();
 
   }
 
@@ -178,6 +188,26 @@ export class BookingComponent implements OnInit {
       name: treatment.name,
       price: treatment.price
     }));
+ 
+  // Ottieni l'orario selezionato dal form
+  const selectedTime = this.bookingForm.value.time;
+
+  // Definisci la data dell'appuntamento
+  const appointmentDate = this.selectedDate;
+  const startTime = moment(selectedTime, 'HH:mm');
+
+  // Calcola la durata totale in minuti
+  const totalDurationInMinutes = this.selectedTreatments.length * 30; // 30 minuti per ogni servizio
+
+  // Calcola l'orario di fine aggiungendo la durata totale
+  const endTime = startTime.clone().add(totalDurationInMinutes, 'minutes').format('HH:mm');
+
+   //costruisci l'oggetto AppointmentDetail
+
+  
+
+
+  
   }
 
   get total(): number {
