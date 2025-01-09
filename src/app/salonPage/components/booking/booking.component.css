@@ -1,24 +1,69 @@
-#barberChoice{
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+.mat-card {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
     margin-bottom: 20px;
-}
-#barberChoice label{
-    font-size: 16px;
-    font-weight: 600;
-    margin-left: 10px;
+  }
+  
+  .mat-card-title {
+    background-color: #f0f0f0;
+    padding: 16px;
+    font-weight: bold;
+  }
+  
+  .mat-card-content {
+    padding: 16px;
+  }
+  
+  .mat-card-actions {
+    padding: 8px 16px;
+  }
+  
+  /* Style the form fields */
+  mat-form-field {
+    display: block;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+  
+  mat-label {
+    font-weight: bold;
+    color: #676767;
+  }
+  
+  .appointment-details {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Style the confirmation and close buttons */
+  .mat-raised-button {
+    margin-top: 16px;
+  }
+  
+  .mat-raised-button.accent {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  /* Style the list of selected treatments */
+  .selected-treatments {
+    margin-top: 16px;
+  }
+  
+  .selected-treatments ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .selected-treatments li {
     margin-bottom: 8px;
-    color: black;
-}
-
-#barberChoice select{
-    margin-left: 20px;
-}
-#barberChoice input{
-    margin-left: 20px;
-}
-.mat-calendar-body-cell-disabled {
-    pointer-events: none; /* Disabilita l'interazione con la cella */
-    color: gray; /* Cambia il colore per le date disabilitate */
-}
+  }
+  
+  /* Style the total price section */
+  .total-price {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    font-weight: bold;
+  }
