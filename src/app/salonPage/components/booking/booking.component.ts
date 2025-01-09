@@ -23,6 +23,7 @@ import  moment  from 'moment-timezone';
 import { FormControl} from '@angular/forms';
 import { UserService } from '../../../model/hometables/userService';
 import { AppointmentDetail } from '../../../model/hometables/AppointmentDetail';
+import { AppointmentDto } from '../../../model/hometables/appointmentDto';
 
 
 @Component({
@@ -201,14 +202,32 @@ export class BookingComponent implements OnInit {
 
   // Calcola l'orario di fine aggiungendo la durata totale
   const endTime = startTime.clone().add(totalDurationInMinutes, 'minutes').format('HH:mm');
+    const treatmentIds = this.selectedTreatments.map(treatment => treatment.id);
 
-   //costruisci l'oggetto AppointmentDetail
+   //costruisci l'oggetto AppointmentDto
+   const appointmentDto: AppointmentDto = {
+    id:0,
+    userId: this.userId ? parseInt(this.userId, 10) : 0,
+    barberId:this.barberChoice,
+    barberName: this.barbers.find(barber => barber.id === this.barberChoice)?.name || '',
+    date:moment(appointmentDate).format('YYYY-MM-DD'),
+    startTime: startTime.format('HH:mm'),
+    endTime: endTime,
+    status: 'confirmed',
+    treatments: treatmentIds
+   };
 
-  
+   console.log('Dettagli dell appuntamento', appointmentDto);
 
-
-  
-  }
+   this.appointmentService.createAppointment(appointmentDto).subscribe({
+    next:(response) => {
+      console.log('Appuntamento creato con successo', response);
+    },
+    error: (err)  => {
+      console.log('Errore durante la creazione dell appuntamento', err);
+    }
+   });
+}
 
   get total(): number {
     return this.selectedTreatments.reduce((sum, treatment) => sum + treatment.price, 0);
