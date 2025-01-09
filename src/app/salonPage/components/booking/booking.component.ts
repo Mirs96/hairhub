@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { BarberDetails } from '../../../model/hometables/barberDetails';
 import { SalonService } from '../../../model/hometables/SalonService';
 import { ActivatedRoute } from '@angular/router';
@@ -27,11 +27,14 @@ import { AppointmentDto } from '../../../model/hometables/appointmentDto';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatCard } from '@angular/material/card';
 import { MatCardModule } from '@angular/material/card';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-booking',
   providers: [provideNativeDateAdapter()],
-  imports: [MatCardModule,MatCard,MatDialogModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, ReactiveFormsModule, MatTimepickerModule, FormsModule, MatSelectModule,MatMenuModule,MatInputModule,MatButtonModule],
+  imports: [MatCardModule,MatCard,MatDialogModule, MatFormFieldModule, MatInputModule,
+           MatDatepickerModule, ReactiveFormsModule, MatTimepickerModule, FormsModule, MatSelectModule,
+           MatMenuModule,MatInputModule,MatButtonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css'
@@ -55,7 +58,9 @@ export class BookingComponent implements OnInit {
   isLoggedIn = false;
   userId!:string | null;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number, selectedTreatments: TreatmentsPriceDetails[] }, private salonService: SalonService, private route: ActivatedRoute, private appointmentService: AppointmentService, private fb: FormBuilder,private userService: UserService,private snackBar: MatSnackBar) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number, selectedTreatments: TreatmentsPriceDetails[] }, private salonService: SalonService,
+               private route: ActivatedRoute, private appointmentService: AppointmentService,
+              private fb: FormBuilder,private userService: UserService,private snackBar: MatSnackBar, private dialogRef: MatDialogRef<BookingComponent>, private cdr: ChangeDetectorRef) {
     this.bookingForm = this.fb.group({
       barberId: [''],
       date: [''],
@@ -226,7 +231,9 @@ export class BookingComponent implements OnInit {
     next:(response) => {
       console.log('Appuntamento creato con successo', response);
       this.bookingConfirmed = true;
+      console.log(this.bookingConfirmed);
       this.snackBar.open('Prenotazione effettuata con successo!','Chiudi',{ duration: 3000 }); // Mostra un messaggio di successo})
+      this.cdr.detectChanges();
     },
     error: (err)  => {
       console.log('Errore durante la creazione dell appuntamento', err);
@@ -242,7 +249,7 @@ export class BookingComponent implements OnInit {
 onClose(){
   this.bookingConfirmed = false; //resetta lo stato di conferma
   this.bookingForm.reset(); // resetta il modulo
-
+  this.dialogRef.close(FormData);
 }
 
   get total(): number {
