@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { TopsalonComponent } from '../topsalon/topsalon.component';
 import { RouterModule } from '@angular/router';
 import { SwiperCarouselComponent } from '../carousel/carousel.component';
@@ -15,6 +15,8 @@ import { RegisterComponent } from '../../register/register.component';
 import { Dialog, DIALOG_DATA, DialogModule } from '@angular/cdk/dialog';
 import { MatDialog, MatDialogModule} from '@angular/material/dialog'; // Import per il dialog
 import {jwtDecode} from 'jwt-decode';
+import { SidenavComponent } from '../../Sidenav/sidenav/sidenav.component';
+import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav';
 @Component({
   selector: 'app-home',
   imports: [
@@ -29,14 +31,18 @@ import {jwtDecode} from 'jwt-decode';
     MatIconModule,
     LoginComponent,
     RegisterComponent,
-    
-   
+    SidenavComponent,
+    MatDrawerContainer,
+    MatDrawer,
+
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   
+  @ViewChild('drawer') drawer!: MatDrawer; // Riferimento alla sidenav
+
   isAuthenticated: boolean = false;
   showLogin = false; // Variabile per controllare la visibilità del LoginComponent
   showRegister = false; // Variabile per controllare la visibilità del RegisterComponent
@@ -126,6 +132,18 @@ export class HomeComponent implements OnInit {
     
   }
 
+  openSidenav() {
+    if (this.drawer) {
+      this.drawer.open(); // Apre la sidenav
+    } else {
+      console.error('Sidenav non trovata!');
+    }
+  }
 
+  closeSidenav() {
+    if (this.drawer) {
+      this.drawer.close(); // Chiude la sidenav
+    }
+  }
   
 }

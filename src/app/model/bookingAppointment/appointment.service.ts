@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpConfig } from '../../config/http-config';
 import { AppointmentDetail } from '../hometables/AppointmentDetail';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,5 +35,10 @@ createAppointment(appointmentDto: AppointmentDetail): Observable<any>{
   return this.http.post(`${HttpConfig.apiUrl}${this.urlExtension}`,{headers});
 
 }
+getAppointments(userId: number): Observable<any>{
+  return this.http.get(`${HttpConfig.apiUrl}${this.urlExtension}/past/${userId}`);
+}
+
 
 }
+

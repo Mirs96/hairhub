@@ -1,7 +1,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
 <div id="fullBg">
   <!-- Navbar -->
-    <div id="imgBackground">
+  <div id="imgBackground">
     <div class="header">
       <header id="logo">
         <div id="classLogo">
@@ -11,57 +11,71 @@
           <span class="example-spacer"></span>
           <button id="btnLogin" mat-button [matMenuTriggerFor]="login">
 
-            <img id= "nav2" src="img/login.png" alt="thumbs up icon" style="width: 24px; height: 24px; background-color: black;">
-            </button>
+            <img id="nav2" src="img/login.png" alt="thumbs up icon"
+              style="width: 24px; height: 24px; background-color: black;">
+          </button>
           <button id="btn" mat-button [matMenuTriggerFor]="menu">Menu</button>
           <mat-menu #menu="matMenu">
             <button routerLink="/home" mat-menu-item>Home</button>
             <button mat-menu-item>Servizi</button>
             <button mat-menu-item>Contatti</button>
             @if (isAuthenticated){
-           <button mat-button routerLink="/appointments">Miei appuntamenti</button>
-           
+            <button mat-button (click)="openSidenav()">Miei appuntamenti</button>
             }
-            
-          </mat-menu>
+</mat-menu>
           <mat-menu #login="matMenu">
             @if (!isAuthenticated) {
             <button (click)="openLoginDialog()" mat-menu-item (click)="toggleLogin()">Accedi</button>
             <button mat-menu-item (click)="openRegisterDialog()" (click)="toggleRegister()">Registrati</button>
             }
-            
+
             @if(isAuthenticated){
-              <button mat-button (click)="logout()">Logout</button>
+            <button mat-button (click)="logout()">Logout</button>
             }
           </mat-menu>
 
         </mat-toolbar>
-      
+
       </header>
-     
-      
+
+
     </div>
-   
+
   </div>
 
-<app-topsaloon></app-topsaloon>
-<div id="carousel">
-     <app-swiper-carousel>
-    </app-swiper-carousel>
-</div>
-<!-- Footer -->
-<footer>
-    <ul class="social_icon">
-      <li><img id="facebook" src="img/facebook.png" alt="Facebook"></li>
-      <li><img src="img/twitter.png" alt="Twitter"></li>
-      <li><img src="img/instagram.png" alt="Instagram"></li>
-    </ul>
-    <ul class="menu">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-    <p>©2024 Chris Tobojia | All Rights Reserved</p>
-</footer>
+
+  <div class="content">
+    <!-- Sidenav -->
+    <mat-drawer-container class="sidenav-container">
+      <mat-drawer #drawer mode="over" position="end" class="custom-sidenav">
+        <h2>Storico delle Prenotazioni</h2>
+        <div>
+          <p>Inserisci qui il contenuto dello storico delle prenotazioni.</p>
+        </div>
+        <button mat-button (click)="closeSidenav()">Chiudi</button>
+      </mat-drawer>
+    </mat-drawer-container>
+
+    <app-topsaloon></app-topsaloon>
+
+    <div id="carousel">
+      <app-swiper-carousel></app-swiper-carousel>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <ul class="social_icon">
+        <li><img id="facebook" src="img/facebook.png" alt="Facebook"></li>
+        <li><img src="img/twitter.png" alt="Twitter"></li>
+        <li><img src="img/instagram.png" alt="Instagram"></li>
+      </ul>
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <p>©2024 Chris Tobojia | All Rights Reserved</p>
+    </footer>
+  </div>
 </div>
