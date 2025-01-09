@@ -183,7 +183,7 @@ body {
 
 .custom-sidenav {
   width: 300px; /* Larghezza della sidenav */
-  background-color: #f5f5f5; /* Colore di sfondo */
+  background-color: rgb(189, 183, 183,0.9);; /* Colore di sfondo */
   padding: 20px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2); /* Ombra per l'effetto */
   position: fixed; /* Fissa la sidenav */
@@ -194,6 +194,7 @@ body {
 .custom-sidenav h2 {
   font-family: 'Inconsolata', monospace;
   margin-top: 0;
+  color: white;
 }
 
 .custom-sidenav p {

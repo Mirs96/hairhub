@@ -25,42 +25,60 @@
         <button type="submit"> Invia </button>
     </form>
 </div> -->
-<mat-form-field [formGroup]="bookingForm" >
+<form [formGroup]="bookingForm"> <mat-form-field>
     <mat-label>Barbiere</mat-label>
-    <mat-select name="barbers" id="barbers" formControlName="barberId">
-            @for(barber of barbers; track barber.id) {
-                <mat-option value="{{barber.id}}">{{barber.name}}</mat-option>
-            }
-    
+    <mat-select formControlName="barberId">
+      @for (barber of barbers; track barber.id) {
+      <mat-option [value]="barber.id">{{barber.name}}</mat-option>
+      }
     </mat-select>
-    <div id="calendar">
-        <mat-form-field>
-          <mat-label>Meeting date</mat-label>
-          <input matInput [matDatepicker]="datepicker" [(ngModel)]="value" [matDatepickerFilter]="isDateAvailable"  (dateChange)="onDateSelected($event)">
-          <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-          <mat-datepicker #datepicker></mat-datepicker>
-        </mat-form-field>
-      </div>
-      <div>
-        <form [formGroup]="bookingForm">
-          <mat-form-field>
-            <mat-label>Orario</mat-label>
-            <mat-select formControlName="time" required>
-                @if (timeOptions.length > 0) {
-                @for (timeOption of timeOptions; track timeOption.value) {
-                  <mat-option [value]="timeOption.value">
-                    {{ timeOption.viewValue }}
-                  </mat-option>
-                }
-            }@else {
-                <mat-option disabled>Nessun orario disponibile</mat-option>
-            }
-            </mat-select>
-          </mat-form-field>
-        
-        </form>
-     </div>
-</mat-form-field>
+  </mat-form-field>
+
+  <div class="appointment-details">
+    <mat-form-field>
+      <mat-label>Data</mat-label>
+      <input matInput [matDatepicker]="datepicker" formControlName="selectedDate"
+        [matDatepickerFilter]="isDateAvailable" (click)="$event.stopPropagation()"
+        (dateChange)="onDateSelected($event)">
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Orario</mat-label>
+      <mat-select formControlName="time" required>
+        @if (timeOptions.length > 0) {
+        @for (timeOption of timeOptions; track timeOption.value) {
+        <mat-option [value]="timeOption.value">
+          {{ timeOption.viewValue }}
+        </mat-option>
+        }
+        } @else {
+        <mat-option disabled>Nessun orario disponibile</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+   </div>
 
 
+<!-- Sezione per visualizzare i trattamenti selezionati dinamicamente -->
 
+<div>
+  @if (selectedTreatments.length) { 
+     <h3>Trattamenti selezionati:</h3>
+  <ul>
+    @for (treatment of selectedTreatments; track treatment.id) {
+    <li> {{ treatment.name }} {{treatment.price}}€</li> 
+  
+    }
+   
+  </ul>
+  <td><strong>Total:</strong></td>
+                
+  <td><strong>€{{ total }}</strong></td>
+}
+</div>
+<button mat-raised-button color="primary" type="submit">Conferma Prenotazione</button>
+ </form>

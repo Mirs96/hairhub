@@ -22,8 +22,7 @@
             @if (isAuthenticated){
             <button mat-button (click)="openSidenav()">Miei appuntamenti</button>
             }
-
-          </mat-menu>
+</mat-menu>
           <mat-menu #login="matMenu">
             @if (!isAuthenticated) {
             <button (click)="openLoginDialog()" mat-menu-item (click)="toggleLogin()">Accedi</button>
@@ -64,19 +63,20 @@
     </div>
 
     <!-- Footer -->
-    <footer>
-      <ul class="social_icon">
-        <li><img id="facebook" src="img/facebook.png" alt="Facebook"></li>
-        <li><img src="img/twitter.png" alt="Twitter"></li>
-        <li><img src="img/instagram.png" alt="Instagram"></li>
-      </ul>
-      <ul class="menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-      <p>©2024 Chris Tobojia | All Rights Reserved</p>
-    </footer>
-  </div>
+<footer>
+  <ul class="social_icon">
+    <li><img id="facebook" src="img/facebook.png" alt="Facebook"></li>
+    <li><img src="img/twitter.png" alt="Twitter"></li>
+    <li><img src="img/instagram.png" alt="Instagram"></li>
+  </ul>
+  <ul class="menu">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <p>©2024 Chris Tobojia | All Rights Reserved</p>
+</footer>
 </div>
+
+</mat-drawer-container>
