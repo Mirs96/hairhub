@@ -17,6 +17,9 @@ import { MatDialog, MatDialogModule} from '@angular/material/dialog'; // Import 
 import {jwtDecode} from 'jwt-decode';
 import { SidenavComponent } from '../../Sidenav/sidenav/sidenav.component';
 import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav';
+import { UserService } from '../../model/hometables/userService';
+import { AppointmentService } from '../../model/bookingAppointment/appointment.service';
+import { AppointmentDetail } from '../../model/hometables/AppointmentDetail';
 @Component({
   selector: 'app-home',
   imports: [
@@ -43,14 +46,31 @@ export class HomeComponent implements OnInit {
   
   @ViewChild('drawer') drawer!: MatDrawer; // Riferimento alla sidenav
 
+  appointments !: AppointmentDetail[];
+  isLoggedIn = false;
   isAuthenticated: boolean = false;
   showLogin = false; // Variabile per controllare la visibilità del LoginComponent
   showRegister = false; // Variabile per controllare la visibilità del RegisterComponent
   userProfile: any = null;  // Variabile per salvare il profilo dell'utente
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private userService: UserService, private appointmentService: AppointmentService) {}
 
   ngOnInit(): void {
     this.checkAuthentication();
+
+    this.userService.loggedIn$.subscribe({
+      next: s => this.isLoggedIn = s,
+      error: err => console.log(err)
+
+    });
+    const userIdStr =this.userService.getUserIdFromToken();
+    const userId = userIdStr ? parseInt(userIdStr) : null;
+    console.log('userId:', userId);
+    if(userId != null){
+      this.appointmentService.getAppointments(userId).subscribe({
+        next: a => this.appointments = a,
+        error: err => console.log(err)
+      });
+    }
   }
 
   // Funzione per aprire il dialog di login
