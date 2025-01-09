@@ -11,5 +11,4 @@ export interface AppointmentDetail{
     endTime: string;
     status: string;
     treatments:TreatmentDto[];
-
 } 
