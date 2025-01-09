@@ -34,10 +34,16 @@ createAppointment(appointmentDto: AppointmentDetail): Observable<any>{
   return this.http.post(`${HttpConfig.apiUrl}${this.urlExtension}`,{headers});
 
 }
-getAppointments(userId: number): Observable<any>{
+getFutureAppointments(userId: number): Observable<AppointmentDetail[] | any>{
+  return this.http.get(`${HttpConfig.apiUrl}${this.urlExtension}/future/${userId}`);
+}
+
+getPastAppointments(userId: number): Observable<any>{
   return this.http.get(`${HttpConfig.apiUrl}${this.urlExtension}/past/${userId}`);
 }
 
-
+deleteAppointment(appointmentId: number): Observable<any>{
+  return this.http.put(`${HttpConfig.apiUrl}${this.urlExtension}/${appointmentId}`,null);
 }
 
+}
