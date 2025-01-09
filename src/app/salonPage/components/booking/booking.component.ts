@@ -24,17 +24,20 @@ import { FormControl} from '@angular/forms';
 import { UserService } from '../../../model/hometables/userService';
 import { AppointmentDetail } from '../../../model/hometables/AppointmentDetail';
 import { AppointmentDto } from '../../../model/hometables/appointmentDto';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatCard } from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-booking',
   providers: [provideNativeDateAdapter()],
-  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, ReactiveFormsModule, MatTimepickerModule, FormsModule, MatSelectModule,MatMenuModule,MatInputModule,MatButtonModule],
+  imports: [MatCardModule,MatCard,MatDialogModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, ReactiveFormsModule, MatTimepickerModule, FormsModule, MatSelectModule,MatMenuModule,MatInputModule,MatButtonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css'
 })
 export class BookingComponent implements OnInit {
+  bookingConfirmed: boolean= false;
   barbers!: BarberDetails[];
   barber!: BarberDetails;
   id!: number;
@@ -52,7 +55,7 @@ export class BookingComponent implements OnInit {
   isLoggedIn = false;
   userId!:string | null;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number, selectedTreatments: TreatmentsPriceDetails[] }, private salonService: SalonService, private route: ActivatedRoute, private appointmentService: AppointmentService, private fb: FormBuilder,private userService: UserService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number, selectedTreatments: TreatmentsPriceDetails[] }, private salonService: SalonService, private route: ActivatedRoute, private appointmentService: AppointmentService, private fb: FormBuilder,private userService: UserService,private snackBar: MatSnackBar) {
     this.bookingForm = this.fb.group({
       barberId: [''],
       date: [''],
@@ -195,13 +198,13 @@ export class BookingComponent implements OnInit {
 
   // Definisci la data dell'appuntamento
   const appointmentDate = this.selectedDate;
-  const startTime = moment(selectedTime, 'HH:mm');
+  const startTime = moment(selectedTime, 'HH:mm').format('HH:mm');
 
   // Calcola la durata totale in minuti
   const totalDurationInMinutes = this.selectedTreatments.length * 30; // 30 minuti per ogni servizio
 
   // Calcola l'orario di fine aggiungendo la durata totale
-  const endTime = startTime.clone().add(totalDurationInMinutes, 'minutes').format('HH:mm');
+  const endTime = moment(startTime, 'HH:mm').add(totalDurationInMinutes, 'minutes').format('HH:mm'); // Orario di fine come stringa HH:mm
     const treatmentIds = this.selectedTreatments.map(treatment => treatment.id);
 
    //costruisci l'oggetto AppointmentDto
@@ -211,7 +214,7 @@ export class BookingComponent implements OnInit {
     barberId:this.barberChoice,
     barberName: this.barbers.find(barber => barber.id === this.barberChoice)?.name || '',
     date:moment(appointmentDate).format('YYYY-MM-DD'),
-    startTime: startTime.format('HH:mm'),
+    startTime: startTime,
     endTime: endTime,
     status: 'confirmed',
     treatments: treatmentIds
@@ -222,11 +225,24 @@ export class BookingComponent implements OnInit {
    this.appointmentService.createAppointment(appointmentDto).subscribe({
     next:(response) => {
       console.log('Appuntamento creato con successo', response);
+      this.bookingConfirmed = true;
+      this.snackBar.open('Prenotazione effettuata con successo!','Chiudi',{ duration: 3000 }); // Mostra un messaggio di successo})
     },
     error: (err)  => {
       console.log('Errore durante la creazione dell appuntamento', err);
-    }
+      this.snackBar.open('Errore durante la prenotazione. Riprova più tardi.', 'Chiudi', { // Mostra un messaggio di errore
+        duration: 5000,
+        panelClass: ['error-snackbar']
+    });
+    this.bookingConfirmed = false;
+  }
    });
+}
+
+onClose(){
+  this.bookingConfirmed = false; //resetta lo stato di conferma
+  this.bookingForm.reset(); // resetta il modulo
+
 }
 
   get total(): number {

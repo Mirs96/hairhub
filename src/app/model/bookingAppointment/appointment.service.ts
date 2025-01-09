@@ -30,8 +30,10 @@ getAvailableTimes(barberId: number, date: string, numberOfTreatments: number): O
 }
 
 createAppointment(appointmentDto: AppointmentDto): Observable<any>{
+
   const headers = new HttpHeaders().set('Content-Type', 'application/json'); //il corpo della richiesta sarà in jSon
-  return this.http.post(`${HttpConfig.apiUrl}${this.urlExtension}`,{headers});
+
+  return this.http.post(`${HttpConfig.apiUrl}${this.urlExtension}`,appointmentDto,{headers});
 
 }
 getAppointments(userId: number): Observable<any>{
