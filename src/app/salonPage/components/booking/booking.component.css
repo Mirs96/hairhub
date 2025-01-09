@@ -1,69 +1,130 @@
-.mat-card {
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-    margin-bottom: 20px;
-  }
-  
-  .mat-card-title {
-    background-color: #f0f0f0;
-    padding: 16px;
-    font-weight: bold;
-  }
-  
-  .mat-card-content {
-    padding: 16px;
-  }
-  
-  .mat-card-actions {
-    padding: 8px 16px;
-  }
-  
-  /* Style the form fields */
-  mat-form-field {
-    display: block;
-    margin-bottom: 16px;
-    width: 100%;
-  }
-  
-  mat-label {
-    font-weight: bold;
-    color: #676767;
-  }
-  
-  .appointment-details {
+/* Contenitore dell'overlay modale */
+.modal-container {
     display: flex;
-    justify-content: space-between;
-  }
-  
-  /* Style the confirmation and close buttons */
-  .mat-raised-button {
-    margin-top: 16px;
-  }
-  
-  .mat-raised-button.accent {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  /* Style the list of selected treatments */
-  .selected-treatments {
-    margin-top: 16px;
-  }
-  
-  .selected-treatments ul {
-    list-style: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(253, 249, 249, 0.4); /* Sfondo più scuro ma semi-trasparente */
+
+    z-index: 1000;
     padding: 0;
     margin: 0;
-  }
-  
-  .selected-treatments li {
-    margin-bottom: 8px;
-  }
-  
-  /* Style the total price section */
-  .total-price {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 16px;
+}
+
+/* Contenitore della finestra di dialogo */
+.booking-container {
+    max-width: 400px;
+    width: 90%;
+    background: #ffffff; /* Sfondo bianco */
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Ombra più leggera */
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+    color: #333333; /* Colore del testo scuro per un buon contrasto su sfondo bianco */
+}
+
+/* Titolo della finestra */
+.booking-container h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
     font-weight: bold;
-  }
+    text-align: center;
+    color: #333333; /* Colore del titolo più scuro per contrastare con lo sfondo bianco */
+}
+
+/* Form field */
+.booking-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.booking-container input,
+.booking-container select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #242020; /* Testo chiaro */
+    /* Aggiungi bordo grigio chiaro */
+}
+
+.booking-container input:focus,
+.booking-container select:focus {
+    border-color: #76c7c0; /* Highlight verde acqua per focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(118, 199, 192, 0.7); /* Glow su focus */
+}
+
+/* Pulsanti */
+.booking-container button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #f0f0f0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Stile comune per entrambi i pulsanti */
+.booking-container button {
+    background-color: #020202; /* Verde acqua */
+    color: #fff; /* Testo bianco */
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(5, 5, 5, 0.3); /* Ombra delicata */
+}
+
+/* Hover per entrambi i pulsanti */
+.booking-container button:hover {
+    background-color: #5bb3aa; /* Verde acqua scuro */
+}
+
+/* Disabilitazione pulsanti */
+.booking-container button:disabled {
+    background-color: #ccc; /* Grigio chiaro */
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Dettagli della prenotazione */
+.booking-container p {
+    margin: 0;
+    font-size: 1rem;
+    color: #d3d3d3; /* Testo più tenue */
+    text-align: center;
+}
+
+/* Animazione di entrata */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Adattamento per dispositivi mobili */
+@media (max-width: 600px) {
+    .booking-container {
+        width: 95%;
+        padding: 15px;
+    }
+}
+
