@@ -92,7 +92,7 @@
             </ul>
             </div>
             @if(canReview(a.id)){
-              <button mat-button (click) = "createReview(a.id)">Crea Recensione </button>
+              <button mat-button (click) = "openReviewDialog(a.id)">Crea Recensione </button>
             }
           </div>
         }

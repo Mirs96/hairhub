@@ -23,6 +23,7 @@ import { AppointmentDetail } from '../../model/hometables/AppointmentDetail';
 import { TreatmentDto } from '../../model/hometables/TreatmentDto';
 import { CommonModule } from '@angular/common';
 import { ReviewsService } from '../../model/hometables/ReviewsService';
+import { ReviewFormComponent } from '../dialogForm/review-dialog/review-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -249,6 +250,23 @@ export class HomeComponent implements OnInit {
     } else {
       console.log('Appuntamento non trovato nei futureAppointments');
     }
+  }
+
+  openReviewDialog(appointmentId: number): void {
+    const dialogRef = this.dialog.open(ReviewFormComponent, {
+      width: '600px', // Puoi personalizzare la dimensione del dialog
+      data: { appointmentId } // Passa i dati necessari al dialog
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialogo recensione chiuso', result);
+      // Puoi gestire il risultato della recensione qui
+      if (result) {
+        console.log('Recensione salvata con successo', result);
+      } else {
+        console.log('Dialogo chiuso senza salvare recensione');
+      }
+    });
   }
   
 }
