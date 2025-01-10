@@ -11,4 +11,6 @@ export interface AppointmentDetail{
     endTime: string;
     status: string;
     treatments:TreatmentDto[];
+    salonId: number;
+    salonName: string;
 } 
