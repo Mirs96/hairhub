@@ -13,4 +13,5 @@ export interface AppointmentDetail{
     treatments:TreatmentDto[];
     salonId: number;
     salonName: string;
+    canReview?: boolean; // Flag per indicare se è possibile creare una recensione
 } 

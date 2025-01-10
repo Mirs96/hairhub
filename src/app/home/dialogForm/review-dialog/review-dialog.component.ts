@@ -1,54 +1,57 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog, MatDialogContent, MatDialogModule } from '@angular/material/dialog';
-import { ReviewsService } from '../../../model/hometables/ReviewsService';
-import { ReviewDetails } from '../../../model/hometables/ReviewsDetail';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { MatOption, MatSelect } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-review-form',
-  imports: [MatFormField,MatDialogContent,MatDialogModule,MatLabel,MatSelect,MatOption,FormsModule],
-  templateUrl: './review-Dialog.component.html',
-  styleUrls: ['./review-Dialog.component.css']
+  selector: 'app-review-dialog',
+  imports: [],
+  templateUrl: './review-dialog.component.html',
+  styleUrl: './review-dialog.component.css'
 })
-export class ReviewFormComponent {
+export class ReviewDialogComponent implements OnInit {
+  form: FormGroup;
 
-  rating: number = 5; // Default valore di rating
-  comment: string = ''; // Commento vuoto di default
-  appointmentId: number;
+  constructor(private fb: FormBuilder) { }
 
-  constructor(
-    public dialogRef: MatDialogRef<ReviewFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,  // Dati passati al dialogo (come l'ID dell'appuntamento)
-    private reviewsService: ReviewsService
-  ) {
-    this.appointmentId = data.appointmentId;  // Otteniamo l'ID dell'appuntamento
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();  // Chiude il dialogo senza salvare
-  }
-
-  onSubmit(): void {
-    const review: ReviewDetails = {
-      appointmentId: this.appointmentId,
-      rating: this.rating,
-      comment: this.comment,
-      id: this.appointmentId,
-      date: Date.now().toString()
-    };
-
-    // Invia la recensione al backend tramite il servizio
-    this.reviewsService.createReview(review).subscribe({
-      next: (response) => {
-        console.log('Recensione creata con successo:', response);
-        this.dialogRef.close(true);  // Chiude il dialogo e invia un successo
-      },
-      error: (error) => {
-        console.error('Errore nella creazione della recensione:', error);
-        this.dialogRef.close(false);  // Chiude il dialogo senza successo
-      }
+  ngOnInit(): void {
+    // Inizializzazione del FormGroup con i relativi controlli
+    this.form = this.fb.group({
+      firstName: ['', [Validators.required, Validators.minLength(2)]],
+      lastName: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
+  }
+
+  // Metodo per inviare il modulo
+  onSubmit(): void {
+    if (this.form.valid) {
+      console.log('Form submitted', this.form.value);
+    } else {
+      console.log('Form non valido');
+    }
+  }
+
+  // Metodo per controllare se un campo è stato toccato
+  get isTouched() {
+    return (controlName: string) => this.form.controls[controlName].touched;
+  }
+
+  // Metodo per controllare se un campo è valido
+  get isValid() {
+    return (controlName: string) => this.form.controls[controlName].valid;
+  }
+
+  // Metodo per recuperare i messaggi di errore di ciascun controllo
+  getErrorMessage(controlName: string): string {
+    const control = this.form.controls[controlName];
+    if (control.hasError('required')) {
+      return 'Questo campo è obbligatorio';
+    }
+    if (control.hasError('minlength')) {
+      return `Minimo ${control.errors['minlength'].requiredLength} caratteri richiesti`;
+    }
+    if (control.hasError('email')) {
+      return 'Indirizzo email non valido';
+    }
+    return '';
   }
 }
