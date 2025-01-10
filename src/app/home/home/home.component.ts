@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ChangeDetectorRef, ApplicationRef } from '@angular/core';
 import { TopsalonComponent } from '../topsalon/topsalon.component';
 import { RouterModule } from '@angular/router';
 import { SwiperCarouselComponent } from '../carousel/carousel.component';
@@ -56,7 +56,8 @@ export class HomeComponent implements OnInit {
   showLogin = false; // Variabile per controllare la visibilità del LoginComponent
   showRegister = false; // Variabile per controllare la visibilità del RegisterComponent
   userProfile: any = null;  // Variabile per salvare il profilo dell'utente
-  constructor(private dialog: MatDialog, private userService: UserService, private appointmentService: AppointmentService, private cdRef: ChangeDetectorRef) {}
+  constructor(private dialog: MatDialog, private userService: UserService, private appointmentService: AppointmentService, private cdRef: ChangeDetectorRef, private appRef: ApplicationRef) {}
+
 
   ngOnInit(): void {
     this.checkAuthentication();
@@ -76,7 +77,7 @@ export class HomeComponent implements OnInit {
           a.forEach((appointment: AppointmentDetail) => {
             if (appointment.status === "Cancelled") {
               this.pastAppointments.push(appointment);
-              this.cdRef.detectChanges();
+              this.appRef.tick();
             } else {
               this.futureAppointments.push(appointment);
             }
@@ -207,15 +208,20 @@ export class HomeComponent implements OnInit {
           console.log(`Appuntamento con ID ${appointmentId} eliminato con successo.`);
   
           // Rimuove l'appuntamento da futureAppointments creando un nuovo array
+          appointmentToDelete.status = "Cancelled";
           this.futureAppointments = this.futureAppointments.filter(a => a.id !== appointmentId);
           
           // Se l'appuntamento è stato annullato, spostalo in pastAppointments creando un nuovo array
           if (appointmentToDelete.status === "Cancelled") {
             this.pastAppointments = [...this.pastAppointments, appointmentToDelete];
           }
-  
+          console.log(this.pastAppointments);
+          console.log(this.futureAppointments);
+          console.log('Stato appuntamento:', appointmentToDelete.status);
+          
+          
           // Forza l'aggiornamento della vista
-          this.cdRef.detectChanges();
+          this.appRef.tick();
         },
         error: err => {
           console.error('Errore durante l\'eliminazione dell\'appuntamento:', err);

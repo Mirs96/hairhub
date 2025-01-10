@@ -57,7 +57,7 @@
             </div>
             <div class="bottom-section">
               <ul>
-              @for(treatment of a.treatments; track treatment.name) {
+              @for(treatment of a.treatments; track treatment.id) {
                 <li>{{ treatment.name }}</li>
               }
             </ul>
@@ -86,9 +86,9 @@
             </div>
             <div class="bottom-section">
               <ul>
-              @for(treatment of a.treatments; track treatment.name) {
-                <li>{{ treatment.name }}</li>
-              }
+                @for(treatment of a.treatments; track treatment.id + '-' + treatment.name) {
+                  <li>{{ treatment.name }}</li>
+                }
             </ul>
             </div>
           </div>
