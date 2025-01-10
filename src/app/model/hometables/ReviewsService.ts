@@ -14,8 +14,8 @@ export class ReviewsService{
             return this.http.get<ReviewDetails[]>(`${HttpConfig.apiUrl}${this.urlExtension}/${id}/reviews`);
         }
 
-        getReviewByAppointment(appointmentId: number): Observable<ReviewDetails | null> {
-            return this.http.get<ReviewDetails | null>(`${HttpConfig.apiUrl}${this.urlExtension}/appointment/${appointmentId}`);
+        isReviewPossible(appointmentId: number): Observable<boolean> {
+            return this.http.get<boolean>(`${HttpConfig.apiUrl}${this.urlExtension}/appointment/${appointmentId}`);
           }
 
         createReview(review: ReviewDetails) : Observable<ReviewDetails>{

@@ -61,7 +61,7 @@
                 <li>{{ treatment.name }}</li>
               }
             </ul>
-            </div>
+          </div>
             <button class="cancel-btn" (click)="deleteAppointment(a.id)">Disdici</button>
           </div>
         }
@@ -91,6 +91,9 @@
                 }
             </ul>
             </div>
+            @if(canReview(a.id)){
+              <button mat-button (click) = "createReview(a.id)">Crea Recensione </button>
+            }
           </div>
         }
 

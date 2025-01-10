@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../../register/register.component';
 import { Dialog, DIALOG_DATA, DialogModule } from '@angular/cdk/dialog';
-import { MatDialog, MatDialogModule} from '@angular/material/dialog'; // Import per il dialog
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule} from '@angular/material/dialog'; // Import per il dialog
 import {jwtDecode} from 'jwt-decode';
 import { SidenavComponent } from '../../Sidenav/sidenav/sidenav.component';
 import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav';
@@ -22,6 +22,8 @@ import { AppointmentService } from '../../model/bookingAppointment/appointment.s
 import { AppointmentDetail } from '../../model/hometables/AppointmentDetail';
 import { TreatmentDto } from '../../model/hometables/TreatmentDto';
 import { CommonModule } from '@angular/common';
+import { ReviewsService } from '../../model/hometables/ReviewsService';
+
 @Component({
   selector: 'app-home',
   imports: [
@@ -56,26 +58,27 @@ export class HomeComponent implements OnInit {
   showLogin = false; // Variabile per controllare la visibilità del LoginComponent
   showRegister = false; // Variabile per controllare la visibilità del RegisterComponent
   userProfile: any = null;  // Variabile per salvare il profilo dell'utente
-  constructor(private dialog: MatDialog, private userService: UserService, private appointmentService: AppointmentService, private cdRef: ChangeDetectorRef, private appRef: ApplicationRef) {}
-
+  constructor(private dialog: MatDialog, private userService: UserService, private appointmentService: AppointmentService, private cdRef: ChangeDetectorRef, private appRef: ApplicationRef, private reviewsService: ReviewsService) {}
 
   ngOnInit(): void {
     this.checkAuthentication();
-
+  
     this.userService.loggedIn$.subscribe({
-      next: s => this.isLoggedIn = s,
-      error: err => console.log(err)
-
+      next: (s) => (this.isLoggedIn = s),
+      error: (err) => console.log(err),
     });
-    const userIdStr =this.userService.getUserIdFromToken();
+  
+    const userIdStr = this.userService.getUserIdFromToken();
     const userId = userIdStr ? parseInt(userIdStr) : null;
     console.log('userId:', userId);
+  
     if (userId != null) {
+      // Ottieni appuntamenti futuri
       this.appointmentService.getFutureAppointments(userId).subscribe({
-        next: a => {
-          console.log('Array delle future appuntamenti:', a);  // Stampa l'array
+        next: (a) => {
+          console.log('Array delle future appuntamenti:', a); // Stampa l'array
           a.forEach((appointment: AppointmentDetail) => {
-            if (appointment.status === "Cancelled") {
+            if (appointment.status === 'Cancelled') {
               this.pastAppointments.push(appointment);
               this.appRef.tick();
             } else {
@@ -83,22 +86,38 @@ export class HomeComponent implements OnInit {
             }
           });
         },
-        error: err => console.log(err)
+        error: (err) => console.log(err),
       });
-    }
-    if(userId != null){
+  
+      // Ottieni appuntamenti passati solo se userId è valido
       this.appointmentService.getPastAppointments(userId).subscribe({
-        next: a =>{
-          console.log('Array dei passati appuntamenti:', a); 
-         this.pastAppointments = this.pastAppointments.concat(a);
-          console.log('Array dei passati appuntamentissss:', this.pastAppointments);          
+        next: (a) => {
+          console.log('Array dei passati appuntamenti:', a);
+          this.pastAppointments = this.pastAppointments.concat(a);
+          console.log('Array aggiornato dei passati appuntamenti:', this.pastAppointments);
         },
-        error: err => console.log(err)
+        error: (err) => console.log(err),
       });
-    
+    } else {
+      console.log('Utente non autenticato o userId non valido');
     }
-
   }
+  
+  canReview(appointmentId: number): boolean {
+    // Verifica se è possibile lasciare una recensione
+    this.reviewsService.isReviewPossible(appointmentId).subscribe({
+      next: (isPossible) => {
+        return isPossible;  // Puoi usare questa logica nel template o nel controllo del componente
+      },
+      error: (err) => {
+        console.error(`Errore durante il controllo della possibilità di recensione per l'appuntamento ${appointmentId}`, err);
+        return false;
+      },
+    });
+    return false; // Default return (può essere sostituito con il risultato di isReviewPossible)
+  }
+  
+
 
   // Funzione per aprire il dialog di login
   openLoginDialog(): void {
