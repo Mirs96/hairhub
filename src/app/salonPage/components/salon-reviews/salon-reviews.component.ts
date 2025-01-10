@@ -3,7 +3,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
-import { ReviewsDetail } from '../../../model/hometables/ReviewsDetail';
+import { ReviewDetails } from '../../../model/hometables/ReviewsDetail';
 import { ReviewsService } from '../../../model/hometables/ReviewsService';
 import { ActivatedRoute } from '@angular/router';
 
@@ -15,8 +15,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './salon-reviews.component.css'
 })
 export class SalonReviewsComponent implements OnInit {
-    salonsReviews!: ReviewsDetail[];
-    filteredReviews!: ReviewsDetail[];
+    salonsReviews!: ReviewDetails[];
+    filteredReviews!: ReviewDetails[];
     stars: number[] = [1, 2, 3, 4, 5];
     selectedRating: number = 0;
 
