@@ -14,6 +14,8 @@ import { SalonDetails } from '../../../model/hometables/SalonDetails';
 import { SalonService } from '../../../model/hometables/SalonService';
 import { Observable, ObservedValueOf } from 'rxjs';
 import { SalonReviewsComponent } from "../../components/salon-reviews/salon-reviews.component";
+import { UserService } from '../../../model/hometables/userService';
+
 
 @Component({
   selector: 'app-main-salon',
@@ -24,11 +26,12 @@ import { SalonReviewsComponent } from "../../components/salon-reviews/salon-revi
 export class MainSalonComponent implements OnInit{
    salonDetails!: SalonDetails;
    selectedTreatments: TreatmentsPriceDetails[] = [];
+   isLoggedIn = false;
 
    @Output()
    addTreatment = new EventEmitter<TreatmentsPriceDetails>();
 
-  constructor(private cdRef: ChangeDetectorRef, private route: ActivatedRoute, private salonService: SalonService) {}
+  constructor(private cdRef: ChangeDetectorRef, private route: ActivatedRoute, private salonService: SalonService, private userService: UserService) {}
 
   addToCheckout(treatment: TreatmentsPriceDetails): void {
     // Verifica se il trattamento è già stato selezionato
@@ -79,7 +82,14 @@ export class MainSalonComponent implements OnInit{
       error: err => console.log(err)     
     });
 
+    this.userService.loggedIn$.subscribe({
+      next: s => this.isLoggedIn = s,
+      error: err => console.log(err)
+
+    });
+    this.userService.getUserIdFromToken();
 
   }
+
 
 }
