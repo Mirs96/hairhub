@@ -1,0 +1,60 @@
+/* ------------------ NAVBAR ------------------------ */
+
+#imgBackground {
+    height: 10%;
+    width: 100%;
+    position: fixed;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background: rgb(22,19,19);
+    z-index: 1000;
+}
+
+/* #fullBg {
+    background: rgb(3,3,10);
+    background: linear-gradient(180deg, rgba(3,3,10,1) 7%, rgba(255,255,255,1) 100%);
+} */
+
+.navBar {
+    display: flex;
+    height: 50px;            
+    justify-content: center; /* Centra il contenuto */
+    align-items: center;
+    padding: 0 170px;
+    background: transparent; /* Colore di sfondo semi-trasparente */
+}
+
+#logonav {
+    justify-content: flex-start; 
+    align-items: center;
+    max-height: 80px;
+    margin-top: 35px;
+    margin-left: 0px;
+    height: auto;
+    cursor: pointer;
+    
+}
+
+.example-spacer {
+    flex: 1;
+}
+
+.example-icon {
+    padding: 0;
+}
+
+
+
+#navHome {
+    width: 25px; 
+    height: 25px;
+    margin-top: 40px;
+    float: right;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#navHome:hover {
+    transform: scale(1.2);
+}
