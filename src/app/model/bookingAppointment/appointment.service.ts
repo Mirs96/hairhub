@@ -36,7 +36,7 @@ createAppointment(appointmentDto: AppointmentDto): Observable<any>{
   return this.http.post(`${HttpConfig.apiUrl}${this.urlExtension}`,appointmentDto,{headers});
 
 }
-getFutureAppointments(userId: number): Observable<AppointmentDetail[] | any>{
+getFutureAppointments(userId: number): Observable<any>{
   return this.http.get(`${HttpConfig.apiUrl}${this.urlExtension}/future/${userId}`);
 }
 
