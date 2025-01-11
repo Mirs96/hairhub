@@ -57,7 +57,6 @@ export class CheckoutTableComponent implements OnChanges {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.selectedTreatments = [];
       console.log('Dialogo chiuso', result);
 
       if (result && result.success) {
