@@ -1,0 +1,8 @@
+.rating span {
+    color: lightgray;
+    font-size: 1.5rem;
+  }
+  
+  .rating span.filled {
+    color: gold;
+  }

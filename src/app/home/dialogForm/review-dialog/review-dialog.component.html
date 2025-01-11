@@ -1,1 +1,39 @@
-<p>review-dialog works!</p>
+<div>
+    <h2>Lascia una recensione</h2>
+    <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="rating">Valutazione (1-5):</label>
+            <div class="rating">
+                @for (rating of [1, 2, 3, 4, 5]; track $index) {
+                <label>
+                    <input type="radio" formControlName="rating" [value]="rating"
+                        [checked]="reviewForm.controls['rating'].value === rating" />
+                    <span [ngClass]="{'filled': reviewForm.controls['rating'].value >= rating}">
+                        {{rating}} ★
+                    </span>
+                </label>
+                }
+            </div>
+        </div>
+
+        <div>
+            <label for="comment">Commento:</label>
+            <textarea id="comment" formControlName="comment" rows="4" maxlength="500"></textarea>
+
+            @if (reviewForm.controls['comment'].invalid && reviewForm.controls['comment'].touched) {
+            <div>
+                @if (reviewForm.controls['comment'].hasError('required')) {
+                <small>Il commento è obbligatorio.</small>
+                }
+
+                @if (reviewForm.controls['comment'].hasError('maxlength')) {
+                <small>Il commento non può superare i 500
+                    caratteri.</small>
+                }
+            </div>
+            }
+        </div>
+
+        <button type="submit" [disabled]="reviewForm.invalid">Invia recensione</button>
+    </form>
+</div>

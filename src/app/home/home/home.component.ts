@@ -115,21 +115,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  canReview(appointment: AppointmentDetail): boolean {
-    const currentDate = new Date();
-    const appointmentDate = new Date(appointment.date);
-
-    // Verifica se la data dell'appuntamento è passata e se è possibile fare una recensione
-    if (appointment.status !== 'Cancelled' && currentDate > appointmentDate) {
-      return true;
-    }
-    return false;
-  }
 
   openReviewDialog(appointment: AppointmentDetail): void {
-    if (this.canReview(appointment)) {
+    if (appointment.canReview) {
       const dialogRef = this.dialog.open(ReviewDialogComponent, {
-        width: '400px',
+        width: '800px',
         data: { appointmentId: appointment.id },
       });
 
