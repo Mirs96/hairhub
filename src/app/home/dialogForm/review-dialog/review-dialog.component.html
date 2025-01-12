@@ -9,7 +9,7 @@
                     <input type="radio" formControlName="rating" [value]="rating"
                         [checked]="reviewForm.controls['rating'].value === rating" />
                     <span [ngClass]="{'filled': reviewForm.controls['rating'].value >= rating}">
-                        {{rating}} ★
+                        ★
                     </span>
                 </label>
                 }

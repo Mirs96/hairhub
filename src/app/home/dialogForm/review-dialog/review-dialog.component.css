@@ -2,35 +2,41 @@ form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
-    margin: 1rem 0;
-    padding: 1.5rem;
+    margin: 1.2rem 0;
+    padding: 1.rem;
     background-color: #f9f9f9;
     border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.1);
 }
 
 /* Titolo */
 h2 {
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-size: 1.4rem;
     color: #333;
 }
 
 /* Stile delle etichette */
 label {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
-    color: #555;
+    color: #333;
 }
 
-/* Valutazione (stelle) */
 .rating {
     display: flex;
-    gap: 0.5rem;
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center; 
+    margin-left: 132px;   /* Centra verticalmente, se necessario */
+    width: 100%;     
+    gap: 0.5rem;      /* Assicurati che il contenitore abbia la larghezza adeguata */
 }
 
+.rating input[type="radio"] {
+    display: none; /* Nasconde i cerchi dei radio button */
+}
 .rating span {
     color: lightgray;
     font-size: 2rem;
@@ -48,27 +54,28 @@ textarea {
     font-size: 1rem;
     padding: 0.5rem;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 19px;
+    margin-left: 83px;
     resize: none;
     transition: border-color 0.3s ease;
 }
 
 textarea:focus {
     outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+    border-color: #6e7379;
+    box-shadow: 0 0 4px rgba(151, 157, 163, 0.3);
 }
 
 /* Pulsante */
 button {
     align-self: center;
-    background-color: #007bff;
+    background-color: #0a0a0a;
     color: #fff;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: bold;
     padding: 0.75rem 1.5rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -79,7 +86,7 @@ button:disabled {
 }
 
 button:not(:disabled):hover {
-    background-color: #0056b3;
+    background-color: #156820;
     transform: translateY(-2px);
 }
 
