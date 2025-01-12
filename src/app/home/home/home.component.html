@@ -5,10 +5,16 @@
       <header id="logo">
         <div id="classLogo"></div>
         <mat-toolbar class="navBar">
-          <img id="logonav" src="img/hairhub.png" alt="Logo" routerLink="/home">
+          <img id="logonav" src="img/logoSito.png" alt="Logo" routerLink="/home">
           <span class="example-spacer"></span>
           <button id="btnLogin" mat-button [matMenuTriggerFor]="login">
-            <img id="nav2" src="img/login.png" alt="Login Icon" style="width: 24px; height: 24px; background-color: black;">
+            @if(isAuthenticated){
+              <img id="nav2" src="img/logoUtenteLoggato.png" alt="Login Icon">
+            }
+            @if (!isAuthenticated) {
+              <p id="btnLogReg">Accedi/Registrati</p>
+            }
+
           </button>
           <button id="btn" mat-button [matMenuTriggerFor]="menu">Menu</button>
           <mat-menu #menu="matMenu">
@@ -114,7 +120,6 @@
       <li><img id="facebook" src="img/facebook.png" alt="Facebook"></li>
       <li><img src="img/twitter.png" alt="Twitter"></li>
       <li><img src="img/instagram.png" alt="Instagram"></li>
-      <li><img src="img/homeLogo.png" alt="Instagram"></li>
     </ul>
     <ul class="menu">
       <li><a href="#">Home</a></li>
