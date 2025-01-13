@@ -1,18 +1,12 @@
 .swiper-container {
-  float: right;
+  float: center;
     position: relative;
     overflow: hidden;
     width: 100%;
-    right: 0px;
     margin: 0 auto;
   }
 
-  @media screen and (min-width: 960px) {
-    .swiper-container {
-      width: 35%;
-      right: 20px;
-    }
-  }
+
 
   .swiper {
     position: relative;
@@ -111,7 +105,9 @@
   
   .swiper-button-next,
   .swiper-button-prev {
-    color: #fff;
+    color: #978d58;
+    --swiper-navigation-size: 20px;
+    
   }
   
   .swiper-pagination {

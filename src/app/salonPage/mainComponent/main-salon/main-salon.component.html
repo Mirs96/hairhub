@@ -14,8 +14,12 @@
       @if (salonDetails) {
       <div class="content">
         <h2>{{salonDetails.name}}</h2>
-        <p> {{salonDetails.address}}</p>
-        <ul class="counter">
+        <div class="details">
+        <p> Dal Lunedì al Venerdì </p>
+        <p style="color: #978d58;">{{salonDetails.address}}, Roma</p>
+        <p>Dalle 10:30 alle 18:30</p>
+        </div>
+        <!--<ul class="counter">
           <li>
             <h3><i class="fa-solid fa-book"></i>10+</h3>
             <span>Servizi</span>
@@ -24,7 +28,7 @@
             <h3><i class="fa-solid fa-user"></i>1000+</h3>
             <span>Clienti soddisfatti</span>
           </li>
-        </ul>
+        </ul>-->
       </div>
 
       }
