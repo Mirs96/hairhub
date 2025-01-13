@@ -1,81 +1,135 @@
-<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
 <div id="fullBg">
   <!-- Navbar -->
   <div id="imgBackground">
     <div class="header">
       <header id="logo">
-        <div id="classLogo">
-        </div>
+        <div id="classLogo"></div>
         <mat-toolbar class="navBar">
-          <img id="logonav" src="img/hairhub.png" alt="Logo" routerLink="/home">
+          <img id="logonav" src="img/logoSito.png" alt="Logo" routerLink="/home">
           <span class="example-spacer"></span>
           <button id="btnLogin" mat-button [matMenuTriggerFor]="login">
+            @if(isAuthenticated){
+              <img id="nav2" src="img/logoLogout.png" alt="Login Icon">
+            }
+            @if (!isAuthenticated) {
+              <img id="nav3" src="img/logoLogin.png" alt="Login Icon">
+            }
 
-            <img id="nav2" src="img/login.png" alt="thumbs up icon"
-              style="width: 24px; height: 24px; background-color: black;">
           </button>
           <button id="btn" mat-button [matMenuTriggerFor]="menu">Menu</button>
           <mat-menu #menu="matMenu">
             <button routerLink="/home" mat-menu-item>Home</button>
             <button mat-menu-item>Servizi</button>
             <button mat-menu-item>Contatti</button>
-            @if (isAuthenticated){
-            <button mat-button (click)="openSidenav()">Miei appuntamenti</button>
-            }
-</mat-menu>
-          <mat-menu #login="matMenu">
-            @if (!isAuthenticated) {
-            <button (click)="openLoginDialog()" mat-menu-item (click)="toggleLogin()">Accedi</button>
-            <button mat-menu-item (click)="openRegisterDialog()" (click)="toggleRegister()">Registrati</button>
-            }
-
-            @if(isAuthenticated){
-            <button mat-button (click)="logout()">Logout</button>
+            @if (isAuthenticated) {
+              <button mat-button (click)="openSidenav()">Miei appuntamenti</button>
             }
           </mat-menu>
-
+          <mat-menu #login="matMenu">
+            @if (!isAuthenticated) {
+              <button (click)="openLoginDialog()" mat-menu-item>Accedi</button>
+              <button (click)="openRegisterDialog()" mat-menu-item>Registrati</button>
+            }
+            @if (isAuthenticated) {
+              <button mat-button (click)="logout()">Logout</button>
+            }
+          </mat-menu>
         </mat-toolbar>
-
       </header>
-
-
     </div>
-
   </div>
-
 
   <div class="content">
     <!-- Sidenav -->
+    
     <mat-drawer-container class="sidenav-container">
       <mat-drawer #drawer mode="over" position="end" class="custom-sidenav">
-        <h2>Storico delle Prenotazioni</h2>
-        <div>
-          <p>Inserisci qui il contenuto dello storico delle prenotazioni.</p>
-        </div>
+        <h2>Active appointments</h2>
+        @for(a of futureAppointments; track a.id){
+          <div id="card-container">
+            <div class="top-section">
+              <div id="priceTag">
+                <span class="amount">{{ calculateTotalPrice(a) | currency }}</span>
+              </div>
+              <div class="appointment-date">
+                <span>{{ a.date | date: 'dd/MM/yyyy' }}</span>
+              </div>
+            </div>
+            <div class="middle-selection">
+              <div class="salon-barber">
+                <span>{{ a.salonName }}</span>
+                <span>{{ a.barberName }}</span>
+              </div>
+            </div>
+            <div class="bottom-section">
+              <ul>
+              @for(treatment of a.treatments; track treatment.id) {
+                <li>{{ treatment.name }}</li>
+              }
+            </ul>
+          </div>
+            <button class="cancel-btn" (click)="deleteAppointment(a.id)">Disdici</button>
+          </div>
+        }
+
+        <h2>Past appointments</h2>
+
+        @for(a of pastAppointments; track a.id){
+          <div id="card-container">
+            <div class="top-section">
+              <div id="priceTag">
+                <span class="amount">{{ calculateTotalPrice(a) | currency }}</span>
+              </div>
+              <div class="appointment-date">
+                <span>{{ a.date | date: 'dd/MM/yyyy' }}</span>
+              </div>
+            </div>
+            <div class="middle-selection">
+              <div class="salon-barber">
+                <span>{{ a.salonName }}</span>
+                <span>{{ a.barberName }}</span>
+              </div>
+            </div>
+            <div class="bottom-section">
+              <ul>
+                @for(treatment of a.treatments; track treatment.id + '-' + treatment.name) {
+                  <li>{{ treatment.name }}</li>
+                }
+            </ul>
+            </div>
+            @if(a.canReview){
+              <button mat-button (click)="openReviewDialog(a)">Crea Recensione </button>
+            }
+          </div>
+        }
+
+    
         <button mat-button (click)="closeSidenav()">Chiudi</button>
       </mat-drawer>
-    </mat-drawer-container>
+    </mat-drawer-container> 
+    
+    
 
+    <!-- Componenti principali -->
     <app-topsaloon></app-topsaloon>
-
     <div id="carousel">
       <app-swiper-carousel></app-swiper-carousel>
     </div>
-
-    <!-- Footer -->
-    <footer>
-      <ul class="social_icon">
-        <li><img id="facebook" src="img/facebook.png" alt="Facebook"></li>
-        <li><img src="img/twitter.png" alt="Twitter"></li>
-        <li><img src="img/instagram.png" alt="Instagram"></li>
-      </ul>
-      <ul class="menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-      <p>©2024 Chris Tobojia | All Rights Reserved</p>
-    </footer>
   </div>
+
+  <!-- Footer -->
+  <footer>
+    <ul class="social_icon">
+      <li><img id="facebook" src="img/facebook.png" alt="Facebook"></li>
+      <li><img src="img/twitter.png" alt="Twitter"></li>
+      <li><img src="img/instagram.png" alt="Instagram"></li>
+    </ul>
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <p>©2024 Chris Tobojia | All Rights Reserved</p>
+  </footer>
 </div>

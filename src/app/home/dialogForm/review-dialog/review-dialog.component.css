@@ -1,0 +1,102 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1.2rem 0;
+    padding: 1.rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.1);
+}
+
+/* Titolo */
+h2 {
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-size: 1.4rem;
+    color: #333;
+}
+
+/* Stile delle etichette */
+label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.rating {
+    display: flex;
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center; 
+    margin-left: 132px;   /* Centra verticalmente, se necessario */
+    width: 100%;     
+    gap: 0.5rem;      /* Assicurati che il contenitore abbia la larghezza adeguata */
+}
+
+.rating input[type="radio"] {
+    display: none; /* Nasconde i cerchi dei radio button */
+}
+.rating span {
+    color: lightgray;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.rating span.filled {
+    color: gold;
+}
+
+/* Area di testo */
+textarea {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 19px;
+    margin-left: 83px;
+    resize: none;
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #6e7379;
+    box-shadow: 0 0 4px rgba(151, 157, 163, 0.3);
+}
+
+/* Pulsante */
+button {
+    align-self: center;
+    background-color: #0a0a0a;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button:not(:disabled):hover {
+    background-color: #156820;
+    transform: translateY(-2px);
+}
+
+/* Messaggi di errore */
+small {
+    color: #d9534f;
+    font-size: 0.9rem;
+}
+
+/* Div contenitore per errore */
+div small {
+    margin-top: 0.5rem;
+}

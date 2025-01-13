@@ -73,32 +73,41 @@
   
   mat-label {
     font-weight: bold;
-    color: #676767;
-  }
-  
-  .appointment-details {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  /* Style the confirmation and close buttons */
-  .mat-raised-button {
-    margin-top: 16px;
-  }
-  
-  .mat-raised-button.accent {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  /* Style the list of selected treatments */
-  .selected-treatments {
-    margin-top: 16px;
-  }
-  
-  .selected-treatments ul {
-    list-style: none;
-    padding: 0;
+    color: #f0f0f0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Stile comune per entrambi i pulsanti */
+.booking-container button {
+    background-color: #020202; /* Verde acqua */
+    color: #fff; /* Testo bianco */
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(5, 5, 5, 0.3); /* Ombra delicata */
+}
+
+/* Hover per entrambi i pulsanti */
+.booking-container button:hover {
+    background-color: #5bb3aa; /* Verde acqua scuro */
+}
+
+/* Disabilitazione pulsanti */
+.booking-container button:disabled {
+    background-color: #ccc; /* Grigio chiaro */
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Dettagli della prenotazione */
+.booking-container p {
     margin: 0;
   }
   

@@ -19,8 +19,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatMenu } from '@angular/material/menu';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import  moment  from 'moment-timezone';
-import { FormControl} from '@angular/forms';
+import moment from 'moment-timezone';
+import { FormControl } from '@angular/forms';
 import { UserService } from '../../../model/hometables/userService';
 import { AppointmentDetail } from '../../../model/hometables/AppointmentDetail';
 import { AppointmentDto } from '../../../model/hometables/appointmentDto';
@@ -32,15 +32,15 @@ import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-booking',
   providers: [provideNativeDateAdapter()],
-  imports: [MatCardModule,MatCard,MatDialogModule, MatFormFieldModule, MatInputModule,
-           MatDatepickerModule, ReactiveFormsModule, MatTimepickerModule, FormsModule, MatSelectModule,
-           MatMenuModule,MatInputModule,MatButtonModule],
+  imports: [MatCardModule, MatCard, MatDialogModule, MatFormFieldModule, MatInputModule,
+    MatDatepickerModule, ReactiveFormsModule, MatTimepickerModule, FormsModule, MatSelectModule,
+    MatMenuModule, MatInputModule, MatButtonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css'
 })
 export class BookingComponent implements OnInit {
-  bookingConfirmed: boolean= false;
+  bookingConfirmed: boolean = false;
   barbers!: BarberDetails[];
   barber!: BarberDetails;
   id!: number;
@@ -56,16 +56,16 @@ export class BookingComponent implements OnInit {
   availableTimes: string[] = [];
   timeOptions: { value: string, viewValue: string }[] = []; // Array per le opzioni del select
   isLoggedIn = false;
-  userId!:string | null;
+  userId!: string | null;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number, selectedTreatments: TreatmentsPriceDetails[] }, private salonService: SalonService,
-               private route: ActivatedRoute, private appointmentService: AppointmentService,
-              private fb: FormBuilder,private userService: UserService,private snackBar: MatSnackBar, private dialogRef: MatDialogRef<BookingComponent>, private cdr: ChangeDetectorRef) {
+    private route: ActivatedRoute, private appointmentService: AppointmentService,
+    private fb: FormBuilder, private userService: UserService, private snackBar: MatSnackBar, private dialogRef: MatDialogRef<BookingComponent>, private cdr: ChangeDetectorRef) {
     this.bookingForm = this.fb.group({
       barberId: [''],
       date: [''],
-      time: ['',Validators.required],
-      treatmentSummary:['']
+      time: ['', Validators.required],
+      treatmentSummary: ['']
     });
   }
 
@@ -132,14 +132,14 @@ export class BookingComponent implements OnInit {
       const localDate = moment(date).tz("Europe/Rome", true).startOf('day');
       const dateString = localDate.format("YYYY-MM-DD");
       console.log("Data locale (formattata)", dateString);
-  
+
       this.appointmentService.getAvailableTimes(barberId, dateString, this.bookingMonths).subscribe({
         next: (times) => {
           console.log("Orari Disponibili", times, typeof times);
           this.availableTimes = times.times;
           //this.availableTimes = times;
-           // Mappa gli orari per il mat-select
-          this.timeOptions = this.availableTimes.map(time => ({ value: time, viewValue: time }) );
+          // Mappa gli orari per il mat-select
+          this.timeOptions = this.availableTimes.map(time => ({ value: time, viewValue: time }));
           this.bookingForm.get('time')?.enable(); // Abilita il campo orario
         },
         error: (err) => {
@@ -155,20 +155,20 @@ export class BookingComponent implements OnInit {
     if (!date || !this.availableDates || this.availableDates.length === 0) {
       return false;
     }
-  
+
     const isAvailable = this.availableDates.some(availableDate => {
-      if(typeof availableDate === 'string'){
+      if (typeof availableDate === 'string') {
         availableDate = new Date(availableDate);
       }
 
-      if(!(availableDate instanceof Date) || isNaN(availableDate.getTime())) {
+      if (!(availableDate instanceof Date) || isNaN(availableDate.getTime())) {
         console.error('availableDate non è un oggetto Date valido:', availableDate);
         return false;
       }
-      
+
       return availableDate.getFullYear() === date.getFullYear() &&
-              availableDate.getMonth() === date.getMonth() &&
-             availableDate.getDate() === date.getDate();
+        availableDate.getMonth() === date.getMonth() &&
+        availableDate.getDate() === date.getDate();
     });
     return isAvailable;
   }
@@ -180,11 +180,11 @@ export class BookingComponent implements OnInit {
 
   onDateSelected(event: MatDatepickerInputEvent<Date>): void {
     const date = event.value;
-    if(date){
-    this.selectedDate = date;
-    this.fetchAvailableTimes(this.barberId, date);
-    console.log('Data selezionata:', date);
-    } else{
+    if (date) {
+      this.selectedDate = date;
+      this.fetchAvailableTimes(this.barberId, date);
+      console.log('Data selezionata:', date);
+    } else {
       console.log("Data non valida");
     }
   }
@@ -197,64 +197,64 @@ export class BookingComponent implements OnInit {
       name: treatment.name,
       price: treatment.price
     }));
- 
-  // Ottieni l'orario selezionato dal form
-  const selectedTime = this.bookingForm.value.time;
 
-  // Definisci la data dell'appuntamento
-  const appointmentDate = this.selectedDate;
-  const startTime = moment(selectedTime, 'HH:mm').format('HH:mm');
+    // Ottieni l'orario selezionato dal form
+    const selectedTime = this.bookingForm.value.time;
 
-  // Calcola la durata totale in minuti
-  const totalDurationInMinutes = this.selectedTreatments.length * 30; // 30 minuti per ogni servizio
+    // Definisci la data dell'appuntamento
+    const appointmentDate = this.selectedDate;
+    const startTime = moment(selectedTime, 'HH:mm').format('HH:mm');
 
-  // Calcola l'orario di fine aggiungendo la durata totale
-  const endTime = moment(startTime, 'HH:mm').add(totalDurationInMinutes, 'minutes').format('HH:mm'); // Orario di fine come stringa HH:mm
+    // Calcola la durata totale in minuti
+    const totalDurationInMinutes = this.selectedTreatments.length * 30; // 30 minuti per ogni servizio
+
+    // Calcola l'orario di fine aggiungendo la durata totale
+    const endTime = moment(startTime, 'HH:mm').add(totalDurationInMinutes, 'minutes').format('HH:mm'); // Orario di fine come stringa HH:mm
     const treatmentIds = this.selectedTreatments.map(treatment => treatment.id);
 
-   //costruisci l'oggetto AppointmentDto
-   const appointmentDto: AppointmentDto = {
-    id:0,
-    userId: this.userId ? parseInt(this.userId, 10) : 0,
-    barberId:this.barberChoice,
-    barberName: this.barbers.find(barber => barber.id === this.barberChoice)?.name || '',
-    date:moment(appointmentDate).format('YYYY-MM-DD'),
-    startTime: startTime,
-    endTime: endTime,
-    status: 'confirmed',
-    treatments: treatmentIds
-   };
+    //costruisci l'oggetto AppointmentDto
+    const appointmentDto: AppointmentDto = {
+      id: 0,
+      userId: this.userId ? parseInt(this.userId, 10) : 0,
+      barberId: this.barberChoice,
+      barberName: this.barbers.find(barber => barber.id === this.barberChoice)?.name || '',
+      date: moment(appointmentDate).format('YYYY-MM-DD'),
+      startTime: startTime,
+      endTime: endTime,
+      status: 'confirmed',
+      treatments: treatmentIds
+    };
 
-   console.log('Dettagli dell appuntamento', appointmentDto);
+    console.log('Dettagli dell appuntamento', appointmentDto);
 
-   this.appointmentService.createAppointment(appointmentDto).subscribe({
-    next:(response) => {
-      console.log('Appuntamento creato con successo', response);
-      this.bookingConfirmed = true;
-      console.log(this.bookingConfirmed);
-      this.snackBar.open('Prenotazione effettuata con successo!','Chiudi',{ duration: 3000 }); // Mostra un messaggio di successo})
-      this.cdr.detectChanges();
-    },
-    error: (err)  => {
-      console.log('Errore durante la creazione dell appuntamento', err);
-      this.snackBar.open('Errore durante la prenotazione. Riprova più tardi.', 'Chiudi', { // Mostra un messaggio di errore
-        duration: 5000,
-        panelClass: ['error-snackbar']
+    this.appointmentService.createAppointment(appointmentDto).subscribe({
+      next: (response) => {
+        console.log('Appuntamento creato con successo', response);
+        this.bookingConfirmed = true;
+        console.log(this.bookingConfirmed);
+        this.snackBar.open('Prenotazione effettuata con successo!', 'Chiudi', { duration: 3000 }); // Mostra un messaggio di successo})
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.log('Errore durante la creazione dell appuntamento', err);
+        this.snackBar.open('Errore durante la prenotazione. Riprova più tardi.', 'Chiudi', { // Mostra un messaggio di errore
+          duration: 5000,
+          panelClass: ['error-snackbar']
+        });
+        this.bookingConfirmed = false;
+      }
     });
-    this.bookingConfirmed = false;
   }
-   });
-}
 
-onClose(){
-  this.bookingConfirmed = false; //resetta lo stato di conferma
-  this.bookingForm.reset(); // resetta il modulo
-  this.dialogRef.close(FormData);
-}
+  onClose() {
+    this.bookingConfirmed = false; //resetta lo stato di conferma
+    this.bookingForm.reset(); // resetta il modulo
+    this.dialogRef.close(FormData);
+  }
 
   get total(): number {
     return this.selectedTreatments.reduce((sum, treatment) => sum + treatment.price, 0);
-    
+
   }
 }
 
