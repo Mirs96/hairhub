@@ -275,6 +275,18 @@ body {
   height: 100%; /* Rende il contenuto principale a piena altezza */
 }
 
+@media (min-width: 2400px) {
+  .custom-sidenav {
+      width: 200px; /* Aumenta la larghezza della sidenav su schermi ultrawide */
+      margin-top: 3.5%; /* Regola il margine superiore per schermi ultrawide, potrebbe essere necessario un valore diverso*/
+  }
+
+  .content {
+      /* Potresti voler aggiungere un padding o un margin per centrare il contenuto principale */
+      /* margin-left: 100px; */ /* Esempio */
+  }
+}
+
 /* Media query per dispositivi mobili */
 @media (max-width: 768px) {
   .custom-sidenav {
