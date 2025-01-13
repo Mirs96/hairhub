@@ -6,6 +6,7 @@
 }
 
 
+
 .custom-divider .price {
   color: #333;                      /* Colore del prezzo */
 }
@@ -18,7 +19,90 @@ mat-list-item {
   cursor: pointer;
 }
 
-mat-list-item:hover {
-  background-color: #f0f0f0;
+.select-button {
+  display: inline-block; /* Permette al bottone di adattarsi al contenuto */
+  padding: 5px 10px; /* Spazio interno tra testo e bordo */
+  font-size: 16px; /* Dimensione del testo */
+  font-weight: bold; /* Grassetto */
+  color: #978d58; /* Colore del testo (rosa acceso) */
+  background-color: transparent; /* Sfondo trasparente */
+  border: 2px solid #978d58; /* Bordo rosa */
+  border-radius: 5px; /* Arrotondamento degli angoli */
+  cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+  transition: all 0.3s ease; /* Transizione per effetti hover */
+  text-transform: uppercase; /* Testo in maiuscolo */
+}
+
+
+.select-button:active {
+    transform: scale(0.95); /* Leggera riduzione della dimensione al click */
+}
+
+/* Opzionale: per centrare il testo verticalmente */
+.select-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#tabella {
+  width: 700px;
+}
+
+mat-list-item {
   cursor: pointer;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between; /* Spazio tra nome e contenitore prezzo-bottone */
+  align-items: center;        /* Allineamento verticale al centro */
+  width: 100%;
+}
+
+.price-button-container {
+  display: flex;
+  align-items: center;     /* Allineamento verticale al centro tra prezzo e bottone */
+  gap: 20px;            /* Spazio tra prezzo e bottone */
+}
+
+.price {
+  color: #333;
+}
+
+.select-button {
+  /* ... (tutte le altre regole CSS per .select-button) */
+  display: inline-flex; /* Usa inline-flex per centrare l'immagine */
+  align-items: center;  /* Centra verticalmente l'immagine */
+  justify-content: center; /* Centra orizzontalmente l'immagine */
+  padding: 0; /* Rimuove il padding dal bottone per evitare spazi indesiderati */
+  width: auto; /* Adatta la larghezza al contenuto (l'immagine) */
+  height: auto; /* Adatta l'altezza al contenuto (l'immagine) */
+  border: none; /* Rimuove il bordo dal bottone */
+  background-color: transparent;
+}
+
+.select-button-image {
+  max-width: 100%; /* Assicura che l'immagine non superi la larghezza del bottone */
+  max-height: 100%;
+  vertical-align: middle; /* Allinea verticalmente l'immagine */
+  width: 30px; /* Imposta una larghezza fissa per l'immagine */
+  height: 30px; /* Imposta un'altezza fissa per l'immagine */
+  object-fit: contain; /* Mantiene le proporzioni dell'immagine */
+  
+}
+
+.treatment {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; /* Opzionale, ma esplicito */
+}
+
+.price {
+  font-family: 'Montserrat', sans-serif;
+  /* Puoi usare un peso diverso se preferisci, es. 400 per Regular */
+}
+
+#title{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; /* Opzionale, ma esplicito */
 }

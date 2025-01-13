@@ -1,5 +1,9 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
 @if(selectedTreatments.length >= 0){
-<div class="example-box" cdkDrag>
+<div class="example-box">
   <div id="checkout-table" >
     <h2>Checkout</h2>
     <table style="width: 100%; border-collapse: collapse;">
@@ -12,8 +16,8 @@
                     <div class="list-item">
                         <span class="treatment">{{treatment.name}}</span>
                         <span class="price">€{{treatment.price}}</span>
-                        <button mat-icon-button (click)="removeTreatment(treatment.id)">
-                          <mat-icon>delete</mat-icon> <!-- Icona per il tasto di rimozione -->
+                        <button  (click)="removeTreatment(treatment.id)">
+                            <img src="img/deleteButton.png" alt="delete" >
                         </button>
                     </div>
                 </mat-list-item>

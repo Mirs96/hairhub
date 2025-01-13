@@ -1,15 +1,24 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
 <div id="tabella">
-    <h2>Seleziona il Servizio</h2>
+    <h2 id="title">Seleziona il Servizio</h2>
     <table style="width: 100%; border-collapse: collapse;">
         <tr>
             <td colspan="2">
                 <!-- Classe custom per divider -->
                 <mat-list class="custom-divider">
                     @for (treatment of salonsPricesAndTreatments; track treatment.id) {
-                    <mat-list-item (click)="addToCheckout(treatment)" >
+                    <mat-list-item>
                         <div class="list-item">
                             <span class="treatment">{{treatment.name}}</span>
+                            <div class="price-button-container">
                             <span class="price">€{{treatment.price}}</span>
+                            <button class="select-button" (click)="addToCheckout(treatment)">
+                                <img src="img/add.png" alt="Select" class="select-button-image">
+                              </button>
+                        </div>
                         </div>
                     </mat-list-item>
                     <mat-divider></mat-divider>
