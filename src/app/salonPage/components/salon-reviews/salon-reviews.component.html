@@ -1,23 +1,23 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
 <div id="container">
     <div class="card">
         <div class="card-content">
-            <h2>Filtra per valutazione</h2>
+            <h2 id="title">Filtra per valutazione</h2>
             <p>Seleziona una valutazione da 1 a 5</p>
             <div class="rating-filter">
                 <!-- Filtrare per valutazione -->
                 @for (star of stars; track $index) {
-                    <span class="star" [class.filled]="star <= selectedRating"
-                     (click)="filterByRating(star)"
-                     (mouseenter)="changeCursor('pointer')"
-                (mouseleave)="changeCursor('default')">
-                        &#9733;
-                    </span>
+                <span class="star" [class.filled]="star <= selectedRating" (click)="filterByRating(star)"
+                    (mouseenter)="changeCursor('pointer')" (mouseleave)="changeCursor('default')">
+                    &#9733;
+                </span>
                 }
                 <!-- Opzione per rimuovere il filtro -->
-                <span class="star" [class.filled]="selectedRating === 0"
-                 (click)="filterByRating(0)"
-                 (mouseenter)="changeCursor('pointer')"
-                (mouseleave)="changeCursor('default')">
+                <span class="star" [class.filled]="selectedRating === 0" (click)="filterByRating(0)"
+                    (mouseenter)="changeCursor('pointer')" (mouseleave)="changeCursor('default')">
                     all
                 </span>
             </div>
@@ -31,22 +31,24 @@
                     <td colspan="2">
                         <!-- Classe custom per divider -->
                         <mat-list class="custom-divider">
-                            @for(reviews of filteredReviews; track reviews.id) {   
-                            <mat-list-item>
+                            @for(reviews of filteredReviews; track reviews.id) {
+                            <mat-list-item id="divisore">
                                 <div class="list-item">
                                     <div class="rating">
                                         @for (star of stars; track $index) {
-                                            <span class="star" [class.filled]="star <= reviews.rating">&#9733;</span>
-                                          }
-                                      </div>
-                                        
-                                    <span class="treatment">{{reviews.comment}}</span>
-                                    
-                                    <span class="price">{{ calculateDaysDifference(reviews.date) }} giorni fa</span>
+                                        <span class="star" [class.filled]="star <= reviews.rating">&#9733;</span>
+                                        }
+                                    </div>
+
+                                    <div id="treatment-price">
+                                        <span class="treatment">{{reviews.comment}}</span>
+                                        <br>
+                                        <span class="price">{{ calculateDaysDifference(reviews.date) }} giorni fa</span>
+                                    </div>
                                 </div>
                             </mat-list-item>
                             <mat-divider class="custom-divider"></mat-divider>
-                        }
+                            }
                         </mat-list>
                     </td>
                 </tr>

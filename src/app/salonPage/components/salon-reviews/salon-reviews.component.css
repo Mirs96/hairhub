@@ -1,17 +1,19 @@
 /* Contenitore principale */
 #container {
+  padding-top: 5%; /* Spaziatura sopra la card */
   display: flex;
   justify-content: space-between;
-  
-  margin-top: 5%;
+  font-family:  'Montserrat', sans-serif; 
+  font-weight: 700;
 }
 
 /* Stile per la card */
 .card {
-  border: 1px solid #ccc; /* Bordi sottili e grigi */
+  border: 1px solid #4c4646; /* Bordi sottili e grigi */
   border-radius: 8px; /* Angoli arrotondati */
   padding: 16px; /* Spaziatura interna */
   width: 300px; /* Larghezza della card */
+  height: 130px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera */
   background-color: rgba(212, 57, 57, 0); /* Colore di sfondo bianco */
   table-layout: fixed;
@@ -49,13 +51,7 @@
 }
 
 /* Stile per la lista di recensioni */
-.mat-list-item {
-  display: flex;
-  flex-direction: column; /* Dispone gli elementi in verticale */
-  padding: 10px 0;
-  box-sizing: border-box;
-  margin-bottom: 15px; /* Spazio tra le recensioni */
-}
+
 
 /* Stile per il commento */
 .treatment {
@@ -97,8 +93,44 @@ mat-divider {
 }
 
 .custom-divider {
-  width: 95%;
+  width: 100%;
   margin: 0 auto;  /* Centra il divisore */
   margin-top: 2%;
   margin-left: 2%;
+}
+
+.treatment{
+  font-family:  'Montserrat', sans-serif; 
+  font-weight: 700;
+}
+
+.price{
+  font-family:  'Montserrat', sans-serif; 
+  font-weight: 700;
+  color: black;
+}
+
+#treatment-price{
+  font-family:  'Montserrat', sans-serif; 
+  font-weight: 700;
+  color: black;
+}
+
+.list-item {
+  display: flex; /* Make the container a flexbox */
+  flex-direction: column; /* Stack elements vertically */
+}
+
+#divisore{
+  width: 100%;
+  height: auto;
+}
+
+.mat-list {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
+.mat-list.visible {
+  opacity: 1;
 }
