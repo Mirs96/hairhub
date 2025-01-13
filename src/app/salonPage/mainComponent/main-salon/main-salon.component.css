@@ -69,9 +69,14 @@
   
 /* ------------------ PRESENTAZIONE SALONE ------------------- */
 
+.navbar{
+
+}
+
 body {
   overflow-x: hidden;
   position: relative;
+  padding: 0 15%;
 }
 
 ul {
@@ -80,23 +85,24 @@ ul {
   list-style: none;
 }
 
-main {
-  position: relative;
-  min-height: 100vh;
-  column-gap: 3rem;
-  padding-block: min(20vh, 3rem);
+.salon-container {
+  display: flex;
+  flex-direction: row;
+  min-height: 30vh;
+  column-gap: 1rem;
   padding-inline: 2.3em;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 300px;
 }
 @media screen and (min-width: 960px) {
-  main {
+  .salon-container {
     display: flex;
     padding-inline: 0;
   }
 }
-main .content {
+.salon-container .content {
   width: 100%;
   color: #fff;
   position: relative;
@@ -106,43 +112,48 @@ main .content {
   margin-left: 250px;
 }
 @media screen and (min-width: 960px) {
-  main .content {
+  .salon-container .content {
     width: 40%;
     padding-left: 5em;
     margin-bottom: 0;
   }
 }
-main h2 {
+.salon-container h2 {
   letter-spacing: 0.8px;
   font-weight: 700;
   font-size: 2.8rem;
   line-height: 1.2;
   color: white;
 }
-main p {
+.salon-container p {
   font-size: 1rem;
   line-height: 1.8;
   margin-inline: auto;
   margin-top: 10px;
 }
-main .counter {
+.salon-container .counter {
   font-weight: 400;
   display: flex;
   align-items: center;
   margin: 2.5em 0 2em 0;
   gap: 2em;
 }
-main .counter i {
+.salon-container .counter i {
   margin-right: 10px;
 }
-main .counter span {
+
+.salon-container .counter h3 {
+  font-weight: 450;
+}
+
+.salon-container .counter span {
   display: block;
   text-transform: capitalize;
   font-size: 0.8rem;
   color: #c1c1c1;
   margin-top: 3px;
 }
-main .btn {
+.salon-container .btn {
   background-color: rgb(109, 101, 101);
   border: 1px solid black;
   color: white;
@@ -153,10 +164,10 @@ main .btn {
   border-radius: 4px;
   transition: 0.3s ease-in;
 }
-main .btn i {
+.salon-container .btn i {
   margin-left: 15px;
 }
-main .btn:hover {
+.salon-container .btn:hover {
   background-color: #484446;
 }
 

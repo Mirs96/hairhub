@@ -12,7 +12,7 @@
                <mat-autocomplete class="custom-autocomplete" #auto="matAutocomplete" [displayWith]="displaySalonName" >
                 <div cdkOverlayPane class="my-custom-panel">
                 @for (salon of filteredSalons | async ; track salon.id) {
-                  <mat-option  class="mioMat" [value]="salon">{{salon.name}} - {{salon.address}}</mat-option>
+                  <mat-option  class="mioMat" [value]="salon" style="font-weight: 500;">{{salon.name}} - {{salon.address}}</mat-option>
                 }
                 </div>
               </mat-autocomplete>

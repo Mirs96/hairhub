@@ -1,63 +1,59 @@
 <head>
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
-
+<div class="navbar">
 <app-navbar></app-navbar>
+</div>
 <!-- Inizio pagina -->
 <div id="fullBg">
-<body>
-<main>
-  @if (salonDetails) {
-  <div class="container">
-  <div class="content">
-    <h2>{{salonDetails.name}}</h2>
-    <p> {{salonDetails.address}}</p>
-    <ul class="counter">
-      <li>
-        <h3><i class="fa-solid fa-book"></i>68+</h3>
-        <span>Servizi</span>
-      </li>
-      <li>
-        <h3><i class="fa-solid fa-user"></i>69,420</h3>
-        <span>Clienti soddisfatti</span>
-      </li>
-    </ul>
-  </div>
 
-</div>
-  }
-  <div id="carousel">
-  <app-salon-carousel></app-salon-carousel>
-  </div>
-  
-  <div class="circle"></div>
+  <body>
+    <div class="salon-container">
+      @if (salonDetails) {
+      <div class="content">
+        <h2>{{salonDetails.name}}</h2>
+        <p> {{salonDetails.address}}</p>
+        <ul class="counter">
+          <li>
+            <h3><i class="fa-solid fa-book"></i>10+</h3>
+            <span>Servizi</span>
+          </li>
+          <li>
+            <h3><i class="fa-solid fa-user"></i>1000+</h3>
+            <span>Clienti soddisfatti</span>
+          </li>
+        </ul>
+      </div>
 
-</main>
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<div id="serviceAndCheckout">
-<app-select-service (addTreatment)="addToCheckout($event)"></app-select-service>
-<app-checkout-table [selectedTreatments]="selectedTreatments" (treatmentRemoved)="removeTreatmentFromMain($event)"></app-checkout-table>
-</div>
-<app-salon-reviews></app-salon-reviews>
+      }
+      <div id="carousel">
+        <app-salon-carousel></app-salon-carousel>
+      </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <div id="serviceAndCheckout">
+      <app-select-service (addTreatment)="addToCheckout($event)"></app-select-service>
+      <app-checkout-table [selectedTreatments]="selectedTreatments"
+        (treatmentRemoved)="removeTreatmentFromMain($event)"></app-checkout-table>
+    </div>
+    <app-salon-reviews></app-salon-reviews>
 
 
-<!-- Footer -->
-<footer>
-    <ul class="social_icon">
-      <li><img id="facebook" src="img/facebook.png" alt="Facebook"></li>
-      <li><img src="img/twitter.png" alt="Twitter"></li>
-      <li><img src="img/instagram.png" alt="Instagram"></li>
-    </ul>
-    <ul class="menu">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-    <p>©2024 Chris Tobojia | All Rights Reserved</p>
-</footer>
-</body>
+    <!-- Footer -->
+    <footer>
+      <ul class="social_icon">
+        <li><img id="facebook" src="img/facebook.png" alt="Facebook"></li>
+        <li><img src="img/twitter.png" alt="Twitter"></li>
+        <li><img src="img/instagram.png" alt="Instagram"></li>
+      </ul>
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <p>©2024 Chris Tobojia | All Rights Reserved</p>
+    </footer>
+  </body>
 </div>
