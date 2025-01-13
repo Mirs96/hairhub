@@ -252,9 +252,9 @@ body {
   padding: 20px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2); /* Ombra per l'effetto */
   position: fixed; /* Fissa la sidenav */
-  height: 100vh; /* Altezza piena */
+  height: auto; /* Altezza piena */
   overflow-y: auto; /* Permette lo scroll solo dentro la sidenav */
-  margin-top: 4.7%;
+  margin-top: 7%;
 }
 
 .custom-sidenav h2 {
