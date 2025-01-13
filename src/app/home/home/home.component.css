@@ -28,6 +28,7 @@ app-swiper-carousel {
   height: 10%;
   width: 100%;
   position: fixed;
+  /*top: 0; Assicura che la navbar sia fissata in cima, da mettere a causa di position fixed, che rende la navbar posizionata in relazione alla finestra*/
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -40,8 +41,12 @@ app-swiper-carousel {
   background: linear-gradient(180deg, rgba(3,3,10,1) 7%, rgba(255,255,255,1) 100%);
 }
 
+/*.content {
+  margin-top: 1%; /* Aggiungi un margine superiore per evitare che il contenuto venga coperto dalla navbar 
+}*/
+
 .navBar {
-  display: flex;
+  /* display: flex; */
   height: 50px;            
   justify-content: flex-start; 
   align-items: center;
@@ -74,6 +79,11 @@ app-swiper-carousel {
   font-weight: bold; /* Rende il testo più marcato */
   text-transform: capitalize; /* Assicura che solo la prima lettera sia maiuscola */
   margin-top: 2.5%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#btn:hover {
+  transform: scale(1.2);
 }
 
 #btnLogin {
@@ -84,15 +94,25 @@ app-swiper-carousel {
   margin-top: 2.5%;
 }
 
-#nav2 {
+#nav2, #nav3 {
   width: 30px;
   height: 30px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#nav2:hover {
+#nav2:hover, #nav3:hover {
   transform: scale(1.2);
 }
+
+/* #nav3 {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#nav3:hover {
+  transform: scale(1.2);
+} */
 
 #btnLogReg {
   color: white;
