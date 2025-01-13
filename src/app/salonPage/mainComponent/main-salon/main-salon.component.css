@@ -38,6 +38,7 @@
   text-align: center;
   align-self: center;
   letter-spacing: 0.8px;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 2.8rem;
   line-height: 1.2;
@@ -54,10 +55,17 @@
 
 .salon-container .details p {
   color: black;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   line-height: 1.8;
   margin-top: 5px;
 }
+
+.salon-container .details p .icon {
+  
+  
+}
+
 /* .salon-container .counter {
   font-weight: 400;
   display: flex;

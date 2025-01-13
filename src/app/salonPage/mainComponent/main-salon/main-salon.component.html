@@ -1,6 +1,9 @@
 
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 <div class="navbar">
   <app-navbar></app-navbar>
@@ -15,9 +18,9 @@
       <div class="content">
         <h2>{{salonDetails.name}}</h2>
         <div class="details">
-        <p> Dal Lunedì al Venerdì </p>
-        <p style="color: #978d58;">{{salonDetails.address}}, Roma</p>
-        <p>Dalle 10:30 alle 18:30</p>
+        <p> <mat-icon class="icon" aria-hidden="false" aria-label="icon" fontIcon="calendar_month"></mat-icon>   Dal Lunedì al Sabato </p>
+        <p style="color: #978d58;"><mat-icon class="icon" aria-hidden="false" aria-label="icon" fontIcon="location_on"></mat-icon> {{salonDetails.address}}, Roma</p>
+        <p><mat-icon class="icon" aria-hidden="false" aria-label="icon" fontIcon="access_time"></mat-icon> Dalle 10:00 alle 20:00</p>
         </div>
         <!--<ul class="counter">
           <li>
