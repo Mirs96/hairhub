@@ -1,74 +1,75 @@
 
+<div class="modal">
 @if(bookingConfirmed){
-  <div>
-    <mat-card> 
-      <mat-card-title>Prenotazione Effettuata!</mat-card-title>
-      <mat-card-content>
-        <p>La tua prenotazione è stata confermata.</p>
-      </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button color="accent" (click)="onClose()">Chiudi</button>
-      </mat-card-actions>
-    </mat-card>
-</div>
+  <div class="confirmation-message">
+      <h2>Prenotazione Effettuata!</h2>
+      <p>La tua prenotazione è stata confermata.</p>
+      <button class="close-button" (click)="onClose()">Chiudi</button>
+  </div>
 }
 @else {
-<form (ngSubmit)="onSubmit()" [formGroup]="bookingForm"> <mat-form-field>
-    <mat-label>Barbiere</mat-label>
-    <mat-select formControlName="barberId">
-      @for (barber of barbers; track barber.id) {
-      <mat-option [value]="barber.id">{{barber.name}}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
+<form (ngSubmit)="onSubmit()" [formGroup]="bookingForm"> 
+    <h2> Barbiere </h2>
+    <mat-form-field appearance="outline">
+        <mat-select formControlName="barberId" class="select-field">
+        @for (barber of barbers; track barber.id) {
+        <mat-option [value]="barber.id">{{barber.name}}</mat-option>
+        }
+        </mat-select>
+    </mat-form-field>
 
-  <div class="appointment-details">
-    <mat-form-field>
-      <mat-label>Data</mat-label>
+    <h2> Data </h2>
+    <mat-form-field appearance="outline">
       <input matInput [matDatepicker]="datepicker" formControlName="selectedDate"
         [matDatepickerFilter]="isDateAvailable" (click)="$event.stopPropagation()"
-        (dateChange)="onDateSelected($event)">
+        (dateChange)="onDateSelected($event)" class="input-field">
       <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
       <mat-datepicker #datepicker></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Orario</mat-label>
-      <mat-select formControlName="time" required>
+    <h2> Orario </h2>
+    <mat-form-field appearance="outline">
+      <mat-select class="select-field" formControlName="time" required>
         @if (timeOptions.length > 0) {
-        @for (timeOption of timeOptions; track timeOption.value) {
-        <mat-option [value]="timeOption.value">
-          {{ timeOption.viewValue }}
-        </mat-option>
-        }
+            @for (timeOption of timeOptions; track timeOption.value) {
+            <mat-option [value]="timeOption.value">
+                {{ timeOption.viewValue }}
+            </mat-option>
+            }
         } @else {
-        <mat-option disabled>Nessun orario disponibile</mat-option>
+            <mat-option disabled>Nessun orario disponibile</mat-option>
         }
       </mat-select>
     </mat-form-field>
-  </div>
-  <div>
-   </div>
 
 
 <!-- Sezione per visualizzare i trattamenti selezionati dinamicamente -->
 
-<div>
-  @if (selectedTreatments.length) { 
-     <h3>Trattamenti selezionati:</h3>
-  <ul>
-    @for (treatment of selectedTreatments; track treatment.id) {
-    <li> {{ treatment.name }} {{treatment.price}}€</li> 
-  
-    }
-   
-  </ul>
-  <td><strong>Total:</strong></td>
-                
-  <td><strong>€{{ total }}</strong></td>
+    <div class="separator">
+        @if (selectedTreatments.length) { 
+            <h3>Trattamenti selezionati:</h3>
+            <ul>
+            @for (treatment of selectedTreatments; track treatment.id) {
+                <li> 
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" height="16" width="16">
+                    <rect fill="black" rx="8" height="16" width="16"></rect>
+                    <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="white" d="M5 8.5L7.5 10.5L11 6"></path>
+                    </svg>
+                    <span> {{ treatment.name }} {{treatment.price}}€</span>
+
+                </li> 
+            }
+            </ul>
+        }
+    </div>
+
+    <div class="modal--footer">
+        <label class="price"><sup>€</sup>{{total}}</label>
+        <!--<div class="payment--options">-->
+        <button type="submit" class="confirm-button">Conferma Prenotazione</button>
+        <button type="button" class="discard-button" (click)="onClose()">Annulla</button>
+        <!--</div>-->
+    </div>
+</form>
 }
 </div>
-<button mat-raised-button color="primary" type="submit">Conferma Prenotazione</button>
-<button mat-raised-button color="primary" (click)="onClose()">Annulla</button>
- </form>
-}

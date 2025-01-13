@@ -51,8 +51,8 @@ export class CheckoutTableComponent implements OnChanges{
 
   OnClickBarber(){
     const dialogRef = this.dialog.open(BookingComponent, {
-            width: '800px',
-            height: '600px',
+            width: '600px',
+            height: '700px',
             data: { id: this.route.snapshot.paramMap.get("id"),selectedTreatments: this.selectedTreatments }
         });
 
