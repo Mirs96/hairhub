@@ -108,16 +108,14 @@ ul {
   position: relative;
   z-index: 2;
   top: -100px;
-  margin-bottom: 3em;
-  margin-left: 250px;
+  
 }
-@media screen and (min-width: 960px) {
+/* @media screen and (min-width: 960px) {
   .salon-container .content {
     width: 40%;
-    padding-left: 5em;
     margin-bottom: 0;
   }
-}
+} */
 .salon-container h2 {
   letter-spacing: 0.8px;
   font-weight: 700;
@@ -136,7 +134,7 @@ ul {
   display: flex;
   align-items: center;
   margin: 2.5em 0 2em 0;
-  gap: 2em;
+  /*gap: 2em;*/
 }
 .salon-container .counter i {
   margin-right: 10px;
@@ -153,7 +151,7 @@ ul {
   color: #c1c1c1;
   margin-top: 3px;
 }
-.salon-container .btn {
+/* .salon-container .btn {
   background-color: rgb(109, 101, 101);
   border: 1px solid black;
   color: white;
@@ -169,14 +167,13 @@ ul {
 }
 .salon-container .btn:hover {
   background-color: #484446;
-}
+} */
 
 #carousel{
   position: relative;
   top: -50px;
   height: 40%;
   width: 70%;
-  margin-left: 200px;
 }
 
 
@@ -202,7 +199,6 @@ app-checkout-table {
 #serviceAndCheckout{
   display: flex;
   justify-content: space-between;
-  padding: 0 170px;
   margin-top: 50px;
 }
 
