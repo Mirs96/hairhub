@@ -1,9 +1,10 @@
 .example-box {
+    font-family:  'Montserrat', sans-serif; 
+    font-weight: 700;
     width: 300px;
     height: auto;
     border: solid 1px #000000;
     color: rgba(0, 0, 0, 0.87);
-    cursor: move;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +19,7 @@
                 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   }
   
-  .example-box:active {
+  example-box:active {
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
                 0 8px 10px 1px rgba(0, 0, 0, 0.14),
                 0 3px 14px 2px rgba(0, 0, 0, 0.12);
@@ -49,7 +50,7 @@ mat-list-item {
 }
 
 mat-list-item:hover {
-  background-color: #f0f0f0;
+  background-color: #f0f0f000;
   cursor: pointer;
 }
 
@@ -74,4 +75,28 @@ mat-list-item:hover {
 
 #checkChoice:hover {
   background-color: #484446;
+}
+
+button {
+  background: transparent;  /* Rimuove lo sfondo del bottone */
+  border: none;             /* Rimuove il bordo del bottone, se non desiderato */
+  padding: 0;               /* Rimuove eventuali padding aggiuntivi */
+}
+
+button img {
+  width: 100%;
+  height: auto;
+  max-width: 24px;
+  max-height: 24px;
+  object-fit: contain;
+}
+
+.treatment {
+  font-family:  'Montserrat', sans-serif; 
+  font-weight: 700;
+}
+
+.price {
+  font-family:  'Montserrat', sans-serif; 
+  font-weight: 700;
 }
