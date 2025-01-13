@@ -10,6 +10,15 @@ swiper-container {
   margin-top: 100px;
 }
 
+@media (min-width: 2400px) {
+  swiper-container {
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    
+  }
+}
+
 /* Stile delle slide */
 swiper-slide {
   display: flex;
@@ -79,19 +88,19 @@ button:focus {
   padding: 15px 30px;
   font-size: 16px; /* Aumento della dimensione del testo per maggiore impatto */
   color: white;
-  background: linear-gradient(90deg, #ff066f, #ff6600); /* Gradiente dal rosa all'arancio */
+  background: linear-gradient(90deg, #787375, #000000); /* Gradiente dal rosa all'arancio */
   border: none;
   border-radius: 50px; /* Bottone con angoli arrotondati */
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(255, 6, 111, 0.3); /* Ombra leggera per un effetto elegante */
+  box-shadow: 0 4px 15px rgba(242, 242, 242, 0.3); /* Ombra leggera per un effetto elegante */
   transition: all 0.3s ease; /* Aggiungi una transizione fluida */
   font-weight: bold; /* Grassetto per il testo */
   letter-spacing: 1px; /* Distanza tra le lettere per un effetto più ordinato */
 }
 
 .button1:hover {
-  background: linear-gradient(90deg, #ff6600, #ff066f); /* Invertiamo il gradiente per l'hover */
-  box-shadow: 0 10px 20px rgba(255, 6, 111, 0.5); /* Ombra più marcata al passaggio del mouse */
+  background: linear-gradient(90deg, #787375, #000000); /* Invertiamo il gradiente per l'hover */
+  box-shadow: 0 10px 20px rgba(224, 224, 224, 0.5); /* Ombra più marcata al passaggio del mouse */
   transform: translateY(-5px); /* Leggero spostamento verso l'alto */
 }
 
@@ -103,19 +112,19 @@ button:focus {
   padding: 15px 30px;
   font-size: 16px; /* Aumento della dimensione del testo per maggiore impatto */
   color: white;
-  background: linear-gradient(90deg, #ff066f, #ff6600); /* Gradiente dal rosa all'arancio */
+  background: linear-gradient(90deg, #787375, #000000); /* Gradiente dal rosa all'arancio */
   border: none;
   border-radius: 50px; /* Bottone con angoli arrotondati */
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(255, 6, 111, 0.3); /* Ombra leggera per un effetto elegante */
+  box-shadow: 0 4px 15px rgba(241, 241, 241, 0.3); /* Ombra leggera per un effetto elegante */
   transition: all 0.3s ease; /* Aggiungi una transizione fluida */
   font-weight: bold; /* Grassetto per il testo */
   letter-spacing: 1px; /* Distanza tra le lettere per un effetto più ordinato */
 }
 
 .button2:hover {
-  background: linear-gradient(90deg, #ff6600, #ff066f); /* Invertiamo il gradiente per l'hover */
-  box-shadow: 0 10px 20px rgba(255, 6, 111, 0.5); /* Ombra più marcata al passaggio del mouse */
+  background: linear-gradient(90deg, #787375, #000000); /* Invertiamo il gradiente per l'hover */
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5); /* Ombra più marcata al passaggio del mouse */
   transform: translateY(-5px); /* Leggero spostamento verso l'alto */
 }
 
@@ -126,7 +135,7 @@ button:focus {
 #scritta {
   font-size: 48px; /* Grandezza del testo */
   font-weight: bold; /* Testo in grassetto */
-  background: linear-gradient(90deg, #ff066f, #ff6600); /* Gradiente dal rosa all'arancio */
+  background: linear-gradient(90deg, #545051, #000000); /* Gradiente dal rosa all'arancio */
   -webkit-background-clip: text; /* Applica il gradiente solo al testo */
   color: transparent; /* Rende il testo trasparente per vedere il gradiente */
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Ombra leggera per far risaltare il testo */
@@ -137,7 +146,7 @@ button:focus {
 
 #scritta:hover {
   transform: scale(1.1); /* Effetto zoom al passaggio del mouse */
-  color: #ff066f; /* Cambia il colore al passaggio del mouse */
+  color: #2c282a; /* Cambia il colore al passaggio del mouse */
 }
 
 mat-grid-list {
