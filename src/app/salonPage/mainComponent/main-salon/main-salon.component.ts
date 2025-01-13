@@ -15,11 +15,12 @@ import { SalonService } from '../../../model/hometables/SalonService';
 import { Observable, ObservedValueOf } from 'rxjs';
 import { SalonReviewsComponent } from "../../components/salon-reviews/salon-reviews.component";
 import { UserService } from '../../../model/hometables/userService';
+import { NavbarComponent } from '../../../navbar/navbar.component';
 
 
 @Component({
   selector: 'app-main-salon',
-  imports: [RouterLink, RouterOutlet, RouterModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatIconModule, SalonCarouselComponent, SelectServiceComponent, CheckoutTableComponent, SalonReviewsComponent],
+  imports: [RouterLink, RouterOutlet, RouterModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatIconModule, SalonCarouselComponent, SelectServiceComponent, CheckoutTableComponent, SalonReviewsComponent, NavbarComponent],
   templateUrl: './main-salon.component.html',
   styleUrl: './main-salon.component.css'
 })

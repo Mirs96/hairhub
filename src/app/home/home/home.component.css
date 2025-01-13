@@ -25,12 +25,15 @@ app-swiper-carousel {
 /* ------------------ NAVBAR ------------------------ */
 
 #imgBackground {
-  max-height: 100%;
-  max-width: 100%;
+  height: 10%;
+  width: 100%;
+  position: fixed;
+  /*top: 0; Assicura che la navbar sia fissata in cima, da mettere a causa di position fixed, che rende la navbar posizionata in relazione alla finestra*/
   margin: 0;
   display: flex;
   flex-direction: column;
   background: rgb(22,19,19);
+  z-index: 1000;
 }
 
 #fullBg {
@@ -38,8 +41,12 @@ app-swiper-carousel {
   background: linear-gradient(180deg, rgba(3,3,10,1) 7%, rgba(255,255,255,1) 100%);
 }
 
+/*.content {
+  margin-top: 1%; /* Aggiungi un margine superiore per evitare che il contenuto venga coperto dalla navbar 
+}*/
+
 .navBar {
-  display: flex;
+  /* display: flex; */
   height: 50px;            
   justify-content: flex-start; 
   align-items: center;
@@ -48,8 +55,14 @@ app-swiper-carousel {
 }
 
 #logonav {
-  max-height: 50px;
+  justify-content: flex-start; 
+  align-items: center;
+  max-height: 80px;
+  margin-top: 35px;
+  margin-left: 0px;
   height: auto;
+  cursor: pointer;
+  padding-left: 3%;
 }
 
 .example-spacer {
@@ -65,15 +78,67 @@ app-swiper-carousel {
   font-size: 18px; /* Aumenta la dimensione del font */
   font-weight: bold; /* Rende il testo più marcato */
   text-transform: capitalize; /* Assicura che solo la prima lettera sia maiuscola */
+  margin-top: 2.5%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#btn:hover {
+  transform: scale(1.2);
 }
 
 #btnLogin {
   color: white;
   font-size: 18px; /* Aumenta la dimensione del font */
-  font-family: "Times New Roman", serif; /* Cambia il font */
+  font-weight: bold; /* Rende il testo più marcato */
+  text-transform: capitalize; /* Assicura che solo la prima lettera sia maiuscola */
+  margin-top: 2.5%;
+}
+
+#nav2, #nav3 {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#nav2:hover, #nav3:hover {
+  transform: scale(1.2);
+}
+
+/* #nav3 {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#nav3:hover {
+  transform: scale(1.2);
+} */
+
+#btnLogReg {
+  color: white;
+  font-size: 18px; /* Aumenta la dimensione del font */
   font-weight: bold; /* Rende il testo più marcato */
   text-transform: capitalize; /* Assicura che solo la prima lettera sia maiuscola */
 }
+#btnLogin:hover {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+
+/* Rimuove l'highlight su hover */
+::ng-deep mat-button:hover {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Rimuove l'highlight su focus */
+::ng-deep mat-button:focus {
+  outline: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
 
 /* ------------------ FOOTER ------------------------ */
 
@@ -189,6 +254,7 @@ body {
   position: fixed; /* Fissa la sidenav */
   height: 100vh; /* Altezza piena */
   overflow-y: auto; /* Permette lo scroll solo dentro la sidenav */
+  margin-top: 4.7%;
 }
 
 .custom-sidenav h2 {
