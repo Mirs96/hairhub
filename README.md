@@ -1,59 +1,25 @@
-# Hairhub
+# HairHub - Sistema di Prenotazione Servizi Salone
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.3.
+HairHub è un'applicazione web che consente agli utenti di prenotare servizi nei saloni che aderiscono al sistema. Gli utenti possono creare un account, visualizzare gli appuntamenti passati e futuri, lasciare recensioni sui servizi ricevuti e gestire i propri appuntamenti. Il progetto è composto da una parte di **back-end** (Java Spring Boot, PostgreSQL, JWT) e una parte di **front-end** (Angular).
 
-## Development server
+## Funzionalità principali implementate da me
 
-To start a local development server, run:
+### Back-end
+- **Login e registrazione utenti**: Implementazione della logica di login e registrazione, basata su **JWT** per l'autenticazione degli utenti. La logica è implementata nel back-end ma supportata e integrata anche nel front-end.
+- **Gestione degli appuntamenti**: Ho sviluppato la logica per la creazione e la gestione degli appuntamenti. Gli utenti possono prenotare i servizi offerti dai saloni, vedere i propri appuntamenti futuri e passati. Inoltre, ho implementato la funzionalità per disdire un appuntamento. Questa parte è stata completata solo nel back-end.
+- **Creazione delle recensioni**: Gli utenti possono lasciare recensioni per gli appuntamenti passati che non sono stati cancellati. La logica per la creazione delle recensioni è stata implementata sia nel back-end che nel front-end.
+- **Gestione appuntamenti passati e futuri**: Ho migliorato la logica per visualizzare gli appuntamenti passati e futuri per ciascun utente. Gli appuntamenti vengono ora filtrati correttamente in base all'utente, e da qui è possibile anche creare le recensioni (come descritto sopra). Questa logica è stata implementata completamente nel back-end.
 
-```bash
-ng serve
-```
+### Front-end
+- **Login e registrazione utenti**: Ho implementato la parte di login e registrazione anche nel front-end, che si integra con il back-end per garantire un flusso di autenticazione completo.
+- **Gestione appuntamenti**: Ho lavorato insieme al team sulla visualizzazione degli appuntamenti, permettendo agli utenti di vedere i dettagli degli appuntamenti futuri e passati. Gli utenti possono inoltre lasciare recensioni attraverso l'interfaccia.
+- **Creazione delle recensioni**: Gli utenti possono aggiungere recensioni agli appuntamenti completati non disdetti. 
+- **Collaborazione con il team**: Ho contribuito al miglioramento dell'interfaccia utente, correggendo bug, inoltre ho supervisionato lo sviluppo del front-end per garantire che il flusso di lavoro fosse coerente con le esigenze del back-end.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## Tecnologie utilizzate
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- **Back-end**: Java, **Spring Boot**, REST API, PostgreSQL, JWT (JSON Web Token)
+- **Front-end**: Angular
+- **Database**: PostgreSQL
+- **Autenticazione**: JWT (JSON Web Token)
